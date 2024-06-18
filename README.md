@@ -194,3 +194,12 @@ Understanding Large Language Models involves comprehending their underlying arch
 
 By following this guide, you will gain a deeper insight into the workings of LLMs and their impact on natural language processing.
 
+
+
+## References
+
+https://www.kaggle.com/code/jayitabhattacharyya/building-llms-from-scratch-generative-ai-report
+https://github.com/rasbt/LLMs-from-scratch
+https://github.com/rasbt/LLMs-from-scratch
+
+
