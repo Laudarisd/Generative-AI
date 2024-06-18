@@ -19,11 +19,11 @@ This repository is your gateway to the fascinating world of Generative Artificia
     - [Self-Attention](#self-attention)
     - [Positional Encoding](#positional-encoding)
     - [Optimization Algorithms](#optimization-algorithms)
-9. [Remote Sensing](#remote-sensing)
-10. [RAG (Retrieval-Augmented Generation)](#rag-retrieval-augmented-generation)
-11. [Prompt Engineering](#prompt-engineering)
-12. [Hyperparameter Tuning](#hyperparameter-tuning)
-13. [Language Change and Multimodal Applications](#language-change-and-multimodal-applications)
+9. [RAG (Retrieval-Augmented Generation)](#rag-retrieval-augmented-generation)
+10. [Prompt Engineering](#prompt-engineering)
+11. [Hyperparameter Tuning](#hyperparameter-tuning)
+12. [Language Change and Multimodal Applications](#language-change-and-multimodal-applications)
+13. [LangChain](#langchain)
 14. [Applications](#applications)
 15. [Contribution Guidelines](#contribution-guidelines)
 16. [References](#references)
@@ -156,7 +156,6 @@ v_t = \beta_2 v_{t-1} + (1 - \beta_2)g_t^2
 \]
 where \( g_t \) is the gradient at time step \( t \), \( \beta_1 \) and \( \beta_2 \) are decay rates, \( \alpha \) is the learning rate, and \( \epsilon \) is a small constant.
 
-
 ## RAG (Retrieval-Augmented Generation)
 
 RAG combines the strengths of retrieval-based and generation-based models to enhance the performance and accuracy of AI systems. This approach involves retrieving relevant documents or information from a knowledge base and using it to generate more accurate and contextually relevant responses.
@@ -178,6 +177,22 @@ LLMs are not only used in text generation but also play a significant role in mu
 - **Text-to-Image**: Models like DALL-E and CLIP, developed by OpenAI, can generate highly detailed and contextually appropriate images from textual descriptions.
 - **Text-to-Video**: Emerging models are capable of generating short video clips based on text prompts, paving the way for automated video creation.
 - **Text-to-Audio**: Models like Jukedeck and Google's WaveNet can generate music and realistic speech from textual descriptions, transforming the way we produce audio content.
+
+## LangChain
+
+LangChain is a powerful framework designed to facilitate the development of applications that utilize LLMs. It provides tools and abstractions to seamlessly integrate language models into various workflows, enabling efficient and effective use of these models in real-world applications.
+
+**Key Features:**
+
+- **Modular Design**: LangChain's modular architecture allows for flexible integration of different language models and components, making it easy to customize and extend functionalities.
+- **Pipeline Support**: Supports the creation of processing pipelines that can handle complex tasks involving multiple steps, such as text generation, translation, and summarization.
+- **Ease of Use**: Provides high-level APIs and utilities to simplify the development process, reducing the barrier to entry for leveraging LLMs in your applications.
+
+**Example Use Cases:**
+
+- **Automated Content Creation**: Using LangChain to build systems that generate articles, reports, or marketing content automatically.
+- **Chatbots and Virtual Assistants**: Developing conversational agents that can understand and respond to user queries in a natural and engaging manner.
+- **Multilingual Applications**: Creating tools that can translate content across multiple languages, making information accessible to a broader audience.
 
 ## Applications
 
