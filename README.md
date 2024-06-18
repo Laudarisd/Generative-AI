@@ -156,14 +156,6 @@ v_t = \beta_2 v_{t-1} + (1 - \beta_2)g_t^2
 \]
 where \( g_t \) is the gradient at time step \( t \), \( \beta_1 \) and \( \beta_2 \) are decay rates, \( \alpha \) is the learning rate, and \( \epsilon \) is a small constant.
 
-## Remote Sensing
-
-In this section, we cover remote sensing techniques and applications, including:
-
-- Introduction to remote sensing
-- Satellite image processing
-- Applications of remote sensing in GIS
-- Tools and software for remote sensing analysis
 
 ## RAG (Retrieval-Augmented Generation)
 
