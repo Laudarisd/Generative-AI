@@ -1,4 +1,4 @@
-# Portfolio: Advanced Techniques in Large Language Models (LLMs)
+# Advanced Techniques in Large Language Models (LLMs)
 
 ## Overview
 This document provides a detailed explanation of three key techniques used in leveraging Large Language Models (LLMs) for various AI applications. These techniques are Retrieval-Augmented Generation (RAG), Prompt Engineering, and Fine-Tuning. Each section includes an overview, process, mathematical formulation, and examples.
