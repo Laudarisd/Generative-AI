@@ -12,17 +12,22 @@ Retrieval-Augmented Generation (RAG) is a technique that combines retrieval mech
 - **Generator**: Generates the final response using both the input query and the retrieved documents.
 
 ### Process
-1. **Query**: An input query `q` is given.
-2. **Retrieval**: The retriever finds a set of documents `{d1, d2, ..., dk}` relevant to `q` from a corpus `D`.
-3. **Generation**: The generator uses both the query `q` and the retrieved documents `{d1, d2, ..., dk}` to generate a response `r`.
+1. **Query**: An input query \( q \) is given.
+2. **Retrieval**: The retriever finds a set of documents \( \{d_1, d_2, ..., d_k\} \) relevant to \( q \) from a corpus \( D \).
+3. **Generation**: The generator uses both the query \( q \) and the retrieved documents \( \{d_1, d_2, ..., d_k\} \) to generate a response \( r \).
 
 ### Mathematical Formulation
 1. **Retrieval Step**:
-
-where `f(q, d; θ_r)` is a scoring function (e.g., dot product of embeddings) parameterized by `θ_r`.
+   \[
+   P(d | q) = \text{softmax}(f(q, d; \theta_r))
+   \]
+   where \( f(q, d; \theta_r) \) is a scoring function (e.g., dot product of embeddings) parameterized by \( \theta_r \).
 
 2. **Generation Step**:
-where `rt` is the t-th token in the response and `θ_g` are the parameters of the generative model.
+   \[
+   P(r | q, \{d_i\}) = \prod_{t=1}^{T} P(r_t | r_{<t}, q, \{d_i\}; \theta_g)
+   \]
+   where \( r_t \) is the t-th token in the response and \( \theta_g \) are the parameters of the generative model.
 
 ### Example
 Consider a chatbot designed to answer questions about historical events:
@@ -47,9 +52,11 @@ Prompt engineering involves designing and optimizing the input prompts given to 
 2. **Optimize Prompt**: Experiment with different prompt formulations to achieve the best performance.
 
 ### Mathematical Formulation
-- **Input Prompt**: `p`
-- **Model Output**: `r`
-
+- **Input Prompt**: \( p \)
+- **Model Output**: \( r \)
+  \[
+  r = \text{LLM}(p)
+  \]
 
 ### Example
 Task: Summarize a text.
@@ -69,13 +76,13 @@ Fine-tuning involves adapting a pre-trained language model to a specialized task
 3. **Fine-Tuning**: Train the model on this dataset, adjusting the model’s weights.
 
 ### Mathematical Formulation
-- **Pre-trained Model**: `θ_0`
-- **Task-Specific Data**: `{(xi, yi)}_{i=1}^{N}`
-- **Loss Function**: `L(θ)`
-
-
-
-where `f(xi; θ)` is the model output and `θ` are the fine-tuned parameters.
+- **Pre-trained Model**: \( \theta_0 \)
+- **Task-Specific Data**: \( \{(x_i, y_i)\}_{i=1}^{N} \)
+- **Loss Function**: \( \mathcal{L}(\theta) \)
+  \[
+  \theta^* = \arg \min_{\theta} \frac{1}{N} \sum_{i=1}^{N} \mathcal{L}(y_i, f(x_i; \theta))
+  \]
+  where \( f(x_i; \theta) \) is the model output and \( \theta \) are the fine-tuned parameters.
 
 ### Example
 Task: Sentiment Analysis
