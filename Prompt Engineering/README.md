@@ -16,3 +16,13 @@ In this section, we will learn about `prompt engineering techniques` to real wor
 
 
 ## Introduction
+
+Prompt engineering is more than a buzzword. You can get vastly different output from an LLM when using different prompts. That may seem obvious when you consider that you get different output when you ask different questions—but it also applies to phrasing the same conceptual question differently. Prompt engineering means constructing your text input to the LLM using specific approaches.
+
+You can think of prompts as arguments and the LLM as the function to which you pass these arguments. Different input means different output:
+
+
+
+### References
+
+[Python](https://realpython.com/practical-prompt-engineering/)
