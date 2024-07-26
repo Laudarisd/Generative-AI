@@ -1,0 +1,43 @@
+import pandas as pd
+
+data = [
+    {"Question": "Hello, how can I assist you today?", "Answer": "Hi! I'm here to help you with anything you need. What can I do for you?"},
+    {"Question": "What perfumes do you recommend for women?", "Answer": "I recommend trying Chanel No. 5, Dior J'adore, or Marc Jacobs Daisy for women."},
+    {"Question": "Can you suggest a perfume for a formal event?", "Answer": "For a formal event, you might like Yves Saint Laurent Black Opium or Chanel Coco Mademoiselle."},
+    {"Question": "What are the best-selling perfumes this season?", "Answer": "The best-selling perfumes this season include Gucci Bloom, Tom Ford Black Orchid, and Jo Malone London."},
+    {"Question": "How can I track my order?", "Answer": "You can track your order by logging into your account and checking the 'Order Status' section."},
+    {"Question": "What is the return policy for perfumes?", "Answer": "Our return policy allows returns within 30 days of purchase, provided the perfume is unopened."},
+    {"Question": "Can I get a discount on bulk purchases?", "Answer": "Yes, we offer discounts on bulk purchases. Please contact our sales team for more details."},
+    {"Question": "How do I know if a perfume is original?", "Answer": "To ensure a perfume is original, buy from reputable retailers and check for authenticity seals."},
+    {"Question": "Can you suggest a perfume for men?", "Answer": "For men, I suggest Dior Sauvage, Bleu de Chanel, or Giorgio Armani Acqua di Gio."},
+    {"Question": "What is the difference between Eau de Parfum and Eau de Toilette?", "Answer": "Eau de Parfum has a higher concentration of fragrance oils and lasts longer than Eau de Toilette."},
+    {"Question": "How long does the fragrance last?", "Answer": "The fragrance typically lasts between 4 to 8 hours, depending on the type and ingredients."},
+    {"Question": "Can I get a sample before purchasing?", "Answer": "Yes, we offer samples for many of our perfumes. Please visit our samples section on the website."},
+    {"Question": "How should I store my perfume?", "Answer": "Store your perfume in a cool, dry place away from direct sunlight to maintain its quality."},
+    {"Question": "What ingredients are in this perfume?", "Answer": "You can find the ingredients list on the product page or packaging of the perfume."},
+    {"Question": "Are there any perfumes without alcohol?", "Answer": "Yes, we have a selection of alcohol-free perfumes. Please check our 'Alcohol-Free' section."},
+    {"Question": "How can I change my shipping address?", "Answer": "You can change your shipping address by going to your account settings and updating your information."},
+    {"Question": "What payment methods do you accept?", "Answer": "We accept all major credit cards, PayPal, and other secure payment methods."},
+    {"Question": "Can I cancel my order after placing it?", "Answer": "Orders can be canceled within an hour of placing them. Please contact our support team for assistance."},
+    {"Question": "Do you offer gift wrapping services?", "Answer": "Yes, we offer gift wrapping services at checkout. You can select this option when placing your order."},
+    {"Question": "Can you recommend a perfume for a summer day?", "Answer": "For a summer day, try light and fresh scents like Dolce & Gabbana Light Blue or Versace Bright Crystal."},
+    {"Question": "How can I join your loyalty program?", "Answer": "You can join our loyalty program by signing up on our website. Earn points with every purchase!"},
+    {"Question": "Do you ship internationally?", "Answer": "Yes, we ship to many countries worldwide. Please check our shipping policy for more details."},
+    {"Question": "What should I do if my perfume arrives damaged?", "Answer": "If your perfume arrives damaged, please contact our support team immediately for a replacement or refund."},
+    {"Question": "Can I return a used perfume?", "Answer": "Unfortunately, we cannot accept returns on used perfumes due to hygiene reasons."},
+    {"Question": "Do you offer express shipping?", "Answer": "Yes, we offer express shipping options at checkout for faster delivery."},
+    {"Question": "How do I apply perfume for the best results?", "Answer": "Apply perfume to pulse points like wrists, neck, and behind ears for long-lasting fragrance."},
+    {"Question": "What are niche perfumes?", "Answer": "Niche perfumes are exclusive, high-quality fragrances made by specialized perfumeries."},
+    {"Question": "Do you have perfumes suitable for sensitive skin?", "Answer": "Yes, we offer perfumes formulated for sensitive skin. Please check our 'Sensitive Skin' section."},
+    {"Question": "Can I combine different perfumes?", "Answer": "Yes, you can layer perfumes to create a unique scent. Start with lighter scents and add stronger ones."},
+    {"Question": "What size bottles do you offer?", "Answer": "We offer various sizes, including 30ml, 50ml, and 100ml bottles."},
+    {"Question": "How often do you release new perfumes?", "Answer": "We release new perfumes seasonally. Stay updated by subscribing to our newsletter."},
+    {"Question": "Are your perfumes cruelty-free?", "Answer": "Yes, all our perfumes are cruelty-free and not tested on animals."},
+    {"Question": "What is the best way to sample multiple perfumes?", "Answer": "You can order a sample set from our website to try multiple perfumes before buying full-sized bottles."},
+    {"Question": "Can I personalize my perfume bottle?", "Answer": "Yes, we offer personalization services for select perfume bottles. Please check our personalization section."},
+    {"Question": "Do you have a physical store?", "Answer": "Yes, we have physical stores. Please check our store locator for the nearest location."},
+    {"Question": "Can I get recommendations based on my previous purchases?", "Answer": "Yes, log into your account to get personalized recommendations based on your purchase history."},
+]
+
+df = pd.DataFrame(data)
+df.to_csv('perfume_customer_service.csv', index=False)
