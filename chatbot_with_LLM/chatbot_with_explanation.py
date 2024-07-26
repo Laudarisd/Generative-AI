@@ -35,9 +35,9 @@ def setup_model(model_name_or_path: str = "huggingface/model_name") -> HuggingFa
         model_dir = local_dir
     else:
         model_dir = model_name_or_path
-    """    
-    The tokenizer is responsible for converting text into tokens that the model can understand and vice versa.
-    """
+        
+    #The tokenizer is responsible for converting text into tokens that the model can understand and vice versa.
+
     tokenizer = AutoTokenizer.from_pretrained(model_dir)
 
     # Initialize an empty model and load the checkpoint directly onto the specified devices
@@ -61,11 +61,9 @@ def setup_model(model_name_or_path: str = "huggingface/model_name") -> HuggingFa
     # Load the model with the device map and offload to manage memory
     model = load_checkpoint_and_dispatch(model, local_dir, device_map=device_map, offload_folder="offload")
 
-
-    """
-    A text-generation pipeline is created, specifying various parameters like max_length, do_sample, top_k, etc. 
-    This pipeline will handle the text generation process.
-    """
+    #A text-generation pipeline is created, specifying various parameters like max_length, do_sample, top_k, etc. 
+    #This pipeline will handle the text generation process.
+    
     pipeline = transformers_pipeline(
         "text-generation",
         model=model,
@@ -80,13 +78,13 @@ def setup_model(model_name_or_path: str = "huggingface/model_name") -> HuggingFa
     )
 
     # LLM initialized in HuggingFacePipeline wrapper
-    """
-    The temperature parameter is a crucial hyperparameter in the context of language models, 
-    particularly during the text generation process. 
-    It controls the randomness of the predictions made by the model
-    Low Temperature (< 1.0) = Less randomness
-    High Temperature (> 1.0) = More randomness
-    """
+    
+    #The temperature parameter is a crucial hyperparameter in the context of language models, 
+    #particularly during the text generation process. 
+    #It controls the randomness of the predictions made by the model
+    #Low Temperature (< 1.0) = Less randomness
+    #High Temperature (> 1.0) = More randomness
+    
     llm = HuggingFacePipeline(pipeline=pipeline, model_kwargs={'temperature': 0.3})
 
     return llm
@@ -99,21 +97,21 @@ def load_custom_data():
     docs = loader.load()
 
     # Convert documents to a format suitable for RAG
-    """
-    This part of the function processes the loaded documents to extract questions and answers from each document.
-    convert_data = [{"question": doc.page_content.split("Answer:")[0].strip(), 
-    "answer": doc.page_content.split("Answer:")[1].strip()} for doc in docs]:
     
-    This line uses a list comprehension to iterate over each document in docs.
-    doc.page_content.split("Answer:"): Splits the content of each document into two parts at the substring "Answer:".
-    .strip(): Removes any leading and trailing whitespace from the split parts.
-    {"question": ..., "answer": ...}: Creates a dictionary with two keys, question and answer, holding the respective parts of the document content.
-    This transformation prepares the data in a format suitable for use in a Retrieval-Augmented Generation (RAG) system, 
-    where the question and answer pairs can be used to train or query the model.
+    #This part of the function processes the loaded documents to extract questions and answers from each document.
+    #convert_data = [{"question": doc.page_content.split("Answer:")[0].strip(), 
+    #"answer": doc.page_content.split("Answer:")[1].strip()} for doc in docs]:
     
-    - Data Format: By converting the documents into a dictionary format with question and answer keys, 
-    the function makes the data ready for further processing or model training.
-    """
+    #This line uses a list comprehension to iterate over each document in docs.
+    #doc.page_content.split("Answer:"): Splits the content of each document into two parts at the substring "Answer:".
+    #.strip(): Removes any leading and trailing whitespace from the split parts.
+    #{"question": ..., "answer": ...}: Creates a dictionary with two keys, question and answer, holding the respective parts of the document content.
+    #This transformation prepares the data in a format suitable for use in a Retrieval-Augmented Generation (RAG) system, 
+    #where the question and answer pairs can be used to train or query the model.
+    
+    #- Data Format: By converting the documents into a dictionary format with question and answer keys, 
+    #the function makes the data ready for further processing or model training.
+    #
     convert_data = [{"question": doc.page_content.split("Answer:")[0].strip(), "answer": doc.page_content.split("Answer:")[1].strip()} for doc in docs]
     return convert_data
 
@@ -140,19 +138,26 @@ def get_most_relevant_qa(query, convert_data, sentence_model, similarity_thresho
         return None
 
 def post_process_response(response):
+    """
+    Clean and format the response text.
+    """
     # Clean up the response text
-    clean_response = response.strip()
+    clean_response = response.strip() # Remove leading and trailing whitespace
 
     # Capitalize the first letter of each sentence
-    sentences = clean_response.split('. ')
-    sentences = [sentence.capitalize() for sentence in sentences]
+    sentences = clean_response.split('. ')  # Split the response into list of sentences
+    sentences = [sentence.capitalize() for sentence in sentences] # Iterates over each sentence and capitalizes the first letter, ensuring proper sentence capitalization.
 
     # Join the sentences back into a single string
-    processed_response = '. '.join(sentences)
-    if not processed_response.endswith('.'):
+    processed_response = '. '.join(sentences) #Joins the list of sentences back into a single string, with each sentence separated by a period and a space.
+    if not processed_response.endswith('.'): # processed_response += '.': Ensures that the final response ends with a period, adding one if necessary.
+
         processed_response += '.'
 
     return processed_response
+
+
+#The few_shot_template and PromptTemplate are used to define a structured prompt for the language model, helping it generate responses in a specific context
 
 few_shot_template = """You are a helpful customer service chatbot for an online perfume company called Fragrances International. Answer the customer's question based on the given context. If the context doesn't contain relevant information, say you don't have enough information to answer accurately. Provide a single, concise answer without numbering or listing multiple points.
 
@@ -171,6 +176,10 @@ def query_llm(query: str, llm, convert_data: list, sentence_model) -> str:
     
     if relevant_pair is None:
         return "I'm sorry, I don't have enough information to answer that question accurately. Could you please rephrase or ask something else?"
+
+    # The language model is queried with the full prompt, which includes both the 
+    # context from our data set and the user's question.
+
 
     context = f"Question: {relevant_pair['question']}\nAnswer: {relevant_pair['answer']}"
     full_prompt = prompt.format(context=context, question=query)
@@ -213,7 +222,7 @@ def query_llm(query: str, llm, convert_data: list, sentence_model) -> str:
     return processed_response
 
 def main():
-    st.title("Fragrances International Chatbot")
+    st.title("Welcome to the Fragrances International AI Assistant Service")
 
     # Initialize session state
     if 'chat_history' not in st.session_state:
@@ -225,7 +234,7 @@ def main():
     sentence_model = load_sentence_model()
 
     # User input
-    user_input = st.text_input("Ask a question about our perfumes:")
+    user_input = st.text_input("Ask a question about our products:")
 
     if st.button("Send"):
         if user_input:
