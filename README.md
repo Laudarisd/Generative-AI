@@ -213,7 +213,7 @@ We welcome contributions! Please read our [contributing guidelines](CONTRIBUTING
 - https://github.com/rasbt/LLMs-from-scratch
 - https://github.com/rasbt/LLMs-from-scratch
 
-===
+---
 ## Reading Materials
 
 -https://github.com/PacktPublishing/LLM-Engineers-Handbook
