@@ -212,3 +212,8 @@ We welcome contributions! Please read our [contributing guidelines](CONTRIBUTING
 - https://www.kaggle.com/code/jayitabhattacharyya/building-llms-from-scratch-generative-ai-report
 - https://github.com/rasbt/LLMs-from-scratch
 - https://github.com/rasbt/LLMs-from-scratch
+
+===
+## Reading Materials
+
+-https://github.com/PacktPublishing/LLM-Engineers-Handbook
