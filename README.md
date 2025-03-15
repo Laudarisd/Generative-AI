@@ -181,4 +181,4 @@ We welcome contributions! Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for
 
 - [LLM Engineers Handbook](https://github.com/PacktPublishing/LLM-Engineers-Handbook)
 - [Attention Is All You Need Paper](https://arxiv.org/pdf/1706.03762) ([summary](papers/attention_is_all_you_need.md))
-- More examples will be added later
+
