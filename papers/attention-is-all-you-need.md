@@ -1,7 +1,4 @@
 # Understanding "Attention Is All You Need" in Detail
-
-This document provides a detailed explanation of the "Attention Is All You Need" paper by Vaswani et al., focusing on the Transformer model, its mathematics, and the visualizations (plots) included in the paper. The Transformer revolutionized sequence transduction tasks like machine translation by replacing recurrent neural networks (RNNs) with attention mechanisms. Let's break it down step-by-step.
-
 ---
 
 ## Overview of the Transformer
