@@ -1,7 +1,9 @@
 # Understanding "Attention Is All You Need" in Detail
 ---
 
-(paper_link)[https://arxiv.org/pdf/1706.03762]
+[paper_link](https://arxiv.org/pdf/1706.03762)
+
+---
 
 ## Overview of the Transformer
 
