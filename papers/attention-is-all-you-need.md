@@ -1,6 +1,8 @@
 # Understanding "Attention Is All You Need" in Detail
 ---
 
+(paper_link)[https://arxiv.org/pdf/1706.03762]
+
 ## Overview of the Transformer
 
 The Transformer is designed for sequence transduction, converting an input sequence (e.g., an English sentence) into an output sequence (e.g., a German sentence). It uses an encoder-decoder architecture based entirely on attention, avoiding RNNs and convolutions.
