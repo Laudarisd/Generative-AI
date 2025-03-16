@@ -68,81 +68,129 @@ Let’s compute attention for a tiny sequence: "The cat" (\( n = 2 \)), with \( 
   - "The" to "The": \( 1 \cdot 1 + 0 \cdot 0 = 1 \).
   - "The" to "cat": \( 1 \cdot 0 + 0 \cdot 1 = 0 \).
 
-- **Step 2: Scale by \( \sqrt{d_k} = \sqrt{2} \approx 1.414 \)**:
-  \[
-  \frac{Q K^T}{\sqrt{d_k}} = \begin{bmatrix} 1 / 1.414 & 0 / 1.414 \\ 0 / 1.414 & 1 / 1.414 \end{bmatrix} = \begin{bmatrix} 0.707 & 0 \\ 0 & 0.707 \end{bmatrix}
-  \]
-  - Scaling reduces large values, stabilizing gradients.
+### Step 2: Scale by \( \sqrt{d_k} = \sqrt{2} \approx 1.414 \)
 
-- **Step 3: Apply Softmax (per row)**:
-  - **What Is Softmax?**: Turns raw scores into probabilities summing to 1 using \( \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}} \), where \( e \approx 2.718 \).
-  - **Row 1: \( \text{softmax}(0.707, 0) \)**:
-    1. **Exponentiate**:
-       - \( e^{0.707} \):
-         - \( e \approx 2.718 \) is Euler’s number.
-         - \( e^{0.707} = 2.718^{0.707} \approx 2.027 \) (between \( e^0 = 1 \) and \( e^1 = 2.718 \)).
-       - \( e^0 = 1 \) (any number to power 0 is 1).
-       - Result: \( [0.707, 0] \) → \( [2.027, 1] \).
-    2. **Sum**: \( 2.027 + 1 = 3.027 \).
-    3. **Normalize**:
-       - \( \frac{2.027}{3.027} \approx 0.6699 \approx 0.67 \).
-       - \( \frac{1}{3.027} \approx 0.3300 \approx 0.33 \).
-    4. **Result**: \( [0.67, 0.33] \) ("The" attends 67% to itself, 33% to "cat").
-  - **Row 2: \( \text{softmax}(0, 0.707) \)**:
-    1. **Exponentiate**: \( e^0 = 1 \), \( e^{0.707} \approx 2.027 \).
-    2. **Sum**: \( 1 + 2.027 = 3.027 \).
-    3. **Normalize**:
-       - \( \frac{1}{3.027} \approx 0.33 \).
-       - \( \frac{2.027}{3.027} \approx 0.67 \).
-    4. **Result**: \( [0.33, 0.67] \) ("cat" attends 33% to "The", 67% to itself).
-  - **Attention Scores**: \( \begin{bmatrix} 0.67 & 0.33 \\ 0.33 & 0.67 \end{bmatrix} \).
+$$
+\frac{Q K^T}{\sqrt{d_k}} = \begin{bmatrix} \frac{1}{1.414} & \frac{0}{1.414} \\ \frac{0}{1.414} & \frac{1}{1.414} \end{bmatrix} = \begin{bmatrix} 0.707 & 0 \\ 0 & 0.707 \end{bmatrix}
+$$
 
-- **Step 4: Multiply by \( V \)**:
-  \[
-  \text{Attention}(Q, K, V) = \begin{bmatrix} 0.67 & 0.33 \\ 0.33 & 0.67 \end{bmatrix} \begin{bmatrix} 2 & 3 \\ 4 & 5 \end{bmatrix} = \begin{bmatrix} (0.67 \cdot 2 + 0.33 \cdot 4) & (0.67 \cdot 3 + 0.33 \cdot 5) \\ (0.33 \cdot 2 + 0.67 \cdot 4) & (0.33 \cdot 3 + 0.67 \cdot 5) \end{bmatrix} = \begin{bmatrix} 2.66 & 3.66 \\ 3.34 & 4.34 \end{bmatrix}
-  \]
-  - Output for "The": \( [2.66, 3.66] \), mixing "The" and "cat".
+- Scaling reduces large values, stabilizing gradients.
+
+### Step 3: Apply Softmax (per row)
+
+- **What Is Softmax?** Turns raw scores into probabilities summing to 1 using:
+
+  $$
+  \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}}, \quad \text{where } e \approx 2.718
+  $$
+
+- **Row 1: softmax(0.707, 0)**
+
+  1. **Exponentiate**:
+     - \( e^{0.707} \approx 2.027 \) *(between \( e^0 = 1 \) and \( e^1 = 2.718 \))*
+     - \( e^0 = 1 \)
+     - Result: \([2.027, 1]\)
+
+  2. **Sum**: \( 2.027 + 1 = 3.027 \)
+
+  3. **Normalize**:
+     - \( \frac{2.027}{3.027} \approx 0.67 \)
+     - \( \frac{1}{3.027} \approx 0.33 \)
+
+  4. **Result**: \([0.67, 0.33]\) — "The" attends 67% to itself, 33% to "cat".
+
+- **Row 2: softmax(0, 0.707)**
+
+  1. **Exponentiate**: \( [1, 2.027] \)
+
+  2. **Sum**: \( 1 + 2.027 = 3.027 \)
+
+  3. **Normalize**:
+     - \( \frac{1}{3.027} \approx 0.33 \)
+     - \( \frac{2.027}{3.027} \approx 0.67 \)
+
+  4. **Result**: \([0.33, 0.67]\) — "cat" attends 33% to "The", 67% to itself.
+
+- **Attention Scores Matrix**:
+
+  $$
+  \text{Attention Scores} = \begin{bmatrix} 0.67 & 0.33 \\ 0.33 & 0.67 \end{bmatrix}
+  $$
+
+### Step 4: Multiply by \( V \)
+
+$$
+\text{Attention}(Q, K, V) =
+\begin{bmatrix} 0.67 & 0.33 \\ 0.33 & 0.67 \end{bmatrix}
+\begin{bmatrix} 2 & 3 \\ 4 & 5 \end{bmatrix} =
+\begin{bmatrix}
+(0.67 \cdot 2 + 0.33 \cdot 4) & (0.67 \cdot 3 + 0.33 \cdot 5) \\
+(0.33 \cdot 2 + 0.67 \cdot 4) & (0.33 \cdot 3 + 0.67 \cdot 5)
+\end{bmatrix} =
+\begin{bmatrix} 2.66 & 3.66 \\ 3.34 & 4.34 \end{bmatrix}
+$$
+
+- Output for **"The"**: `[2.66, 3.66]`, mixing "The" and "cat".
+
+---
 
 ### 2. Multi-Head Attention
 
-Uses multiple attention "heads" to capture different relationships.
+Uses multiple attention **"heads"** to capture different relationships.
 
-#### Process
+#### Process:
 - Split \( Q \), \( K \), \( V \) into \( h \) heads (e.g., \( h = 8 \)).
 - For each head \( i \):
-  - Project: \( Q W_i^Q \), \( K W_i^K \), \( V W_i^V \) (to \( d_k = d_v = d_{\text{model}} / h = 64 \)).
-  - Compute: \( \text{head}_i = \text{Attention}(Q W_i^Q, K W_i^K, V W_i^V) \).
-- Concatenate:
+  - Project: \( QW_i^Q \), \( KW_i^K \), \( VW_i^V \)
+  - Compute:  
+    \( \text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V) \)
+
+- Concatenate and project:
+
   ![Multi-Head Equation](https://latex.codecogs.com/png.latex?\text{MultiHead}(Q,%20K,%20V)%20=%20\text{Concat}(\text{head}_1,%20\ldots,%20\text{head}_h)%20W^O)
 
 #### Why?
 Each head focuses on different aspects (e.g., syntax, semantics).
 
+---
+
 ### 3. Positional Encoding
 
-Adds sequence order info since there’s no recurrence.
+Adds order/position info since there’s no recurrence or convolution.
 
-#### Formula
-![Positional Encoding](https://latex.codecogs.com/png.latex?PE_{(pos,%202i)}%20=%20\sin\left(\frac{pos}{10000^{2i%20/%20d_{\text{model}}}}\right),%20PE_{(pos,%202i+1)}%20=%20\cos\left(\frac{pos}{10000^{2i%20/%20d_{\text{model}}}}\right))
+#### Formula:
 
-- \( pos \): Position (0, 1, 2, …).
-- \( i \): Dimension index (0 to \( d_{\text{model}}/2 - 1 \)).
+![Positional Encoding](https://latex.codecogs.com/png.latex?PE_{(pos,%202i)}%20=%20\sin\left(\frac{pos}{10000^{2i%20/%20d_{\text{model}}}}\right),%20\quad%20PE_{(pos,%202i+1)}%20=%20\cos\left(\frac{pos}{10000^{2i%20/%20d_{\text{model}}}}\right))
 
-#### Intuition
-Sinusoids encode position uniquely, enabling generalization.
+- \( pos \): Position (0, 1, 2, …)  
+- \( i \): Dimension index \( (0 \le i < d_{\text{model}}/2) \)
+
+#### Intuition:
+Sinusoids encode relative positions, allowing generalization to longer sequences.
+
+---
 
 ### 4. Feed-Forward Networks (FFN)
 
-Applied position-wise in each layer:
-![FFN Equation](https://latex.codecogs.com/png.latex?\text{FFN}(x)%20=%20\max(0,%20x%20W_1%20+%20b_1)%20W_2%20+%20b_2)
+Applied position-wise after attention layer:
 
-- Input/output: \( d_{\text{model}} = 512 \).
-- Inner layer: \( d_{ff} = 2048 \).
+![FFN Equation](https://latex.codecogs.com/png.latex?\text{FFN}(x)%20=%20\max(0,%20xW_1%20+%20b_1)%20W_2%20+%20b_2)
 
-### 5. Layer Normalization and Residual Connections
+- Input/output dimension: \( d_{\text{model}} = 512 \)  
+- Hidden layer dimension: \( d_{ff} = 2048 \)
 
-- **Residual**: \( x + \text{Sublayer}(x) \) - Adds input to output, aiding gradient flow.
-- **LayerNorm**: Normalizes across features for stability.
+---
+
+### 5. Layer Normalization & Residual Connections
+
+- **Residual Connection**:  
+  \( \text{Output} = x + \text{Sublayer}(x) \)
+
+- **LayerNorm**:  
+  Normalizes features for training stability.
+
+---
+
 
 ### 6. Decoder Masking
 
