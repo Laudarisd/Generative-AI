@@ -12,6 +12,8 @@
 ### Overview
 The Vision Transformer (ViT) adapts the Transformer architecture—originally designed for NLP—to image recognition, bypassing traditional convolutional neural networks (CNNs). Images are split into fixed-size patches (e.g., 16x16), treated as a sequence, and processed by a standard Transformer encoder. Pre-trained on large datasets (e.g., JFT-300M) and fine-tuned on smaller benchmarks (e.g., ImageNet), ViT achieves state-of-the-art performance with fewer computational resources than CNNs.
 
+![Transformer Architecture](img/vit.png)
+
 ### Key Findings
 - **Performance**: ViT-H/14 achieves 88.55% on ImageNet, 94.55% on CIFAR-100, and 77.63% on VTAB (19 tasks) when pre-trained on JFT-300M.
 - **Efficiency**: Requires 2.5k TPUv3-core-days vs. 9.9k for BiT-L (ResNet152x4).
