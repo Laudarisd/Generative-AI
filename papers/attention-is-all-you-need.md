@@ -32,13 +32,13 @@ The core mechanism of the Transformer, computing how much focus each word gives 
   - $d_k$: Key/query dimension.
   - $d_v$: Value dimension.
 
+
+
 #### Formula
 
 $$
 \text{Attention}(Q, K, V) = \text{softmax}\left(\frac{Q K^T}{\sqrt{d_k}}\right) V
 $$
-
-![Attention Equation](https://latex.codecogs.com/png.latex?\text{Attention}(Q,%20K,%20V)%20=%20\text{softmax}\left(\frac{Q%20K^T}{\sqrt{d_k}}\right)%20V)
 
 - $Q K^T$: Dot product similarity (an $n \times n$ matrix).
 - $\frac{1}{\sqrt{d_k}}$: Scales to prevent large values from skewing softmax gradients.
@@ -46,19 +46,6 @@ $$
 - **$\text{softmax}$**: Normalizes scores into probabilities.
 - Multiply by **$V$**: Weights values, and the output is $n \times d_v$.
 
-
-#### Formula
-$
-
-$
-![Attention Equation](https://latex.codecogs.com/png.latex?\text{Attention}(Q,%20K,%20V)%20=%20\text{softmax}\left(\frac{Q%20K^T}{\sqrt{d_k}}\right)%20V)
-
-
-- Q $K^T$: Dot product similarity ($n \times n$ matrix).
-- $\begin \frac{1}{\sqr{d_K}}$
-- **$ 1 / √d_k $**: Scales to prevent large values from skewing softmax gradients.
-- **$ softmax $**: Normalizes scores into probabilities.
-- Multiply by **$ V $**: Weights values, output is `n × d_v`.
 
 #### Intuition
 For "The cat sleeps," the query for "sleeps" finds "cat" relevant via keys and retrieves info from values.
