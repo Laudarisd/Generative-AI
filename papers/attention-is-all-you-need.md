@@ -53,19 +53,14 @@ For "The cat sleeps," the query for "sleeps" finds "cat" relevant via keys and r
 #### Numerical Example
 Let’s compute attention for a tiny sequence: "The cat" $(\( n = 2 \))$, with $\( d_k = d_v = 2 \)$ for simplicity.
 
-$$  \begin{bmatrix}
-    a \\
-    b \\
-    c \\
-    \end{bmatrix} $$ 
 - **Inputs**:
-
+- 
 $$ \begin{bmatrix}
   1 & 0 \\
   0 & 1 
   \end{bmatrix} $$
 
-  - $\( Q = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \)$ (queries for "The" and "cat").
+  - (queries for "The" and "cat").
   - $\( K = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \)$ (keys, same as queries for self-attention).
   - $\( V = \begin{bmatrix} 2 & 3 \\ 4 & 5 \end{bmatrix} \)$ (values representing "The" and "cat").
  
