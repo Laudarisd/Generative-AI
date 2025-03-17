@@ -24,9 +24,9 @@ The Transformer is designed for sequence transduction, converting an input seque
 The core mechanism of the Transformer, computing how much focus each word gives to others.
 
 #### Inputs
-- **Queries (Q)**: Matrix of size `(n × d_k)` - What we're looking for.
-- **Keys (K)**: Matrix of size `(n × d_k)` - What we compare against.
-- **Values (V)**: Matrix of size `(n × d_v)` - What we retrieve.
+- **Queries (Q)**: Matrix of size $(n × d_k)$ - What we're looking for.
+- **Keys (K)**: Matrix of size $(n × d_k)$ - What we compare against.
+- **Values (V)**: Matrix of size $(n × d_v)$ - What we retrieve.
 - Where:
   - `n`: Sequence length.
   - `d_k`: Key/query dimension.
