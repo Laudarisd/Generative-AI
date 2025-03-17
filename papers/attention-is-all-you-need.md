@@ -103,14 +103,14 @@ uses distinct, small integers to show mixing. $( [2, 3])$ and $( [4, 5])$ repres
 
 - **Step 1: Compute $( Q K^T )$**:
   
-$$ Q K^T = \begin{bmatrix} 1 & 0 \\\ 0 & 1 \end{bmatrix} \begin{bmatrix} 1 & 0 \\\ 0 & 1 \end{bmatrix} = \begin{bmatrix} 1 & 0 \\\ 0 & 1 \end{bmatrix}$$
+$$Q K^T = \begin{bmatrix} 1 & 0 \\\ 0 & 1 \end{bmatrix} \begin{bmatrix} 1 & 0 \\\ 0 & 1 \end{bmatrix} = \begin{bmatrix} 1 & 0 \\\ 0 & 1 \end{bmatrix}$$
   
   - "The" to "The": $( 1 \cdot 1 + 0 \cdot 0 = 1 )$.
   - "The" to "cat": \( 1 \cdot 0 + 0 \cdot 1 = 0 \).
 
 - **Step 2: Scale by $( \sqrt{d_k} = \sqrt{2} \approx 1.414 \)$**:
   
-  $$\frac{Q K^T}{\sqrt{d_k}} = \begin{bmatrix} 1 / 1.414 & 0 / 1.414 \\ 0 / 1.414 & 1 / 1.414 \end{bmatrix} = \begin{bmatrix} 0.707 & 0 \\ 0 & 0.707 \end{bmatrix}$$
+  $$ \frac{Q K^T}{\sqrt{d_k}} = \begin{bmatrix} 1 / 1.414 & 0 / 1.414 \\ 0 / 1.414 & 1 / 1.414 \end{bmatrix} = \begin{bmatrix} 0.707 & 0 \\ 0 & 0.707 \end{bmatrix}$$
   
   - Scaling reduces large values, stabilizing gradients.
 
