@@ -32,8 +32,6 @@ The core mechanism of the Transformer, computing how much focus each word gives 
   - $d_k$: Key/query dimension.
   - $d_v$: Value dimension.
 
-
-
 #### Formula
 
 $$
@@ -54,15 +52,16 @@ For "The cat sleeps," the query for "sleeps" finds "cat" relevant via keys and r
 Let’s compute attention for a tiny sequence: "The cat" $(\( n = 2 \))$, with $\( d_k = d_v = 2 \)$ for simplicity.
 
 - **Inputs**:
-- 
+- (queries for "The" and "cat")
 $$ \begin{bmatrix}
   1 & 0 \\
   0 & 1 
   \end{bmatrix} $$
 
-  - (queries for "The" and "cat").
-  - $\( K = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \)$ (keys, same as queries for self-attention).
-  - $\( V = \begin{bmatrix} 2 & 3 \\ 4 & 5 \end{bmatrix} \)$ (values representing "The" and "cat").
+  
+-
+$$ K = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} $$ (keys, same as queries for self-attention).
+- $\( V = \begin{bmatrix} 2 & 3 \\ 4 & 5 \end{bmatrix} \)$ (values representing "The" and "cat").
  
 #### Numerical Example
 
