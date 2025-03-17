@@ -60,7 +60,10 @@ $$  \begin{bmatrix}
     \end{bmatrix} $$ 
 - **Inputs**:
 -
-  $$\begin{bmatrix}1&0\\0&1\end{bmatrix}$$
+  $$ \begin{bmatrix}
+    1 & 0 \\
+    0 & 1 
+    \end{bmatrix} $$
 
   - $\( Q = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \)$ (queries for "The" and "cat").
   - $\( K = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \)$ (keys, same as queries for self-attention).
