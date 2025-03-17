@@ -109,10 +109,7 @@ $$Q K^T = \begin{bmatrix} 1 & 0 \\\ 0 & 1 \end{bmatrix} \begin{bmatrix} 1 & 0 \\
   - "The" to "cat": $( 1 \cdot 0 + 0 \cdot 1 = 0 )$.
 
 - **Step 2: Scale by $( \sqrt{d_k} = \sqrt{2} \approx 1.414 \)$**:
-  
-  $$\frac{Q K^T}{\sqrt{d_k}} = \begin{bmatrix} 1 / 1.414 & 0 / 1.414 \\ 0 / 1.414 & 1 / 1.414 \end{bmatrix} = \begin{bmatrix} 0.707 & 0 \\ 0 & 0.707 \end{bmatrix}$$
-
-  
+    
 $$
 \frac{Q K^T}{\sqrt{d_k}} = \begin{bmatrix} \frac{1}{1.414} & \frac{0}{1.414} \\\ \frac{0}{1.414} & \frac{1}{1.414} \end{bmatrix} = \begin{bmatrix} 0.707 & 0 \\\ 0 & 0.707 \end{bmatrix}
 $$
@@ -121,8 +118,8 @@ $$
   - Scaling reduces large values, stabilizing gradients.
 
 - **Step 3: Apply Softmax (per row)**:
-  - **What Is Softmax?**: Turns raw scores into probabilities summing to 1 using \( \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}} \), where \( e \approx 2.718 \).
-  - **Row 1: \( \text{softmax}(0.707, 0) \)**:
+  - **What Is Softmax?**: Turns raw scores into probabilities summing to 1 using $( \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}} \)$, where $( e \approx 2.718 \)$.
+  - **Row 1: $( \text{softmax}(0.707, 0) )$**:
     1. **Exponentiate**:
        - \( e^{0.707} \):
          - \( e \approx 2.718 \) is Euler’s number.
