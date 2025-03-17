@@ -74,7 +74,7 @@ $$ K = \begin{bmatrix}
 $$ V = \begin{bmatrix}
   2 & 3 \\
   4 & 5
-  \end{bmatrix}$
+  \end{bmatrix}$$
 
 
 - **Why \( d_k = d_v = 2 \)?**:
