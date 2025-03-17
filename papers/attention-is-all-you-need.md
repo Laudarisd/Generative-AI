@@ -113,8 +113,8 @@ $$Q K^T = \begin{bmatrix} 1 & 0 \\\ 0 & 1 \end{bmatrix} \begin{bmatrix} 1 & 0 \\
   $$\frac{Q K^T}{\sqrt{d_k}} = \begin{bmatrix} 1 / 1.414 & 0 / 1.414 \\ 0 / 1.414 & 1 / 1.414 \end{bmatrix} = \begin{bmatrix} 0.707 & 0 \\ 0 & 0.707 \end{bmatrix}$$
 
   
-  $$
-\frac{Q K^T}{\sqrt{d_k}} = \begin{bmatrix} \frac{1}{1.414} & \frac{0}{1.414} \\ \frac{0}{1.414} & \frac{1}{1.414} \end{bmatrix} = \begin{bmatrix} 0.707 & 0 \\ 0 & 0.707 \end{bmatrix}
+$$
+\frac{Q K^T}{\sqrt{d_k}} = \begin{bmatrix} \frac{1}{1.414} & \frac{0}{1.414} \\\ \frac{0}{1.414} & \frac{1}{1.414} \end{bmatrix} = \begin{bmatrix} 0.707 & 0 \\\ 0 & 0.707 \end{bmatrix}
 $$
 
   
