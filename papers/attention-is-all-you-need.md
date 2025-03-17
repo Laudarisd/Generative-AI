@@ -36,7 +36,8 @@ The core mechanism of the Transformer, computing how much focus each word gives 
 ![Attention Equation](https://latex.codecogs.com/png.latex?\text{Attention}(Q,%20K,%20V)%20=%20\text{softmax}\left(\frac{Q%20K^T}{\sqrt{d_k}}\right)%20V)
 
 
-- **Q $K^T$**: Dot product similarity ($ n × n $ matrix).
+- Q $K^T$: Dot product similarity ($ n × n $ matrix).
+- $\begin \frac{1}{\sqr{d_K}}$
 - **$ 1 / √d_k $**: Scales to prevent large values from skewing softmax gradients.
 - **$ softmax $**: Normalizes scores into probabilities.
 - Multiply by **$ V $**: Weights values, output is `n × d_v`.
