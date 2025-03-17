@@ -103,9 +103,9 @@ uses distinct, small integers to show mixing. $( [2, 3])$ and $( [4, 5])$ repres
 
 - **Step 1: Compute $( Q K^T )$**:
   
-$$ Q K^T = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$$
+$$ Q K^T = \begin{bmatrix} 1 & 0 \\\ 0 & 1 \end{bmatrix}$$
 
-$$ \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix}$$
+$$ \begin{bmatrix} 1 & 0 \\\ 0 & 1 \end{bmatrix} = \begin{bmatrix} 1 & 0 \\\ 0 & 1 \end{bmatrix}$$
   
   - "The" to "The": \( 1 \cdot 1 + 0 \cdot 0 = 1 \).
   - "The" to "cat": \( 1 \cdot 0 + 0 \cdot 1 = 0 \).
