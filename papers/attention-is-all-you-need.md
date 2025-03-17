@@ -78,28 +78,10 @@ $$ V = \begin{bmatrix}
 
 - **Why $\( d_k = d_v = 2 \)$ ?**:
   - **Minimal Size**:
-  - 
-    $$
-    n = 2
-    $$
-    
-    is the smallest interesting sequence. $\( d_k = 1 \)$ would give scalars, while $\( d_k = 2 \)$ provides vectors, showing interactions like in the real model.
-  - **Simplicity**: Keeps matrices small (e.g., 
-
-    $$
-    2 \times 2
-    $$
-    
-    )
-
-    for hand calculation, unlike $\( d_k = 64 \)$ in the Transformer.
+  - $ n = 2 $ is the smallest interesting sequence. $\( d_k = 1 \)$ would give scalars, while $\( d_k = 2 \)$ provides vectors, showing interactions like in the real model.
+  - **Simplicity**: Keeps matrices small (e.g., $ 2 \times 2 $ ) for hand calculation, unlike $\( d_k = 64 \)$ in the Transformer.
   - **Consistency**: $\( d_v = d_k \)$ mirrors the paper’s design, simplifying the example.
 
-
-- **Why \( d_k = d_v = 2 \)?**:
-  - **Minimal Size**: \( n = 2 \) is the smallest interesting sequence. \( d_k = 1 \) would give scalars, while \( d_k = 2 \) provides vectors, showing interactions like in the real model.
-  - **Simplicity**: Keeps matrices small (e.g., \( 2 \times 2 \)) for hand calculation, unlike \( d_k = 64 \) in the Transformer.
-  - **Consistency**: \( d_v = d_k \) mirrors the paper’s design, simplifying the example.
 
 - **How Matrices Were Decided**:
   - **\( Q \) and \( K \)**: \( \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \) uses orthogonal vectors (\( [1, 0] \) for "The", \( [0, 1] \) for "cat") to control similarity (e.g., "The" matches itself, not "cat"). In self-attention, \( Q = K \) simplifies the example.
