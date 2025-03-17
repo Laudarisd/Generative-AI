@@ -89,13 +89,17 @@ $$ V = \begin{bmatrix}
 $$ \begin{bmatrix} 
   1 & 0 \\ 
   0 & 1 
-  \end{bmatrix} $$ uses orthogonal vectors $(( [1, 0] )$ for "The", $( [0, 1] )$ for "cat") to control similarity (e.g., "The" matches itself, not "cat"). In self-attention, $( Q = K )$ simplifies the example.
+  \end{bmatrix}$$ 
+  
+uses orthogonal vectors $(( [1, 0] )$ for "The", $( [0, 1] )$ for "cat") to control similarity (e.g., "The" matches itself, not "cat"). In self-attention, $( Q = K )$ simplifies the example.
   - **$( V )$**:
 
 $$ ( \begin{bmatrix} 
   2 & 3 \\ 
   4 & 5 
-  \end{bmatrix})$$ uses distinct, small integers to show mixing. $( [2, 3])$ and $( [4, 5])$ represent "content" for "The" and "cat", chosen arbitrarily but to be different and simple.
+  \end{bmatrix})$$ 
+  
+uses distinct, small integers to show mixing. $( [2, 3])$ and $( [4, 5])$ represent "content" for "The" and "cat", chosen arbitrarily but to be different and simple.
 
 - **Step 1: Compute \( Q K^T \)**:
   \[
