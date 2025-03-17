@@ -53,15 +53,25 @@ Let’s compute attention for a tiny sequence: "The cat" $(\( n = 2 \))$, with $
 
 - **Inputs**:
 - (queries for "The" and "cat")
-$$ \begin{bmatrix}
+  
+$$ Q = \begin{bmatrix}
   1 & 0 \\
   0 & 1 
   \end{bmatrix} $$
 
   
--
-$$ K = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} $$ (keys, same as queries for self-attention).
-- $\( V = \begin{bmatrix} 2 & 3 \\ 4 & 5 \end{bmatrix} \)$ (values representing "The" and "cat").
+- (keys, same as queries for self-attention)
+  
+$$ K = \begin{bmatrix} 
+  1 & 0 \\ 
+  0 & 1 
+  \end{bmatrix} $$ 
+  
+- values representing "The" and "cat"
+$$ V = \begin{bmatrix}
+  2 & 3 \\
+  4 & 5
+  \end{bmatrix}$
  
 #### Numerical Example
 
