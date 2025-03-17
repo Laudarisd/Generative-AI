@@ -57,6 +57,16 @@ Let’s compute attention for a tiny sequence: "The cat" (\( n = 2 \)), with \( 
   - \( Q = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \) (queries for "The" and "cat").
   - \( K = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \) (keys, same as queries for self-attention).
   - \( V = \begin{bmatrix} 2 & 3 \\ 4 & 5 \end{bmatrix} \) (values representing "The" and "cat").
+ 
+#### Numerical Example
+
+Let’s compute attention for a tiny sequence: "The cat" $(\( n = 2 \))$, with $( d_k = d_v = 2 \)$ for simplicity.
+
+- **Inputs**:
+  - \( Q = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \) (queries for "The" and "cat").
+  - \( K = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \) (keys, same as queries for self-attention).
+  - \( V = \begin{bmatrix} 2 & 3 \\ 4 & 5 \end{bmatrix} \) (values representing "The" and "cat").
+
 
 - **Why \( d_k = d_v = 2 \)?**:
   - **Minimal Size**: \( n = 2 \) is the smallest interesting sequence. \( d_k = 1 \) would give scalars, while \( d_k = 2 \) provides vectors, showing interactions like in the real model.
