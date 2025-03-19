@@ -48,6 +48,9 @@ $$
 #### Intuition
 For "The cat sleeps," the query for "sleeps" finds "cat" relevant via keys and retrieves info from values.
 
+
+---
+
 #### Numerical Example
 Let’s compute attention for a tiny sequence: "The cat" $(\( n = 2 \))$, with $\( d_k = d_v = 2 \)$ for simplicity.
 
@@ -118,16 +121,17 @@ $$
   - Scaling reduces large values, stabilizing gradients.
 
 - **Step 3: Apply Softmax (per row)**:
+- 
   - **What Is Softmax?**:
 
 Turns raw scores into probabilities summing to 1 using 
 
-$ \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}}$
+$$ \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}} $$
 
 ,where $ e \approx 2.718 $.
 
 
-  - **Row 1: $( \text{softmax}(0.707, 0) )$**:
+  - **Row 1: $\text{softmax}(0.707, 0)$**:
 
     1. **Exponentiate**:
        - $e^{0.707}$:
@@ -135,6 +139,7 @@ $ \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}}$
          - $e^{0.707} = 2.718^{0.707} \approx 2.027$ (between $( e^0 = 1)$ and $( e^1 = 2.718 ))$.
        - $e^0 = 1$ (any number to power 0 is 1).
        - Result: $[0.707, 0]$ → $[2.027, 1]$.
+       - 
     2. **Sum**: $2.027 + 1 = 3.027$.
 
     3. **Normalize**:
@@ -146,12 +151,13 @@ $ \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}}$
 
     4. **Result**: $[0.67, 0.33]$ ("The" attends 67% to itself, 33% to "cat").
     5. 
-  - **Row 2: \( \text{softmax}(0, 0.707) \)**:
-    1. **Exponentiate**: \( e^0 = 1 \), \( e^{0.707} \approx 2.027 \).
-    2. **Sum**: \( 1 + 2.027 = 3.027 \).
+  - **Row 2: $\text{softmax}(0, 0.707)$**:
+    
+    1. **Exponentiate**: $e^0 = 1$, $e^{0.707} \approx 2.027$.
+    2. **Sum**: $1 + 2.027 = 3.027$.
     3. **Normalize**:
-       - \( \frac{1}{3.027} \approx 0.33 \).
-       - \( \frac{2.027}{3.027} \approx 0.67 \).
+       - $\frac{1}{3.027} \approx 0.33$.
+       - $\frac{2.027}{3.027} \approx 0.67$.
 
     4. **Result**: $[0.33, 0.67]$ ("cat" attends 33% to "The", 67% to itself).
   - **Attention Scores**:
@@ -160,10 +166,10 @@ $$
 \begin{bmatrix} 0.67 & 0.33 \\\ 0.33 & 0.67 \end{bmatrix} $$.
 
 - **Step 4: Multiply by \( V \)**:
-  \[
+$$
   \text{Attention}(Q, K, V) = \begin{bmatrix} 0.67 & 0.33 \\ 0.33 & 0.67 \end{bmatrix} \begin{bmatrix} 2 & 3 \\ 4 & 5 \end{bmatrix} = \begin{bmatrix} (0.67 \cdot 2 + 0.33 \cdot 4) & (0.67 \cdot 3 + 0.33 \cdot 5) \\ (0.33 \cdot 2 + 0.67 \cdot 4) & (0.33 \cdot 3 + 0.67 \cdot 5) \end{bmatrix} = \begin{bmatrix} 2.66 & 3.66 \\ 3.34 & 4.34 \end{bmatrix}
-  \]
-  - Output for "The": \( [2.66, 3.66] \), mixing "The" and "cat".
+$$
+  - Output for "The": $[2.66, 3.66]$, mixing "The" and "cat".
 
 ### 2. Multi-Head Attention
 
