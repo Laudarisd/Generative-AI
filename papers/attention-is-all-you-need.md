@@ -140,15 +140,15 @@ $$ \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}} $$
        - $e^0 = 1$ (any number to power 0 is 1).
        - Result: $[0.707, 0]$ → $[2.027, 1]$.
        - 
-    2. **Sum**: $2.027 + 1 = 3.027$.
+    2. **Sum**: 2.027 + 1 = 3.027.
 
     3. **Normalize**:
   
-  $\frac{2.027}{3.027} \approx 0.6699 \approx 0.67 \)$.
+          - $\frac{2.027}{3.027} \approx 0.6699 \approx 0.67 \)$.
   
-  $\frac{1}{3.027} \approx 0.3300 \approx 0.33$.
+          - $\frac{1}{3.027} \approx 0.3300 \approx 0.33$.
 
-    4. **Result**: $[0.67, 0.33]$ ("The" attends 67% to itself, 33% to "cat").
+    4. **Result**: [0.67, 0.33] ("The" attends 67% to itself, 33% to "cat").
 
   - **Row 2: $\text{softmax}(0, 0.707)$**:
     
@@ -158,18 +158,40 @@ $$ \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}} $$
        
        - $\frac{1}{3.027} \approx 0.33$.
        - $\frac{2.027}{3.027} \approx 0.67$.
+  5. **Result**: [0.33, 0.67] ("cat" attends 33% to "The", 67% to itself).
+  
+    - **Attention Scores**:
 
-    5. **Result**: $[0.33, 0.67]$ ("cat" attends 33% to "The", 67% to itself).
-  - **Attention Scores**:
+  $$
+  \begin{bmatrix} 
+  0.67 & 0.33 \\
+  0.33 & 0.67 
+  \end{bmatrix}
+  $$
 
-$$ 
-\begin{bmatrix} 0.67 & 0.33 \\\ 0.33 & 0.67 \end{bmatrix} $$.
+  - **Step 4: Multiply by \( V \)**:
+  
+  $$
+  \text{Attention}(Q, K, V) = \begin{bmatrix} 
+  0.67 & 0.33 \\
+  0.33 & 0.67 
+  \end{bmatrix}
+  \begin{bmatrix} 
+  2 & 3 \\
+  4 & 5 
+  \end{bmatrix}
+  = \begin{bmatrix} 
+  (0.67 \cdot 2 + 0.33 \cdot 4) & (0.67 \cdot 3 + 0.33 \cdot 5) \\
+  (0.33 \cdot 2 + 0.67 \cdot 4) & (0.33 \cdot 3 + 0.67 \cdot 5) 
+  \end{bmatrix}
+  = \begin{bmatrix} 
+  2.66 & 3.66 \\
+  3.34 & 4.34 
+  \end{bmatrix}
+  $$
 
-- **Step 4: Multiply by \( V \)**:
-$$
-  \text{Attention}(Q, K, V) = \begin{bmatrix} 0.67 & 0.33 \\ 0.33 & 0.67 \end{bmatrix} \begin{bmatrix} 2 & 3 \\ 4 & 5 \end{bmatrix} = \begin{bmatrix} (0.67 \cdot 2 + 0.33 \cdot 4) & (0.67 \cdot 3 + 0.33 \cdot 5) \\ (0.33 \cdot 2 + 0.67 \cdot 4) & (0.33 \cdot 3 + 0.67 \cdot 5) \end{bmatrix} = \begin{bmatrix} 2.66 & 3.66 \\ 3.34 & 4.34 \end{bmatrix}
-$$
-  - Output for "The": $[2.66, 3.66]$, mixing "The" and "cat".
+- Output for "The": $[2.66, 3.66]$, mixing "The" and "cat".
+
 
 ### 2. Multi-Head Attention
 
