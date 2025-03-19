@@ -131,15 +131,16 @@ $ \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}}$
 
     1. **Exponentiate**:
        - $e^{0.707}$:
-         - $ e \approx 2.718$ is Euler’s number.
-         - $e^{0.707} = 2.718^{0.707} \approx 2.027 $ (between $( e^0 = 1)$ and $( e^1 = 2.718 ))$.
-       - $ e^0 = 1$ (any number to power 0 is 1).
+         - $e \approx 2.718$ is Euler’s number.
+         - $e^{0.707} = 2.718^{0.707} \approx 2.027$ (between $( e^0 = 1)$ and $( e^1 = 2.718 ))$.
+       - $e^0 = 1$ (any number to power 0 is 1).
        - Result: $[0.707, 0]$ → $[2.027, 1]$.
-    2. **Sum**: $ 2.027 + 1 = 3.027 $.
+    2. **Sum**: $2.027 + 1 = 3.027$.
 
     3. **Normalize**:
   
-  $$ \frac{2.027}{3.027} \approx 0.6699 \approx 0.67 \)$$.
+  $$ 
+  \frac{2.027}{3.027} \approx 0.6699 \approx 0.67 \)$$.
   
   $$ \frac{1}{3.027} \approx 0.3300 \approx 0.33$$.
 
@@ -151,7 +152,8 @@ $ \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}}$
     3. **Normalize**:
        - \( \frac{1}{3.027} \approx 0.33 \).
        - \( \frac{2.027}{3.027} \approx 0.67 \).
-    4. **Result**: \( [0.33, 0.67] \) ("cat" attends 33% to "The", 67% to itself).
+
+    4. **Result**: $[0.33, 0.67]$ ("cat" attends 33% to "The", 67% to itself).
   - **Attention Scores**:
 
 $$ 
