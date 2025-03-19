@@ -150,7 +150,7 @@ $$ \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}} $$
 
     4. **Result**: [0.67, 0.33] ("The" attends 67% to itself, 33% to "cat").
 
-  - **Row 2: $\text{softmax}(0, 0.707)$**:
+    - **Row 2: $\text{softmax}(0, 0.707)$**:
     
     1. **Exponentiate**: $e^0 = 1$, $e^{0.707} \approx 2.027$.
     2. **Sum**: $1 + 2.027 = 3.027$.
@@ -158,7 +158,7 @@ $$ \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}} $$
        
        - $\frac{1}{3.027} \approx 0.33$.
        - $\frac{2.027}{3.027} \approx 0.67$.
-  5. **Result**: [0.33, 0.67] ("cat" attends 33% to "The", 67% to itself).
+    5. **Result**: [0.33, 0.67] ("cat" attends 33% to "The", 67% to itself).
   
     - **Attention Scores**:
 
@@ -169,7 +169,7 @@ $$ \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}} $$
   \end{bmatrix}
   $$
 
-  - **Step 4: Multiply by \( V \)**:
+- **Step 4: Multiply by \( V \)**:
   
   $$
   \text{Attention}(Q, K, V) = \begin{bmatrix} 
@@ -192,7 +192,6 @@ $$ \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}} $$
 
 - Output for "The": $[2.66, 3.66]$, mixing "The" and "cat".
 
-
 ### 2. Multi-Head Attention
 
 Uses multiple attention "heads" to capture different relationships.
@@ -200,8 +199,15 @@ Uses multiple attention "heads" to capture different relationships.
 #### Process
 - Split \( Q \), \( K \), \( V \) into \( h \) heads (e.g., \( h = 8 \)).
 - For each head \( i \):
-  - Project: \( Q W_i^Q \), \( K W_i^K \), \( V W_i^V \) (to \( d_k = d_v = d_{\text{model}} / h = 64 \)).
-  - Compute: \( \text{head}_i = \text{Attention}(Q W_i^Q, K W_i^K, V W_i^V) \).
+  - Project: 
+    $$
+    Q W_i^Q, \, K W_i^K, \, V W_i^V \, (\text{to} \, d_k = d_v = \frac{d_{\text{model}}}{h} = 64)
+    $$
+  - Compute: 
+    $$
+    \text{head}_i = \text{Attention}(Q W_i^Q, K W_i^K, V W_i^V)
+    $$
+
 - Concatenate:
   ![Multi-Head Equation](https://latex.codecogs.com/png.latex?\text{MultiHead}(Q,%20K,%20V)%20=%20\text{Concat}(\text{head}_1,%20\ldots,%20\text{head}_h)%20W^O)
 
