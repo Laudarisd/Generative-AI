@@ -118,14 +118,23 @@ $$
   - Scaling reduces large values, stabilizing gradients.
 
 - **Step 3: Apply Softmax (per row)**:
-  - **What Is Softmax?**: Turns raw scores into probabilities summing to 1 using $( \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}} \)$, where $( e \approx 2.718 \)$.
+  - **What Is Softmax?**:
+
+Turns raw scores into probabilities summing to 1 using 
+
+$( \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}} \)$
+
+,where $( e \approx 2.718 \)$.
+
+
   - **Row 1: $( \text{softmax}(0.707, 0) )$**:
+
     1. **Exponentiate**:
-       - \( e^{0.707} \):
-         - \( e \approx 2.718 \) is Euler’s number.
-         - \( e^{0.707} = 2.718^{0.707} \approx 2.027 \) (between \( e^0 = 1 \) and \( e^1 = 2.718 \)).
-       - \( e^0 = 1 \) (any number to power 0 is 1).
-       - Result: \( [0.707, 0] \) → \( [2.027, 1] \).
+       - $( e^{0.707})$:
+         - $( e \approx 2.718)$ is Euler’s number.
+         - $( e^{0.707} = 2.718^{0.707} \approx 2.027 )$ (between $( e^0 = 1)$ and $( e^1 = 2.718 ))$.
+       - $( e^0 = 1)$ (any number to power 0 is 1).
+       - Result: $( [0.707, 0])$ → $( [2.027, 1])$.
     2. **Sum**: \( 2.027 + 1 = 3.027 \).
     3. **Normalize**:
        - \( \frac{2.027}{3.027} \approx 0.6699 \approx 0.67 \).
