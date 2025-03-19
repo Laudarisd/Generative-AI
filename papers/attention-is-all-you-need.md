@@ -200,16 +200,20 @@ Uses multiple attention "heads" to capture different relationships.
 - Split \( Q \), \( K \), \( V \) into \( h \) heads (e.g., \( h = 8 \)).
 - For each head \( i \):
   - Project: 
-    $$
-    Q W_i^Q, \, K W_i^K, \, V W_i^V \, (\text{to} \, d_k = d_v = \frac{d_{\text{model}}}{h} = 64)
-    $$
-  - Compute: 
-    $$
-    \text{head}_i = \text{Attention}(Q W_i^Q, K W_i^K, V W_i^V)
-    $$
+$$
+Q W_i^Q, \, K W_i^K, \, V W_i^V \, (\text{to} \, d_k = d_v = \frac{d_{\text{model}}}{h} = 64)
+$$
+- Compute: 
+$$
+\text{head}_i = \text{Attention}(Q W_i^Q, K W_i^K, V W_i^V)
+$$
 
 - Concatenate:
-  ![Multi-Head Equation](https://latex.codecogs.com/png.latex?\text{MultiHead}(Q,%20K,%20V)%20=%20\text{Concat}(\text{head}_1,%20\ldots,%20\text{head}_h)%20W^O)
+- 
+$$
+\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \ldots, \text{head}_h) W^O
+$$
+
 
 #### Why?
 Each head focuses on different aspects (e.g., syntax, semantics).
