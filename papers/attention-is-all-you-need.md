@@ -52,7 +52,7 @@ For "The cat sleeps," the query for "sleeps" finds "cat" relevant via keys and r
 ---
 
 #### Numerical Example
-Let’s compute attention for a tiny sequence: "The cat" $(\( n = 2 \))$, with $\( d_k = d_v = 2 \)$ for simplicity.
+Let’s compute attention for a tiny sequence: "The cat" $n = 2$, with $d_k = d_v = 2$ for simplicity.
 
 - **Inputs**:
 
@@ -79,11 +79,11 @@ $$ V = \begin{bmatrix}
   4 & 5
   \end{bmatrix}$$
 
-- **Why $\( d_k = d_v = 2 \)$ ?**:
+- **Why $d_k = d_v = 2$ ?**:
   - **Minimal Size**:
-  - $n = 2$ is the smallest interesting sequence. $\( d_k = 1 \)$ would give scalars, while $\( d_k = 2 \)$ provides vectors, showing interactions like in the real model.
-  - **Simplicity**: Keeps matrices small (e.g., $2 \times 2$ ) for hand calculation, unlike $\( d_k = 64 \)$ in the Transformer.
-  - **Consistency**: $\( d_v = d_k \)$ mirrors the paper’s design, simplifying the example.
+  - $n = 2$ is the smallest interesting sequence. $d_k = 1$ would give scalars, while $d_k = 2$ provides vectors, showing interactions like in the real model.
+  - **Simplicity**: Keeps matrices small (e.g., $2 \times 2$ ) for hand calculation, unlike $d_k = 64$ in the Transformer.
+  - **Consistency**: $d_v = d_k$ mirrors the paper’s design, simplifying the example.
 
 
 - **How Matrices Were Decided**:
@@ -111,7 +111,7 @@ $$Q K^T = \begin{bmatrix} 1 & 0 \\\ 0 & 1 \end{bmatrix} \begin{bmatrix} 1 & 0 \\
   - "The" to "The": $( 1 \cdot 1 + 0 \cdot 0 = 1 )$.
   - "The" to "cat": $( 1 \cdot 0 + 0 \cdot 1 = 0 )$.
 
-- **Step 2: Scale by $( \sqrt{d_k} = \sqrt{2} \approx 1.414 \)$**:
+- **Step 2: Scale by $sqrt{d_k} = \sqrt{2} \approx 1.414 $**:
     
 $$
 \frac{Q K^T}{\sqrt{d_k}} = \begin{bmatrix} \frac{1}{1.414} & \frac{0}{1.414} \\\ \frac{0}{1.414} & \frac{1}{1.414} \end{bmatrix} = \begin{bmatrix} 0.707 & 0 \\\ 0 & 0.707 \end{bmatrix}
@@ -136,7 +136,7 @@ $$ \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}} $$
     1. **Exponentiate**:
        - $e^{0.707}$:
          - $e \approx 2.718$ is Euler’s number.
-         - $e^{0.707} = 2.718^{0.707} \approx 2.027$ (between $( e^0 = 1)$ and $( e^1 = 2.718 ))$.
+         - $e^{0.707} = 2.718^{0.707} \approx 2.027$ between $( e^0 = 1)$ and $( e^1 = 2.718 ))$.
        - $e^0 = 1$ (any number to power 0 is 1).
        - Result: $[0.707, 0]$ → $[2.027, 1]$.
        - 
@@ -144,7 +144,7 @@ $$ \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}} $$
 
     3. **Normalize**:
   
-          - $\frac{2.027}{3.027} \approx 0.6699 \approx 0.67 \)$.
+          - $\frac{2.027}{3.027} \approx 0.6699 \approx 0.67$.
   
           - $\frac{1}{3.027} \approx 0.3300 \approx 0.33$.
 
@@ -223,10 +223,16 @@ Each head focuses on different aspects (e.g., syntax, semantics).
 Adds sequence order info since there’s no recurrence.
 
 #### Formula
-![Positional Encoding](https://latex.codecogs.com/png.latex?PE_{(pos,%202i)}%20=%20\sin\left(\frac{pos}{10000^{2i%20/%20d_{\text{model}}}}\right),%20PE_{(pos,%202i+1)}%20=%20\cos\left(\frac{pos}{10000^{2i%20/%20d_{\text{model}}}}\right))
 
-- \( pos \): Position (0, 1, 2, …).
-- \( i \): Dimension index (0 to \( d_{\text{model}}/2 - 1 \)).
+$$
+PE_{(pos, 2i)} = sin (\frac{pos}{10000^{2i / d_{model}}}), 
+
+PE_{(pos, 2i+1)} = cos (\frac{pos}{10000^{2i / d_{model}}})
+$$
+
+
+- $pos$: Position (0, 1, 2, …).
+- $i$: Dimension index (0 to $d_{model}/2 - 1$).
 
 #### Intuition
 Sinusoids encode position uniquely, enabling generalization.
@@ -234,19 +240,21 @@ Sinusoids encode position uniquely, enabling generalization.
 ### 4. Feed-Forward Networks (FFN)
 
 Applied position-wise in each layer:
-![FFN Equation](https://latex.codecogs.com/png.latex?\text{FFN}(x)%20=%20\max(0,%20x%20W_1%20+%20b_1)%20W_2%20+%20b_2)
+$$
+\text{FFN}(x) = max(0, x W_1 + b_1) W_2 + b_2
+$$
 
-- Input/output: \( d_{\text{model}} = 512 \).
-- Inner layer: \( d_{ff} = 2048 \).
+- Input/output: $d_{\text{model}} = 512$.
+- Inner layer: $d_{ff} = 2048$.
 
 ### 5. Layer Normalization and Residual Connections
 
-- **Residual**: \( x + \text{Sublayer}(x) \) - Adds input to output, aiding gradient flow.
+- **Residual**: $x + \text{Sublayer}(x)$ - Adds input to output, aiding gradient flow.
 - **LayerNorm**: Normalizes across features for stability.
 
 ### 6. Decoder Masking
 
-Masks future positions in decoder self-attention (sets to \(-\infty\)) to enforce auto-regressive generation.
+Masks future positions in decoder self-attention (sets $-\infty$) to enforce auto-regressive generation.
 
 ---
 
@@ -256,13 +264,13 @@ Masks future positions in decoder self-attention (sets to \(-\infty\)) to enforc
 Each layer processes the input sequence:
 1. **Multi-Head Self-Attention**:
    - Each word attends to all input words.
-   - 8 heads, each with \( d_k = d_v = 64 \), output concatenated to 512 dims.
-   - Residual: \( x + \text{Attention}(x) \).
+   - 8 heads, each with $d_k = d_v = 64$, output concatenated to 512 dims.
+   - Residual: $x + \text{Attention}(x)$.
    - LayerNorm: Normalizes result.
 2. **Feed-Forward Network**:
-   - \( \text{FFN}(x) = \max(0, x W_1 + b_1) W_2 + b_2 \).
-   - \( d_{ff} = 2048 \), output 512 dims.
-   - Residual: \( x + \text{FFN}(x) \).
+   - $\text{FFN}(x) = \max(0, x W_1 + b_1) W_2 + b_2$.
+   - $d_{ff} = 2048$, output 512 dims.
+   - Residual: $x + \text{FFN}(x)$.
    - LayerNorm: Normalizes result.
 
 ### Decoder Layers (6 Identical Layers)
@@ -272,7 +280,7 @@ Each layer generates the output sequence:
    - 8 heads, 512-dim output.
    - Residual + LayerNorm.
 2. **Multi-Head Attention Over Encoder Output**:
-   - \( Q \) from decoder, \( K \), \( V \) from encoder.
+   - $Q$ from decoder, $K$, $V$ from encoder.
    - Links input and output sequences.
    - Residual + LayerNorm.
 3. **Feed-Forward Network**:
@@ -317,7 +325,7 @@ The Transformer has 6 encoder and 6 decoder layers:
     - **Layer 6**: Top-most block, below "Linear" and "Softmax" (final prediction).
 
 ### Figure 2: Scaled Dot-Product and Multi-Head Attention
-- **Left**: Scaled dot-product process (e.g., \( \text{softmax}(Q K^T / \sqrt{d_k}) V \)).
+- **Left**: Scaled dot-product process (e.g., $\text{softmax}(Q K^T / \sqrt{d_k}) V$).
 - **Right**: Multi-head parallelism (multiple attention heads computed simultaneously).
 
 ### Figure 3: Attention Example (Layer 5)
@@ -337,7 +345,7 @@ The Transformer has 6 encoder and 6 decoder layers:
 ## Why It Works
 
 - **Parallelization**: Trains faster (e.g., 12 hours).
-- **Long-Range Dependencies**: \( O(1) \) steps.
+- **Long-Range Dependencies**: $O(1)$ steps.
 - **Performance**: 28.4 BLEU (EN-DE), 41.8 BLEU (EN-FR).
 
 ---
