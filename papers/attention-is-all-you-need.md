@@ -191,34 +191,34 @@ $$ \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}} $$
   $$ -->
 
 $$
-\text{Attention}(Q, K, V) = 
-\left[
+\text{Attention(Q, K, V)} = 
+[
 \begin{array}{cc}
 0.67 & 0.33 \\
 0.33 & 0.67 \\
 \end{array}
-\right]
+]
 \cdot
-\left[
+[
 \begin{array}{cc}
 2 & 3 \\
 4 & 5 \\
 \end{array}
-\right]
+]
 =
-\left[
+[
 \begin{array}{cc}
 (0.67 \cdot 2 + 0.33 \cdot 4) & (0.67 \cdot 3 + 0.33 \cdot 5) \\
 (0.33 \cdot 2 + 0.67 \cdot 4) & (0.33 \cdot 3 + 0.67 \cdot 5) \\
 \end{array}
-\right]
+]
 =
-\left[
+[
 \begin{array}{cc}
 2.66 & 3.66 \\
 3.34 & 4.34 \\
 \end{array}
-\right]
+]
 $$
 
 - Output for "The": $[2.66, 3.66]$, mixing "The" and "cat".
@@ -228,9 +228,10 @@ $$
 Uses multiple attention "heads" to capture different relationships.
 
 #### Process
-- Split \( Q \), \( K \), \( V \) into \( h \) heads (e.g., \( h = 8 \)).
-- For each head \( i \):
+- Split $Q$, $K$, $V$ into $h$ heads (e.g., $h = 8$).
+- For each head $i$:
   - Project: 
+
 $$
 Q W_i^Q, \, K W_i^K, \, V W_i^V \, (\text{to} \, d_k = d_v = \frac{d_{\text{model}}}{h} = 64)
 $$
