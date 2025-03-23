@@ -169,9 +169,9 @@ $$ \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}} $$
   \end{bmatrix}
   $$
 
-- **Step 4: Multiply by \( V \)**:
+- **Step 4: Multiply by $ V $**:
   
-  $$
+  <!-- $$
   \text{Attention}(Q, K, V) = \begin{bmatrix} 
   0.67 & 0.33 \\
   0.33 & 0.67 
@@ -188,7 +188,38 @@ $$ \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}} $$
   2.66 & 3.66 \\
   3.34 & 4.34 
   \end{bmatrix}
-  $$
+  $$ -->
+
+$$
+\text{Attention}(Q, K, V) = 
+\left[
+\begin{array}{cc}
+0.67 & 0.33 \\
+0.33 & 0.67 \\
+\end{array}
+\right]
+\cdot
+\left[
+\begin{array}{cc}
+2 & 3 \\
+4 & 5 \\
+\end{array}
+\right]
+=
+\left[
+\begin{array}{cc}
+(0.67 \cdot 2 + 0.33 \cdot 4) & (0.67 \cdot 3 + 0.33 \cdot 5) \\
+(0.33 \cdot 2 + 0.67 \cdot 4) & (0.33 \cdot 3 + 0.67 \cdot 5) \\
+\end{array}
+\right]
+=
+\left[
+\begin{array}{cc}
+2.66 & 3.66 \\
+3.34 & 4.34 \\
+\end{array}
+\right]
+$$
 
 - Output for "The": $[2.66, 3.66]$, mixing "The" and "cat".
 
