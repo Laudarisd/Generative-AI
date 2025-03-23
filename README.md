@@ -40,7 +40,7 @@ This repository is your gateway to the fascinating world of Generative Artificia
 
 This repository is a comprehensive resource for exploring Generative AI, covering foundational models, advanced architectures, and practical applications. Here’s what you’ll find:
 
-- **LLM Development**: Build Large Language Models (LLMs) from scratch, exploring text generation and understanding (Click Here)[https://github.com/Laudarisd/Generative-AI/tree/main/LLMs].
+- **LLM Development**: Build Large Language Models (LLMs) from scratch, exploring text generation and understanding [Click Here](https://github.com/Laudarisd/Generative-AI/tree/main/LLMs).
 - **Generative Models**: Dive into GANs, VAEs, and Diffusion Models for image, text, and audio synthesis ([code/generative_models/](code/generative_models/)).
 - **Transformer Deep Dive**: Understand the Transformer architecture, the backbone of modern LLMs, with detailed explanations ([papers/attention_is_all_you_need.md](papers/attention_is_all_you_need.md)).
 - **Practical Tools**: Use frameworks like LangChain for real-world applications ([code/langchain/](code/langchain/)).
