@@ -31,7 +31,7 @@ This repository covers:
 
 ---
 
-## 1. 🧠 Introduction
+## 1. Introduction
 
 Diffusion models are built on the idea of gradually corrupting data by adding noise, then learning to reverse this process to generate new samples from pure noise.
 
