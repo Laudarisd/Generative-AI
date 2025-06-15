@@ -1,7 +1,3 @@
-Here's a comprehensive and professional `README.md` template for your GitHub repository on **Generative AI / Diffusion Models**. It includes detailed explanations of core concepts, mathematical foundations, key algorithms, and structure for contributing or expanding the repo:
-
----
-
 ````markdown
 # 🧪 Generative AI: Diffusion Models
 
