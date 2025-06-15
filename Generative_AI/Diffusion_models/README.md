@@ -43,7 +43,8 @@ $( \beta_t )$: Noise schedule (e.g., linear or cosine)
 $( x_T )$: Nearly pure Gaussian noise
 
 Reverse Diffusion (Denoising)
-A neural network ( \epsilon_\theta(x_t, t) ) predicts the noise to recover $( x_0 ):p_\theta(x_{t-1} \mid x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \Sigma_\theta(x_t, t))$The model iteratively denoises from $( x_T )$ to $( x_0 )$.
+A neural network ( \epsilon_\theta(x_t, t) ) predicts the noise to recover 
+$( x_0 ):p_\theta(x_{t-1} \mid x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \Sigma_\theta(x_t, t))$The model iteratively denoises from $( x_T )$ to $( x_0 )$.
 
 3. 🧮 Mathematical Foundations
 Forward Process
