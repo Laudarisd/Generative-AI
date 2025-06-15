@@ -1,4 +1,3 @@
-````markdown
 # 🧪 Generative AI: Diffusion Models
 
 Welcome to the **Diffusion Models** repository — a deep dive into one of the most powerful generative modeling techniques in modern AI. This repo is designed as a learning and research resource to understand, experiment with, and implement diffusion models from the ground up.
