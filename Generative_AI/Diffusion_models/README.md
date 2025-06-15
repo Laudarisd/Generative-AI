@@ -55,9 +55,11 @@ $( \alpha_t = 1 - \beta_t )$
 $( \bar{\alpha}t = \prod{s=1}^t \alpha_s )$
 
 Training Objective
-The simplified loss minimizes the difference between predicted and actual noise:[\mathcal{L}{\text{simple}} = \mathbb{E}{t, x_0, \epsilon} \left[ \left| \epsilon - \epsilon_\theta \left( \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1 - \bar{\alpha}_t} \epsilon, t \right) \right|^2 \right]]
+The simplified loss minimizes the difference between predicted and actual noise:
+$\mathcal{L}{\text{simple}} = \mathbb{E}{t, x_0, \epsilon} \left[ \left| \epsilon - \epsilon_\theta \left( \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1 - \bar{\alpha}_t} \epsilon, t \right) \right|^2 \right]]\$
 Variational Lower Bound
-The full objective optimizes:[\mathcal{L}{\text{vlb}} = \mathbb{E}q \left[ - \log p\theta(x_0) + \sum{t=1}^T D_{\text{KL}} \left( q(x_t \mid x_{t-1}, x_0) \mid\mid p_\theta(x_{t-1} \mid x_t) \right) \right]]
+The full objective optimizes:
+$\mathcal{L}{\text{vlb}} = \mathbb{E}q \left[ - \log p\theta(x_0) + \sum{t=1}^T D_{\text{KL}} \left( q(x_t \mid x_{t-1}, x_0) \mid\mid p_\theta(x_{t-1} \mid x_t) \right) \right]$
 
 4. ⚙️ Algorithms and Code Examples
 Denoising Diffusion Probabilistic Model (DDPM)
