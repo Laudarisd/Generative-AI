@@ -48,10 +48,11 @@ $( x_0 ):p_\theta(x_{t-1} \mid x_t) = \mathcal{N}(x_{t-1}; \mu_\theta(x_t, t), \
 
 3. 🧮 Mathematical Foundations
 Forward Process
-The noised sample at step ( t ) can be computed directly:$x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1 - \bar{\alpha}_t} \epsilon, \quad \epsilon \sim \mathcal{N}(0, \mathbf{I})$ Where:
+The noised sample at step $( t )$ can be computed directly:
+$x_t = \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1 - \bar{\alpha}_t} \epsilon, \quad \epsilon \sim \mathcal{N}(0, \mathbf{I})$ Where:
 
-( \alpha_t = 1 - \beta_t )
-( \bar{\alpha}t = \prod{s=1}^t \alpha_s )
+$( \alpha_t = 1 - \beta_t )$
+$( \bar{\alpha}t = \prod{s=1}^t \alpha_s )$
 
 Training Objective
 The simplified loss minimizes the difference between predicted and actual noise:[\mathcal{L}{\text{simple}} = \mathbb{E}{t, x_0, \epsilon} \left[ \left| \epsilon - \epsilon_\theta \left( \sqrt{\bar{\alpha}_t} x_0 + \sqrt{1 - \bar{\alpha}_t} \epsilon, t \right) \right|^2 \right]]
