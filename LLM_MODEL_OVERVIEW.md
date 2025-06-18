@@ -60,9 +60,6 @@ This document summarizes major transformer-based models, categorized by architec
 - "Encoder-Decoder" models are flexible and good for translation, summarization, etc.
 
 ---
-
-Want help fine-tuning or deploying any of these? [Open an issue](#) or fork and contribute!
-
 ---
 
 ## 🎨 Diffusion Models (for Image, Texture, 3D Generation)
