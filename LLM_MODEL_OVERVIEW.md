@@ -94,3 +94,46 @@ This document summarizes major transformer-based models, categorized by architec
 | Style transfer/personalization | DreamBooth, Textual Inversion  |
 
 ---
+
+---
+
+## 🎨 DALL·E (OpenAI) — Text-to-Image Model
+
+| Version   | Architecture              | Description                                        | Access               | License |
+| --------- | ------------------------- | -------------------------------------------------- | -------------------- | ------- |
+| DALL·E 1 | Transformer (VQ-VAE)      | First version, not released publicly               | ❌ Not available     | Closed  |
+| DALL·E 2 | Diffusion + CLIP Guidance | Generates higher quality and more coherent images  | ❌ API only          | Closed  |
+| DALL·E 3 | GPT-4 + Diffusion Backend | Integrated in ChatGPT for natural prompt following | ❌ ChatGPT Plus only | Closed  |
+
+### ❌ Limitations
+
+- DALL·E models are **not open-source**.
+- Cannot be self-hosted or fine-tuned.
+- Access only via [OpenAI platform](https://platform.openai.com/docs/guides/images).
+
+---
+
+## ✅ Open-Source Alternatives to DALL·E
+
+| Model               | Type          | Highlights                                 | Source                                                                           |
+| ------------------- | ------------- | ------------------------------------------ | -------------------------------------------------------------------------------- |
+| Stable Diffusion    | Text-to-Image | Fully open, customizable                   | [SD 1.5](https://huggingface.co/runwayml/stable-diffusion-v1-5)                     |
+| Stable Diffusion XL | Text-to-Image | High-res generation                        | [SDXL](https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0)             |
+| DeepFloyd IF        | Text-to-Image | High-fidelity multi-stage diffusion        | [DeepFloyd IF](https://huggingface.co/DeepFloyd/IF-I-XL-v1.0)                       |
+| Kandinsky 2.2       | Text-to-Image | Supports multiple languages and modalities | [Kandinsky](https://huggingface.co/kandinsky-community)                             |
+| Playground v2       | Text-to-Image | Open DALL·E-style creativity              | [Playground v2](https://huggingface.co/playgroundai/playground-v2-1024px-aesthetic) |
+
+---
+
+## 🧠 Summary: DALL·E vs Open Models
+
+| Feature                  | DALL·E 2/3 | Open Alternatives (e.g. SD, IF) |
+| ------------------------ | ----------- | ------------------------------- |
+| Text-to-image generation | ✅          | ✅                              |
+| Inpainting/editing       | ✅          | ✅ (via ControlNet, SD)         |
+| Free usage               | ❌          | ✅                              |
+| Self-hosting             | ❌          | ✅                              |
+| Fine-tuning              | ❌          | ✅                              |
+| Commercial use           | ❌          | ✅                              |
+
+---
