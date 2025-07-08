@@ -253,15 +253,16 @@ This section provides a comprehensive guide to building a Retrieval-Augmented Ge
 
 * **Prompt Engineering** : Instruct LLM to say “I don’t know” if no relevant snippets are retrieved.
 * **Web Search Fallback** : Use Tavily or DuckDuckGo to fetch real-time coding resources.
+
   * Tavily Example:
+
   ```python
   from tavily import TavilyClient
   client = TavilyClient(api_key="your-api-key")
   web_results = client.search("Python list sorting")
   ```
 
-    * DuckDuckGo Example:``python        from duckduckgo_search import DDGS        with DDGS() as ddgs:            web_results = ddgs.text("Python list sorting", max_results=3)        ``
-
+  * DuckDuckGo Example:``python        from duckduckgo_search import DDGS        with DDGS() as ddgs:            web_results = ddgs.text("Python list sorting", max_results=3)        ``
 * **Threshold** : Trigger fallback if similarity scores are below 0.5.
 
 1. **Evaluation** :
@@ -323,10 +324,6 @@ sorted_list = sort_list(my_list)
 ## Conclusion
 
 This RAG-based coding assistant leverages open-source tools (LangChain, Chroma, Llama-2) and fine-tuning (LoRA) to deliver accurate Python code solutions. By curating high-quality data sources, optimizing retrieval, and incorporating web search for missing responses, it provides a scalable, cost-effective solution for developers. Deploy with Streamlit for an interactive experience.
-
----
-
-*Generated on July 8, 2025*
 
 ```
 
