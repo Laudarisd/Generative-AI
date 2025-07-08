@@ -1,0 +1,25 @@
+# Core RAG stack
+langchain>=0.1.20
+chromadb>=0.4.24
+sentence-transformers>=2.2.2
+transformers>=4.41.1
+torch>=2.2.2
+
+# UI & App
+streamlit>=1.35.0
+
+# Search & Retrieval
+duckduckgo-search>=4.1  # Simple web search API
+tavily-python>=0.3.3    # Tavily search (better for relevance, but limited usage tier)
+
+# Evaluation
+ragas>=0.1.7             # RAG evaluation metrics
+scikit-learn>=1.5.0      # Required by ragas for metrics
+pydantic>=2.7.1          # Required by langchain & ragas
+numpy>=1.26.4
+
+# Optional enhancements
+openai>=1.30.5           # Optional for OpenAI LLMs
+faiss-cpu>=1.8.0         # Vector store backend (if not using chromadb)
+nltk>=3.8.1              # Text preprocessing
+python-dotenv>=1.0.1     # For loading .env API keys
