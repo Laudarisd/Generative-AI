@@ -1,4 +1,14 @@
-# Advanced Techniques in Large Language Models (LLMs)
+# RAG: A Comprehensinve Guide to Retrieval-Augmented Generation (RAG) Systems
+---
+## Introduction
+Retrieval-Augmented Generation (RAG) is a framework that enhances large language models (LLMs) by integrating external document retrieval with text generation. It improves response accuracy, reduces hallucinations, and enables handling of dynamic or domain-specific knowledge. This guide provides a comprehensive, professional overview of RAG systems, including foundational knowledge, tools, libraries, implementation steps, and strategies for handling cases where responses are not found in the knowledge base. 
+
+---
+
+## Foundational Knowledge
+
+### What is RAG?
+
 
 ## Overview
 This document provides a detailed explanation of three key techniques used in leveraging Large Language Models (LLMs) for various AI applications. These techniques are Retrieval-Augmented Generation (RAG), Prompt Engineering, and Fine-Tuning. Each section includes an overview, process, mathematical formulation, and examples.
