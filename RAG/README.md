@@ -8,8 +8,40 @@ Retrieval-Augmented Generation (RAG) is a framework that enhances large language
 ## Foundational Knowledge
 
 ### What is RAG?
+RAG combines following core components:
+- **Retriever**: Searches a knowledge base for documents relevant to a query using vector embeddings.
+- **Generator**: An LLM generates a coherent response by combining the query with retrieved documents.
+- **Knowledge Base**: A repository of external data (e.g., PDFs, web pages, databases) indexed as embeddings for efficient retrieval
+
+### How RAG Works
+1. **Query Embedding**: Convert the user query into a numerical vector using an embedding model.
+2. **Document Retrieval**: Retrieve top-k relevant documents from the knowledge base using similarity metrics (e.g., cosine similarity).
+3. **Augmentation**: Combine the query and retrieved documents into a prompt for the LLM.
+4. **Response Generation**: The LLM generates a response, optionally citing sources for transparency.
+
+### Advantages
+- Enhances factual accuracy by grounding responses in external data.
+- Reduces reliance on static LLM training data.
+- Handles domain-specific or real-time knowledge effectively.
+- Improves transparency by citing sources.
+
+### Challenges
+- Retrieval quality directly impacts response accuracy.
+- Requires efficient indexing and embedding for large datasets.
+- Balancing computational complexity between retrieval and generation.
+- Maintaining an up-to-date and comprehensive knowledge base.
+
+### Applications
+- Question answering systems (e.g., customer support, FAQs).
+- Research tools for summarizing domain-specific documents.
+- Chatbots requiring real-time or proprietary data.
+- Multimodal applications (e.g., text and image processing).
+---
+## Tools and Libraries
 
 
+---
+---
 ## Overview
 This document provides a detailed explanation of three key techniques used in leveraging Large Language Models (LLMs) for various AI applications. These techniques are Retrieval-Augmented Generation (RAG), Prompt Engineering, and Fine-Tuning. Each section includes an overview, process, mathematical formulation, and examples.
 
