@@ -324,7 +324,3 @@ sorted_list = sort_list(my_list)
 ## Conclusion
 
 This RAG-based coding assistant leverages open-source tools (LangChain, Chroma, Llama-2) and fine-tuning (LoRA) to deliver accurate Python code solutions. By curating high-quality data sources, optimizing retrieval, and incorporating web search for missing responses, it provides a scalable, cost-effective solution for developers. Deploy with Streamlit for an interactive experience.
-
-```
-
-```
