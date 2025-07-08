@@ -38,7 +38,31 @@ RAG combines following core components:
 - Multimodal applications (e.g., text and image processing).
 ---
 ## Tools and Libraries
+### Comparison Table of RAG Tools
+| **Tool/Library** | **Category** | **Free/Paid** | **Description** | **Strengths** | **Weaknesses** |
+|-------------------|--------------|---------------|-----------------|----------------|----------------|
+| **Pinecone** | Vector Database | Paid (Free tier available) | Cloud-based vector database for semantic search. | Scalable, easy integration, production-ready. | Costs scale with usage; limited free tier. |
+| **Milvus** | Vector Database | Free (Open-source) | High-performance vector database for large-scale data. | Scalable, customizable, cost-free. | Requires self-hosting and setup expertise. |
+| **FAISS** | Vector Database | Free (Open-source) | Efficient for local vector similarity search. | Fast, lightweight, cost-free. | Limited to local deployment, less managed. |
+| **Chroma** | Vector Database | Free (Open-source) | Lightweight vector database for prototyping. | Easy to use, ideal for small projects. | Less scalable for production. |
+| **SingleStoreDB** | Vector Database | Paid (Free trial) | Combines vector search with real-time analytics. | Enterprise-grade, high performance. | Paid, complex for small-scale use. |
+| **Sentence Transformers** | Embedding Model | Free (Open-source) | Optimized for sentence-level embeddings. | High performance, customizable. | Requires tuning for domain-specific tasks. |
+| **Google Gemini** | Embedding Model | Paid | High-accuracy embeddings for semantic search. | Robust, cloud-based, reliable. | Costly, proprietary. |
+| **text-embedding-ada-002 (OpenAI)** | Embedding Model | Paid | Strong for longer texts (256-512 tokens). | High quality, easy integration. | API costs, not open-source. |
+| **LangChain** | RAG Framework | Free (Open-source) | Simplifies RAG pipelines with document loaders, retrievers, and LLM integration. | Modular, beginner-friendly, active community. | Can be complex for advanced customization. |
+| **LlamaIndex** | RAG Framework | Free (Open-source) | Focuses on indexing and retrieval for complex documents. | Strong for structured data, flexible. | Steeper learning curve than LangChain. |
+| **RAGFlow** | RAG Framework | Free (Open-source) | Supports multimodal data and deep document understanding. | Multimodal, enterprise-grade. | Early-stage, less documentation. |
+| **Haystack** | RAG Framework | Free (Open-source) | Modular framework for custom RAG pipelines. | Highly customizable, advanced features. | Requires expertise for setup. |
+| **GPT-4 (OpenAI)** | LLM | Paid | High-quality text generation for RAG. | Industry-leading performance, reliable. | High API costs, proprietary. |
+| **Llama-2** | LLM | Free (Open-source) | Efficient for local deployment. | Cost-free, customizable. | Requires significant compute for hosting. |
+| **Qwen2-VL** | LLM | Free (Open-source) | Supports multimodal RAG (text + images). | Multimodal, high performance. | Limited community support. |
+| **Tavily** | Search Tool | Paid (Free tier available) | Real-time web search for fallback data. | Enhances dynamic data retrieval. | Limited free tier, API costs. |
+| **Streamlit** | UI Tool | Free (Open-source) | Python-based UI for RAG applications. | Easy to use, rapid prototyping. | Limited for complex UI needs. |
+| **Docker** | Deployment Tool | Free (Open-source) | Containerization for RAG systems. | Scalable, portable. | Requires container management expertise. |
 
+### Notes on Free vs. Paid
+- **Free Tools**: Open-source options like Milvus, FAISS, Chroma, Sentence Transformers, LangChain, LlamaIndex, RAGFlow, Haystack, Llama-2, Qwen2-VL, Streamlit, and Docker are cost-free but may require self-hosting and technical expertise.
+- **Paid Tools**: Pinecone, SingleStoreDB, Google Gemini, text-embedding-ada-002, GPT-4, and Tavily offer managed services or APIs but incur costs. Free tiers or trials are often available but limited in scale or features.
 
 ---
 ---
