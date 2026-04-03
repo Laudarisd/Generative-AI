@@ -183,21 +183,26 @@ Part 2 index:
 
 ## Part 3: Applications and Systems
 
-This part is more practical and system-oriented.
+This part focuses on system design, adaptation, deployment, and production-style LLM workflows.
 
-### Retrieval and Knowledge
+Part 3 index:
 
-- [RAG](part-3/RAG/README.md)
+- [Part 3 Overview](part-3/README.md)
+
+| Chapter | Topic | Link |
+| --- | --- | --- |
+| 1 | Parameter Understanding | [Open](part-3/01.parameter-understanding/README.md) |
+| 2 | Fine-Tuning and Adaptation | [Open](part-3/02.fine-tuning-and-adaptation/README.md) |
+| 3 | RAG vs Agentic RAG | [Open](part-3/03.rag-vs-agentic-rag/README.md) |
+| 4 | LangChain Applications | [Open](part-3/04.langchain-applications/README.md) |
+| 5 | LLM Engines and Serving | [Open](part-3/05.llm-engines-and-serving/README.md) |
+| 6 | Training in the Cloud | [Open](part-3/06.training-in-the-cloud/README.md) |
+| 7 | MCP Servers and Tools | [Open](part-3/07.mcp-servers-and-tools/README.md) |
+| 8 | Multimodal Applications | [Open](part-3/08.multimodal-applications/README.md) |
+
+Supporting legacy folder:
+
 - [Coding Assistance RAG](part-3/RAG/coding_assistance_rag/README.md)
-
-### Frameworks and Apps
-
-- [LangChain](part-3/LangChain/README.md)
-- [Multimodel Application](part-3/Multimodel_Application/README.md)
-
-### Training and Tuning
-
-- [Hyperparameter Tuning](part-3/Hyperparameter_Tuning/README.md)
 
 ---
 
@@ -256,7 +261,7 @@ If you want the cleanest path through the repo:
 14. [Encoding vs Decoding](part-1/05.encoding-vs-decoding/README.md)
 15. [Positional Encoding](part-1/06.positional-encoding/README.md)
 16. Part 2 model and transformer chapters
-17. Part 3 system and application chapters
+17. [Part 3 Overview](part-3/README.md)
 18. [Part 4 Overview](part-4/README.md)
 
 ---
