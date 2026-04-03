@@ -466,7 +466,248 @@ print(X_scaled)
 
 ---
 
-## 14. From Classical ML to Generative AI
+## 14. One-Hot Encoding
+
+One-hot encoding is a way to represent a categorical value as a binary vector.
+
+If a feature has $K$ categories, the encoded vector has length $K$:
+
+- one position is `1`
+- all other positions are `0`
+
+### Example
+
+Suppose the categories are:
+
+- `cat`
+- `dog`
+- `bird`
+
+Then:
+
+- `cat` -> `[1, 0, 0]`
+- `dog` -> `[0, 1, 0]`
+- `bird` -> `[0, 0, 1]`
+
+### Why it matters
+
+Many machine learning models require numeric input, but categories are not naturally numeric.
+
+One-hot encoding is one of the simplest bridges from symbolic labels to vectors.
+
+### Important Limitation
+
+One-hot vectors do not capture semantic similarity.
+
+For example:
+
+- `cat` and `dog` are just as far apart as `cat` and `car`
+
+That is one reason embeddings became so important in deep learning.
+
+### Python Example
+
+```python
+from sklearn.preprocessing import OneHotEncoder
+
+X = [["cat"], ["dog"], ["bird"], ["dog"]]
+
+enc = OneHotEncoder(sparse_output=False)
+X_encoded = enc.fit_transform(X)
+
+print(enc.categories_)
+print(X_encoded)
+```
+
+### Tiny Manual Example
+
+```python
+labels = ["cat", "dog", "bird"]
+label_to_index = {label: i for i, label in enumerate(labels)}
+
+target = "dog"
+vector = [0] * len(labels)
+vector[label_to_index[target]] = 1
+
+print(vector)
+```
+
+---
+
+## 15. Convolution, Stride, and Pooling
+
+These ideas are central in convolutional neural networks, or **CNNs**.
+
+Even though LLMs are transformer-based, CNN concepts are still important in broader AI, especially for images, video, and some signal-processing tasks.
+
+### Convolution Intuition
+
+A convolution layer applies learnable filters across local regions of the input.
+
+If the input is an image tensor:
+
+```math
+X \in \mathbb{R}^{C_{in} \times H \times W}
+```
+
+then a convolution with:
+
+- `in_channels = C_in`
+- `out_channels = C_out`
+- kernel size `K`
+
+produces:
+
+```math
+Y \in \mathbb{R}^{C_{out} \times H_{out} \times W_{out}}
+```
+
+### Output Size Formula
+
+For one spatial dimension:
+
+```math
+\text{out} = \left\lfloor \frac{\text{in} + 2p - k}{s} \right\rfloor + 1
+```
+
+where:
+
+- `in` = input size
+- `p` = padding
+- `k` = kernel size
+- `s` = stride
+
+For 2D images, apply the formula to height and width separately.
+
+### What Stride Means
+
+Stride is how far the filter moves at each step.
+
+- stride `1`: move one pixel at a time
+- stride `2`: skip every other position
+
+Larger stride reduces output resolution.
+
+### What Pooling Means
+
+Pooling reduces spatial size by summarizing local neighborhoods.
+
+Common types:
+
+- max pooling
+- average pooling
+
+Example with max pooling:
+
+If a `2 x 2` window contains:
+
+```text
+[[1, 5],
+ [2, 4]]
+```
+
+max pooling outputs `5`.
+
+### Worked Output-Shape Example
+
+Suppose:
+
+- input image: `3 x 32 x 32`
+- convolution: `out_channels = 16`, `kernel = 3`, `stride = 1`, `padding = 1`
+
+Then:
+
+- channels become `16`
+- height stays `32`
+- width stays `32`
+
+So output is:
+
+```text
+16 x 32 x 32
+```
+
+If we then apply max pooling with:
+
+- kernel `2`
+- stride `2`
+
+the spatial size halves:
+
+```text
+16 x 16 x 16
+```
+
+### PyTorch Example
+
+```python
+import torch
+import torch.nn as nn
+
+model = nn.Sequential(
+    nn.Conv2d(in_channels=3, out_channels=16, kernel_size=3, stride=1, padding=1),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+    nn.Conv2d(in_channels=16, out_channels=32, kernel_size=3, stride=1, padding=1),
+    nn.ReLU(),
+    nn.MaxPool2d(kernel_size=2, stride=2),
+)
+
+x = torch.randn(1, 3, 32, 32)
+y = model(x)
+
+print("input shape :", x.shape)
+print("output shape:", y.shape)
+```
+
+### Layer-by-Layer Shape Explanation
+
+Input:
+
+```text
+(batch, channels, height, width) = (1, 3, 32, 32)
+```
+
+After first `Conv2d(3 -> 16, kernel=3, stride=1, padding=1)`:
+
+```text
+(1, 16, 32, 32)
+```
+
+because padding keeps spatial size unchanged.
+
+After first max pool `2 x 2` with stride `2`:
+
+```text
+(1, 16, 16, 16)
+```
+
+After second `Conv2d(16 -> 32, kernel=3, stride=1, padding=1)`:
+
+```text
+(1, 32, 16, 16)
+```
+
+After second max pool:
+
+```text
+(1, 32, 8, 8)
+```
+
+### Why Channels Change
+
+The number of output channels equals the number of learned filters.
+
+So:
+
+- `3 -> 16` means the model learns 16 filters from a 3-channel input
+- `16 -> 32` means the next layer learns 32 filters from the 16-channel feature maps
+
+Channels represent feature maps, not RGB colors after the first layer.
+
+---
+
+## 16. From Classical ML to Generative AI
 
 The path from classical ML to modern generative AI is easier to understand if you see the progression:
 

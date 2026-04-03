@@ -11,6 +11,22 @@ This section starts with history and context, then moves into the mechanics that
 5. [Encoding vs Decoding](05.encoding-vs-decoding/README.md)
 6. [Positional Encoding](06.positional-encoding/README.md)
 
+## What This Part Covers
+
+- where LLMs came from historically
+- how LLMs fit inside the larger generative AI landscape
+- what an LLM really learns during pretraining
+- how tokenization and embeddings differ
+- how encoder, decoder, and encoder-decoder architectures differ
+- why positional encoding is necessary in transformers
+
+## How To Read This Part
+
+- start with `LLM History` if you want context first
+- read `LLM vs Generative AI` to avoid terminology confusion
+- use `Understanding LLMs` as the conceptual anchor chapter
+- then move through tokenization, architectural roles, and positional encoding
+
 ## Existing Supporting Material
 
-- Content from the old math and core-part folders has been merged into the six main Part 1 chapters.
+- content from the old math and core-part folders has been merged into the six main Part 1 chapters
