@@ -30,90 +30,90 @@ The Vision Transformer (ViT) adapts the Transformer architecture—originally de
 ## Architecture Details
 
 ### Image to Sequence Transformation
-An image $`\mathbf{x} \in \mathbb{R}^{H \times W \times C}`$ is divided into $`N = \frac{HW}{P^2}`$ patches of size $`P \times P`$ (e.g., 16x16).
+An image $\mathbf{x} \in \mathbb{R}^{H \times W \times C}$ is divided into $N = \frac{HW}{P^2}$ patches of size $P \times P$ (e.g., 16x16).
 
-- **Patch Flattening**: Each patch is flattened to $`P^2 \cdot C`$ (e.g., 768 for RGB with $`P = 16`$).
-- **Linear Projection**: A trainable matrix $`\mathbf{E} \in \mathbb{R}^{(P^2 \cdot C) \times D}`$ projects patches to $`D`$-dimensional embeddings:
+- **Patch Flattening**: Each patch is flattened to $P^2 \cdot C$ (e.g., 768 for RGB with $P = 16$).
+- **Linear Projection**: A trainable matrix $\mathbf{E} \in \mathbb{R}^{(P^2 \cdot C) \times D}$ projects patches to $D$-dimensional embeddings:
 
-$$
+```math
 \mathbf{x}_p^i \mathbf{E}
-$$
+```
 
-- **Position Embeddings**: Learnable 1D embeddings $`\mathbf{E}_{\text{pos}} \in \mathbb{R}^{(N+1) \times D}`$ are added.
-- **Classification Token**: A learnable $`\mathbf{x}_{\text{class}}`$ is prepended.
+- **Position Embeddings**: Learnable 1D embeddings $\mathbf{E}_{\text{pos}} \in \mathbb{R}^{(N+1) \times D}$ are added.
+- **Classification Token**: A learnable $\mathbf{x}_{\text{class}}$ is prepended.
 
 Initial sequence:
 
-$$
+```math
 \mathbf{z}_0 =
 [\mathbf{x}_{\text{class}}; \mathbf{x}_p^1 \mathbf{E}; \mathbf{x}_p^2 \mathbf{E}; \dots; \mathbf{x}_p^N \mathbf{E}]
 + \mathbf{E}_{\text{pos}}
-$$
+```
 
 ### Transformer Encoder
-Consists of $`L`$ layers, each with:
+Consists of $L$ layers, each with:
 
 - **Multi-Head Self-Attention (MSA)**:
 
   Queries, keys, values:
 
-  $$
+  ```math
   [\mathbf{q}, \mathbf{k}, \mathbf{v}] = \mathbf{z}_{\ell-1} \mathbf{U}_{qkv},
   \quad
   \mathbf{U}_{qkv} \in \mathbb{R}^{D \times 3D_h}
-  $$
+  ```
 
-  where $`D_h = \frac{D}{k}`$ and $`k`$ is the number of heads.
+  where $D_h = \frac{D}{k}$ and $k$ is the number of heads.
 
   Attention weights:
 
-  $$
+  ```math
   A = \text{softmax}\left(\frac{\mathbf{q} \mathbf{k}^\top}{\sqrt{D_h}}\right),
   \quad
   A \in \mathbb{R}^{N \times N}
-  $$
+  ```
 
   Single-head output:
 
-  $$
+  ```math
   \text{SA}(\mathbf{z}_{\ell-1}) = A \mathbf{v}
-  $$
+  ```
 
   Multi-head output:
 
-  $$
+  ```math
   \text{MSA}(\mathbf{z}_{\ell-1}) =
   [\text{SA}_1; \text{SA}_2; \dots; \text{SA}_k] \mathbf{U}_{msa},
   \quad
   \mathbf{U}_{msa} \in \mathbb{R}^{k \cdot D_h \times D}
-  $$
+  ```
 
   With LayerNorm and residual:
 
-  $$
+  ```math
   \mathbf{z}_{\ell}' = \text{MSA}(\text{LN}(\mathbf{z}_{\ell-1})) + \mathbf{z}_{\ell-1}
-  $$
+  ```
 
 - **MLP Block**: Two layers with GELU:
 
-  $$
+  ```math
   \mathbf{z}_{\ell} = \text{MLP}(\text{LN}(\mathbf{z}_{\ell}')) + \mathbf{z}_{\ell}'
-  $$
+  ```
 
-- **Output**: Classification token after $`L`$ layers:
+- **Output**: Classification token after $L$ layers:
 
-  $$
+  ```math
   \mathbf{y} = \text{LN}(\mathbf{z}_L^0)
-  $$
+  ```
 
 ### Model Variants
-| Model     | Layers | $`D`$ | MLP Size | Heads | Params |
+| Model     | Layers | $D$ | MLP Size | Heads | Params |
 |-----------|--------|---------|----------|-------|--------|
 | ViT-Base  | 12     | 768     | 3072     | 12    | 86M    |
 | ViT-Large | 24     | 1024    | 4096     | 16    | 307M   |
 | ViT-Huge  | 32     | 1280    | 5120     | 16    | 632M   |
 
-Patch size (e.g., /16) affects $`N`$ and compute cost.
+Patch size (e.g., /16) affects $N$ and compute cost.
 
 ---
 
