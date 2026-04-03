@@ -140,7 +140,25 @@ This matters for:
 - state models
 - generative processes
 
-## 9. Example: Counting Token Sequences
+## 9. Probability Trees and Counting Logic
+
+Discrete math supports probabilistic reasoning because many probability spaces are countable.
+
+Example:
+
+- two coin flips produce four outcomes:
+  - HH
+  - HT
+  - TH
+  - TT
+
+If outcomes are equally likely, then:
+
+```math
+P(\text{exactly one head}) = \frac{2}{4} = \frac{1}{2}
+```
+
+## 10. Example: Counting Token Sequences
 
 If a vocabulary has size $V$ and sequence length is $T$, then the number of possible sequences is:
 
@@ -158,6 +176,26 @@ T = 10
 print(V ** T)
 ```
 
+## 11. Worked Example: Recurrence
+
+Suppose:
+
+```math
+T(n) = T(n-1) + 2, \quad T(1)=1
+```
+
+Then:
+
+- $T(2)=3$
+- $T(3)=5$
+- $T(4)=7$
+
+So the closed form is:
+
+```math
+T(n)=2n-1
+```
+
 ## Practice Problems
 
 1. Compute $\binom{5}{2}$.
@@ -165,3 +203,4 @@ print(V ** T)
 3. Give a real AI example of a graph.
 4. Compare permutation and combination.
 5. Write a recurrence relation for binary tree traversal.
+6. Count how many 3-bit binary strings exist.

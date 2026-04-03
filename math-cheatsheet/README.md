@@ -14,6 +14,7 @@ It is not meant to replace the teaching chapters in `fundamental-concepts/`. Its
 
 | Chapter | Topic | Link |
 | --- | --- | --- |
+| 0 | Algebra Foundations | [Open](0.algebra-foundations/README.md) |
 | 1 | Calculus | [Open](1.calculus/README.md) |
 | 2 | Linear Algebra | [Open](2.linear-algebra/README.md) |
 | 3 | Matrix Theory | [Open](3.matrix-theory/README.md) |
@@ -28,9 +29,11 @@ It is not meant to replace the teaching chapters in `fundamental-concepts/`. Its
 - Read it linearly if you want a compact math foundation.
 - Jump directly to a chapter if you need a formula during study.
 - Use it with Part 1 and Part 4 when topics become more mathematical.
+- Study `Algebra Foundations` and `Calculus` first if you want a school-to-bachelor progression.
 
 ## What This Covers
 
+- algebra from equations and functions to logs, complex numbers, and polynomials
 - derivatives, gradients, Jacobians, and Hessians
 - vectors, matrices, eigenvalues, and decompositions
 - convergence, continuity, and approximation ideas

@@ -1,6 +1,8 @@
 # Linear Algebra
 
-Linear algebra is the mathematical backbone of modern AI. Embeddings, attention, neural network layers, PCA, and optimization all rely on vectors and matrices.
+Linear algebra is the mathematical backbone of modern AI. Embeddings, attention, neural network layers, PCA, optimization, and scientific computing all rely on vectors and matrices.
+
+This chapter assumes algebra foundations and then moves from basic vector arithmetic to more advanced decompositions and geometric interpretation.
 
 ## 1. Vectors
 
@@ -35,6 +37,37 @@ Norm:
 - similarity search often uses cosine similarity
 - gradients are vectors in parameter space
 
+### Worked Example
+
+If:
+
+```math
+\mathbf{u}=
+\begin{bmatrix}
+1\\2
+\end{bmatrix},
+\quad
+\mathbf{v}=
+\begin{bmatrix}
+3\\4
+\end{bmatrix}
+```
+
+then:
+
+```math
+\mathbf{u}+\mathbf{v}=
+\begin{bmatrix}
+4\\6
+\end{bmatrix}
+```
+
+and:
+
+```math
+\mathbf{u}\cdot\mathbf{v}=11
+```
+
 ## 2. Vector Spaces, Span, Basis, Dimension
 
 Key ideas:
@@ -47,6 +80,14 @@ Why this matters:
 
 - low-rank approximation depends on dimension reduction
 - PCA finds new basis vectors aligned with variance
+
+### Example
+
+Vectors $(1,0)$ and $(0,1)$ form a basis for $\mathbb{R}^2$ because every vector $(a,b)$ can be written as:
+
+```math
+(a,b)=a(1,0)+b(0,1)
+```
 
 ## 3. Matrices
 
@@ -95,6 +136,29 @@ Solutions may be:
 
 This is central to least squares, regression, and numerical methods.
 
+### Worked Example
+
+Solve:
+
+```math
+\begin{cases}
+x+y=5 \\
+x-y=1
+\end{cases}
+```
+
+Add the equations:
+
+```math
+2x=6 \Rightarrow x=3
+```
+
+Then:
+
+```math
+y=2
+```
+
 ## 5. Determinants and Inverses
 
 For square matrices:
@@ -124,6 +188,20 @@ Applications:
 - stability analysis
 - Markov chains
 - spectral methods
+
+### Worked Example
+
+If:
+
+```math
+A=
+\begin{bmatrix}
+2 & 0\\
+0 & 5
+\end{bmatrix}
+```
+
+then the eigenvalues are $2$ and $5$.
 
 ## 7. Orthogonality
 
@@ -155,6 +233,14 @@ A = U \Sigma V^\top
 ```
 
 This is one of the most useful tools in applied AI and engineering.
+
+### Why SVD Matters in Practice
+
+- compressing matrices
+- latent semantic analysis
+- low-rank approximation
+- denoising
+- recommendation systems
 
 ## 9. Embeddings and Linear Layers
 
@@ -217,6 +303,37 @@ sim = (u @ v) / (np.linalg.norm(u) * np.linalg.norm(v))
 print(sim)
 ```
 
+## 11. Change of Basis
+
+Coordinates depend on the basis you choose.
+
+Why this matters:
+
+- PCA changes basis to variance-aligned directions
+- Fourier methods change basis to frequency components
+- embeddings can be interpreted differently under different bases
+
+## 12. Orthogonal Projection
+
+Projection of vector $\mathbf{x}$ onto vector $\mathbf{u}$:
+
+```math
+\operatorname{proj}_{\mathbf{u}}(\mathbf{x}) =
+\frac{\mathbf{x}^\top \mathbf{u}}{\mathbf{u}^\top \mathbf{u}}\mathbf{u}
+```
+
+### Python Example
+
+```python
+import numpy as np
+
+x = np.array([3.0, 4.0])
+u = np.array([1.0, 0.0])
+
+proj = (x @ u) / (u @ u) * u
+print(proj)
+```
+
 ## Practice Problems
 
 1. Compute the dot product of $(1,2,3)$ and $(4,5,6)$.
@@ -224,3 +341,5 @@ print(sim)
 3. Find eigenvalues of a diagonal matrix.
 4. Explain why orthogonal vectors are useful in embeddings.
 5. Multiply two small matrices and verify the shape.
+6. Project $(3,4)$ onto $(1,0)$.
+7. Explain the difference between basis and span.

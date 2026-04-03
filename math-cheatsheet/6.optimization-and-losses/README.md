@@ -61,6 +61,26 @@ for _ in range(5):
     print(w)
 ```
 
+### Worked Example
+
+If:
+
+```math
+\mathcal{L}(w) = (w-1)^2
+```
+
+then:
+
+```math
+\frac{d\mathcal{L}}{dw}=2(w-1)
+```
+
+At $w=5$ the gradient is $8$, so with learning rate $0.1$:
+
+```math
+w_{new}=5-0.1 \times 8 = 4.2
+```
+
 ## 3. Common Optimizers
 
 ### SGD
@@ -146,6 +166,19 @@ v_t = \beta_2 v_{t-1} + (1-\beta_2) g_t^2
 
 Common in transformers. Smooth and effective in large deep models.
 
+### Python Example
+
+```python
+import numpy as np
+
+x = np.array([-2.0, -0.5, 0.0, 1.5])
+relu = np.maximum(0, x)
+sigmoid = 1 / (1 + np.exp(-x))
+
+print("relu:", relu)
+print("sigmoid:", sigmoid)
+```
+
 ## 6. Training Dynamics
 
 Watch for:
@@ -172,6 +205,33 @@ For language modeling:
 - metric learning: triplet loss, contrastive loss
 - LLMs: cross-entropy / NLL with next-token prediction
 
+## 9. Second-Order View
+
+The Hessian gives curvature information:
+
+```math
+H_{ij} = \frac{\partial^2 \mathcal{L}}{\partial \theta_i \partial \theta_j}
+```
+
+This matters for Newton methods, curvature-aware optimization, and understanding local geometry.
+
+## 10. Learning Rate Schedules
+
+Common schedules:
+
+- constant
+- step decay
+- cosine decay
+- warmup
+
+### Tiny Python Example
+
+```python
+base_lr = 1e-3
+for step in range(1, 6):
+    print(step, base_lr / step)
+```
+
 ## Practice Problems
 
 1. Derive the gradient of MSE for a scalar prediction.
@@ -179,3 +239,4 @@ For language modeling:
 3. Compare L1 and L2 regularization.
 4. Explain why softmax is used at the output of multi-class classifiers.
 5. Compute one BCE term for $y=1$ and $\hat{y}=0.9$.
+6. Compute one gradient descent update for $L(w)=(w-2)^2$ at $w=6$ with learning rate $0.25$.

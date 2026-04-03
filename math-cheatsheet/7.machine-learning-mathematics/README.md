@@ -141,6 +141,44 @@ output = weights @ V
 print(output)
 ```
 
+## 11. Worked Example: Linear Regression by Formula
+
+For a one-dimensional model:
+
+```math
+\hat{y}=wx+b
+```
+
+and a squared loss:
+
+```math
+\mathcal{L}=(y-\hat{y})^2
+```
+
+the gradient with respect to $w$ is:
+
+```math
+\frac{\partial \mathcal{L}}{\partial w} = -2x(y-\hat{y})
+```
+
+This explains why larger input magnitude can create larger parameter updates.
+
+## 12. Worked Example: Softmax Probability
+
+If logits are:
+
+```math
+z = [2,1,0]
+```
+
+then:
+
+```math
+\mathrm{Softmax}(z_i)=\frac{e^{z_i}}{\sum_j e^{z_j}}
+```
+
+The largest probability goes to the largest logit, but all classes remain represented.
+
 ## Practice Problems
 
 1. Derive the gradient of a linear regression loss.
@@ -148,3 +186,4 @@ print(output)
 3. Compute a toy attention matrix by hand.
 4. Explain the shape of an embedding matrix.
 5. Show how next-token prediction defines a full sequence probability.
+6. Explain why the $\sqrt{d_k}$ term appears in attention.

@@ -46,7 +46,20 @@ Why this matters:
 
 Useful for solving linear differential equations and analyzing systems.
 
-## 4. Numerical Methods
+## 4. Linear Systems and Transfer Functions
+
+Many engineering systems can be approximated as linear systems around an operating point.
+
+Transfer functions describe input-output behavior in the transform domain.
+
+Why this matters:
+
+- control systems
+- filtering
+- circuit analysis
+- physical system modeling
+
+## 5. Numerical Methods
 
 Many real problems do not have closed-form solutions.
 
@@ -73,10 +86,30 @@ t, y, h = 0.0, 2.0, 0.1
 for _ in range(5):
     y = y + h * f(t, y)
     t += h
-    print(t, y)
+print(t, y)
 ```
 
-## 5. Signals and Systems
+## 6. Finite Difference Intuition
+
+A derivative can be approximated numerically:
+
+```math
+f'(x) \approx \frac{f(x+h)-f(x)}{h}
+```
+
+### Python Example
+
+```python
+def f(x):
+    return x**2
+
+x = 2.0
+h = 1e-3
+approx = (f(x + h) - f(x)) / h
+print(approx)
+```
+
+## 7. Signals and Systems
 
 Concepts:
 
@@ -97,7 +130,7 @@ This appears in:
 - filtering
 - system response analysis
 
-## 6. Control and Stability
+## 8. Control and Stability
 
 State-space form:
 
@@ -116,7 +149,7 @@ These ideas matter for:
 - scientific simulators
 - energy systems
 
-## 7. Probability in Engineering
+## 9. Probability in Engineering
 
 Real measurements are noisy. Engineering mathematics often combines:
 
@@ -126,7 +159,21 @@ Real measurements are noisy. Engineering mathematics often combines:
 
 This links directly to Bayesian ML and state estimation.
 
-## 8. Why This Matters for AI
+## 10. Worked Example: First-Order Decay
+
+Consider:
+
+```math
+\frac{dy}{dt}=-0.5y, \quad y(0)=2
+```
+
+Analytical solution:
+
+```math
+y(t)=2e^{-0.5t}
+```
+
+## 11. Why This Matters for AI
 
 Engineering math is the bridge to:
 
@@ -143,3 +190,4 @@ Engineering math is the bridge to:
 3. Describe one use of the Fourier transform in AI.
 4. Explain what convolution means in words.
 5. Give one engineering system that can be modeled in state-space form.
+6. Approximate the derivative of $f(x)=x^2$ at $x=3$ using finite differences.

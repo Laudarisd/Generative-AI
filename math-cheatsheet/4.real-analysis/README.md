@@ -132,6 +132,45 @@ print(values)
 
 This sequence converges to 0 and gives a simple intuition for convergence.
 
+## 11. Worked Example: Uniform Convergence
+
+Consider:
+
+```math
+f_n(x)=\frac{x}{n}
+```
+
+on $[0,1]$.
+
+For each fixed $x$, $f_n(x)\to 0$.
+
+Also:
+
+```math
+\sup_{x \in [0,1]} \left|\frac{x}{n}\right| = \frac{1}{n} \to 0
+```
+
+So the convergence is uniform.
+
+## 12. Why Real Analysis Helps With AI Maturity
+
+Real analysis changes the way you read ML papers:
+
+- approximation claims become clearer
+- convergence statements become less mysterious
+- stability arguments become easier to judge
+- regularity assumptions stop looking decorative
+
+### Tiny Python Example: Convex Function
+
+```python
+def f(x):
+    return x**2
+
+xs = [-2, -1, 0, 1, 2]
+print([f(x) for x in xs])
+```
+
 ## Practice Problems
 
 1. Give an example of a convergent and a divergent sequence.
@@ -139,3 +178,4 @@ This sequence converges to 0 and gives a simple intuition for convergence.
 3. Show why every differentiable function is continuous.
 4. Give an example of a convex function used in ML.
 5. Explain why bounded domains are easier to analyze.
+6. Show that $f_n(x)=x/n$ converges uniformly to 0 on $[0,1]$.

@@ -56,6 +56,7 @@ This section rebuilds the old mathematical cheat sheets as a dedicated standalon
 
 | Chapter | Topic | Link |
 | --- | --- | --- |
+| 0 | Algebra Foundations | [Open](math-cheatsheet/0.algebra-foundations/README.md) |
 | 1 | Calculus | [Open](math-cheatsheet/1.calculus/README.md) |
 | 2 | Linear Algebra | [Open](math-cheatsheet/2.linear-algebra/README.md) |
 | 3 | Matrix Theory | [Open](math-cheatsheet/3.matrix-theory/README.md) |
@@ -71,6 +72,7 @@ Math index:
 
 What you learn here:
 
+- school-to-bachelor algebra foundations
 - derivatives, gradients, Jacobians, and Hessians
 - matrix decompositions, projections, rank, and conditioning
 - optimization, losses, activations, and training math
@@ -200,15 +202,17 @@ If you want the cleanest path through the repo:
 5. [Loss Functions, Optimization, and Regularization](fundamental-concepts/5.loss-functions-optimization-regularization/README.md)
 6. [Bayesian Thinking](fundamental-concepts/6.bayesian-thinking/README.md)
 7. [Math Cheat Sheet Overview](math-cheatsheet/README.md)
-8. [LLM History](part-1/01.llm-history/README.md)
-9. [LLM vs Generative AI](part-1/02.llm-vs-generative-ai/README.md)
-10. [Understanding LLMs](part-1/03.understanding-llms/README.md)
-11. [Tokenization vs Embeddings](part-1/04.tokenization-vs-embeddings/README.md)
-12. [Encoding vs Decoding](part-1/05.encoding-vs-decoding/README.md)
-13. [Positional Encoding](part-1/06.positional-encoding/README.md)
-14. Part 2 model and transformer chapters
-15. Part 3 system and application chapters
-16. [Part 4 Overview](part-4/README.md)
+8. [Algebra Foundations](math-cheatsheet/0.algebra-foundations/README.md)
+9. [Calculus](math-cheatsheet/1.calculus/README.md)
+10. [LLM History](part-1/01.llm-history/README.md)
+11. [LLM vs Generative AI](part-1/02.llm-vs-generative-ai/README.md)
+12. [Understanding LLMs](part-1/03.understanding-llms/README.md)
+13. [Tokenization vs Embeddings](part-1/04.tokenization-vs-embeddings/README.md)
+14. [Encoding vs Decoding](part-1/05.encoding-vs-decoding/README.md)
+15. [Positional Encoding](part-1/06.positional-encoding/README.md)
+16. Part 2 model and transformer chapters
+17. Part 3 system and application chapters
+18. [Part 4 Overview](part-4/README.md)
 
 ---
 
