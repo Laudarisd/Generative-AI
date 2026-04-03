@@ -169,7 +169,7 @@ $$ \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}} $$
   \end{bmatrix}
   $$
 
-- **Step 4: Multiply by $ V $**:
+- **Step 4: Multiply by $V$**:
   
   <!-- $$
   \text{Attention}(Q, K, V) = \begin{bmatrix} 
@@ -190,36 +190,27 @@ $$ \text{softmax}(x_i) = \frac{e^{x_i}}{\sum e^{x_j}} $$
   \end{bmatrix}
   $$ -->
 
-$$
-\text{Attention(Q, K, V)} = 
-[
-\begin{array}{cc}
+```math
+\text{Attention}(Q, K, V) =
+\begin{bmatrix}
 0.67 & 0.33 \\
-0.33 & 0.67 \\
-\end{array}
-]
-\cdot
-[
-\begin{array}{cc}
+0.33 & 0.67
+\end{bmatrix}
+\begin{bmatrix}
 2 & 3 \\
-4 & 5 \\
-\end{array}
-]
+4 & 5
+\end{bmatrix}
 =
-[
-\begin{array}{cc}
+\begin{bmatrix}
 (0.67 \cdot 2 + 0.33 \cdot 4) & (0.67 \cdot 3 + 0.33 \cdot 5) \\
-(0.33 \cdot 2 + 0.67 \cdot 4) & (0.33 \cdot 3 + 0.67 \cdot 5) \\
-\end{array}
-]
+(0.33 \cdot 2 + 0.67 \cdot 4) & (0.33 \cdot 3 + 0.67 \cdot 5)
+\end{bmatrix}
 =
-[
-\begin{array}{cc}
+\begin{bmatrix}
 2.66 & 3.66 \\
-3.34 & 4.34 \\
-\end{array}
-]
-$$
+3.34 & 4.34
+\end{bmatrix}
+```
 
 - Output for "The": $[2.66, 3.66]$, mixing "The" and "cat".
 
@@ -230,21 +221,26 @@ Uses multiple attention "heads" to capture different relationships.
 #### Process
 - Split $Q$, $K$, $V$ into $h$ heads (e.g., $h = 8$).
 - For each head $i$:
-  - Project: 
 
-$$
-Q W_i^Q, \, K W_i^K, \, V W_i^V \, (\text{to} \, d_k = d_v = \frac{d_{\text{model}}}{h} = 64)
-$$
-- Compute: 
-$$
+Project:
+
+```math
+Q W_i^Q,\; K W_i^K,\; V W_i^V
+```
+
+with $d_k = d_v = \frac{d_{\text{model}}}{h} = 64$.
+
+Compute:
+
+```math
 \text{head}_i = \text{Attention}(Q W_i^Q, K W_i^K, V W_i^V)
-$$
+```
 
 - Concatenate:
-- 
-$$
+
+```math
 \text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \ldots, \text{head}_h) W^O
-$$
+```
 
 
 #### Why?
@@ -256,11 +252,13 @@ Adds sequence order info since there’s no recurrence.
 
 #### Formula
 
-$$
-PE_{(pos, 2i)} = sin (\frac{pos}{10000^{2i / d_{model}}}), 
+```math
+PE_{(pos, 2i)} = \sin\left(\frac{pos}{10000^{2i / d_{\text{model}}}}\right)
+```
 
-PE_{(pos, 2i+1)} = cos (\frac{pos}{10000^{2i / d_{model}}})
-$$
+```math
+PE_{(pos, 2i+1)} = \cos\left(\frac{pos}{10000^{2i / d_{\text{model}}}}\right)
+```
 
 
 - $pos$: Position (0, 1, 2, …).
@@ -272,9 +270,10 @@ Sinusoids encode position uniquely, enabling generalization.
 ### 4. Feed-Forward Networks (FFN)
 
 Applied position-wise in each layer:
-$$
+
+```math
 \text{FFN}(x) = max(0, x W_1 + b_1) W_2 + b_2
-$$
+```
 
 - Input/output: $d_{\text{model}} = 512$.
 - Inner layer: $d_{ff} = 2048$.
