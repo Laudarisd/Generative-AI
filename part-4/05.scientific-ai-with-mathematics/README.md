@@ -13,6 +13,9 @@ In scientific AI, we often need more:
 - interpretability
 - sample efficiency
 - extrapolation under structure
+- robustness to simulation or measurement noise
+
+Scientific AI is often used when the outputs interact with real systems, not only benchmarks.
 
 ## 2. Mathematical Ingredients
 
@@ -24,10 +27,13 @@ Scientific AI typically combines:
 - optimization
 - probability
 - numerical analysis
+- statistics
 
-That is why the new `math-cheatsheet/` section exists separately.
+That is why the `math-cheatsheet/` section exists separately.
 
 ## 3. Model Families in Scientific AI
+
+Important families include:
 
 - PINNs
 - neural operators
@@ -35,6 +41,7 @@ That is why the new `math-cheatsheet/` section exists separately.
 - surrogate models
 - hybrid mechanistic + data-driven models
 - graph neural networks for scientific systems
+- sequence models for scientific time series
 
 ## 4. Example: Surrogate Modeling
 
@@ -45,6 +52,13 @@ Suppose a full simulator is expensive. A neural network surrogate can learn:
 ```
 
 This can accelerate design loops and uncertainty studies.
+
+A surrogate is useful when the true simulator is:
+
+- slow
+- expensive
+- difficult to differentiate through
+- needed inside optimization loops
 
 ## 5. Error, Stability, and Generalization
 
@@ -78,7 +92,80 @@ print(model.predict([[1.2]]))
 
 This is only a toy surrogate, but the principle is real.
 
-## 7. Chapter Problems
+## 7. Why Numerical Methods Matter
+
+Many scientific workflows involve discretization, simulation, and numerical error.
+
+That means scientific AI often lives beside tools such as:
+
+- finite difference methods
+- finite element methods
+- spectral methods
+- Monte Carlo simulation
+- optimization solvers
+
+The ML model may replace, accelerate, or assist these methods rather than fully replacing science.
+
+## 8. Hybrid Mechanistic + Data-Driven Systems
+
+A useful scientific AI system is often hybrid.
+
+Examples:
+
+- learn the part of the dynamics that a mechanistic model misses
+- use a simulator to generate synthetic training data
+- use a neural model inside a larger physics solver
+- combine Bayesian uncertainty with mechanistic constraints
+
+## 9. Scientific Objectives Are Often Multi-Criteria
+
+In ordinary ML, the objective may be mostly one scalar metric.
+
+In scientific AI, we may care about several things at once:
+
+- accuracy
+- physical consistency
+- uncertainty calibration
+- stability
+- interpretability
+- computational efficiency
+
+That is why scientific AI design is often more constrained and more mathematically explicit.
+
+## 10. Where Scientific AI Appears
+
+- climate and weather modeling
+- fluid dynamics
+- materials science
+- molecular modeling
+- energy systems
+- geoscience
+- engineering optimization
+- digital twins
+
+## 11. Example: Learning Inside an Optimization Loop
+
+Suppose a design team needs to test thousands of parameter combinations, but the real simulator is too expensive.
+
+A learned surrogate can provide fast approximations, which are then used by an optimizer to search for better designs.
+
+That turns scientific AI into a bridge between:
+
+- simulation
+- prediction
+- optimization
+
+## 12. Practical Questions to Ask
+
+When evaluating a scientific AI system, ask:
+
+- what physical law should the model respect?
+- what uncertainty should be reported?
+- what happens outside the training regime?
+- how expensive is the original simulator?
+- is the learned model replacing science or supporting it?
+
+## Chapter Problems
 
 1. Why is scientific AI stricter than ordinary benchmark modeling?
 2. What is the difference between a simulator and a surrogate?
@@ -90,3 +177,7 @@ This is only a toy surrogate, but the principle is real.
 
 - PINNs overview: https://maziarraissi.github.io/PINNs/
 - Probabilistic ML resources: https://probml.github.io/pml-book/
+
+## Summary
+
+Scientific AI is the area where machine learning becomes deeply entangled with mathematics, modeling assumptions, and real physical systems. It is not only about making predictions. It is about making useful, constrained, uncertainty-aware predictions in domains where science and engineering already provide strong structure.

@@ -4,7 +4,7 @@ Remote sensing uses data collected from a distance, typically by satellites, air
 
 ## 1. What Remote Sensing Data Looks Like
 
-Common modalities:
+Common modalities include:
 
 - optical imagery
 - multispectral imagery
@@ -25,6 +25,7 @@ Remote sensing problems are often:
 - temporal
 - noisy
 - weakly labeled
+- geospatially structured
 
 AI is used for:
 
@@ -34,6 +35,7 @@ AI is used for:
 - crop monitoring
 - disaster assessment
 - climate and environmental forecasting
+- flood and wildfire analysis
 
 ## 3. Core Mathematical View
 
@@ -50,7 +52,19 @@ Depending on the task:
 - a bounding box set
 - a future geophysical estimate
 
-## 4. Challenges Specific to Remote Sensing
+## 4. Why Remote Sensing Is Not Just Ordinary Computer Vision
+
+Remote sensing data differs from internet images because it often includes:
+
+- non-RGB channels
+- physical sensor calibration issues
+- geolocation constraints
+- repeated observations over time
+- large spatial scenes
+
+That means domain knowledge matters much more.
+
+## 5. Challenges Specific to Remote Sensing
 
 - clouds and occlusion
 - geospatial alignment
@@ -58,16 +72,18 @@ Depending on the task:
 - limited labels
 - class imbalance
 - very large image size
+- temporal gaps in observations
 
-## 5. Typical Model Families
+## 6. Typical Model Families
 
 - CNNs for spatial patterns
 - transformers for long-range spatial context
 - temporal models for multi-date imagery
 - multimodal fusion models
 - self-supervised pretraining on satellite imagery
+- segmentation architectures such as UNet-like models
 
-## 6. Example: Simple NDVI Computation
+## 7. Example: Simple NDVI Computation
 
 One classic vegetation index is NDVI:
 
@@ -89,7 +105,7 @@ ndvi = (nir - red) / (nir + red + 1e-9)
 print(ndvi)
 ```
 
-## 7. AI Workflow for Remote Sensing
+## 8. AI Workflow for Remote Sensing
 
 Typical pipeline:
 
@@ -101,7 +117,19 @@ Typical pipeline:
 6. evaluate spatially and temporally
 7. deploy or map outputs
 
-## 8. Why Math Still Matters
+## 9. Why Evaluation Is Hard
+
+A model may perform well on one region, season, or sensor but fail on another.
+
+That means evaluation should consider:
+
+- geography shift
+- season shift
+- sensor shift
+- temporal generalization
+- rare event detection
+
+## 10. Why Math Still Matters
 
 Remote sensing is not only image classification.
 
@@ -114,14 +142,57 @@ It requires:
 - optimization
 - uncertainty handling
 
+## 11. Practical Examples of Tasks
+
+### Land Cover Classification
+
+Assign each image or pixel to categories such as:
+
+- forest
+- urban
+- water
+- cropland
+
+### Change Detection
+
+Compare two or more dates to detect changes such as:
+
+- deforestation
+- flood damage
+- urban growth
+- wildfire impact
+
+### Segmentation
+
+Predict a label for each pixel or region.
+
+## 12. Tiny Classification Example
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+import numpy as np
+
+X = np.array([
+    [0.2, 0.7],
+    [0.3, 0.8],
+    [0.8, 0.2],
+    [0.75, 0.25],
+])
+y = np.array([0, 0, 1, 1])
+
+model = RandomForestClassifier(random_state=0)
+model.fit(X, y)
+print(model.predict([[0.25, 0.75]]))
+```
+
 ## Problems to Think About
 
 1. Why is domain shift common in satellite models?
 2. What makes hyperspectral data different from RGB imagery?
-3. Why is geospatial alignment critical?
-4. How can a simple index like NDVI complement AI models?
-5. What makes evaluation harder in remote sensing than in ordinary image tasks?
+3. Why can cloud cover create label and data problems?
+4. Why is remote sensing often a spatiotemporal problem rather than a pure image problem?
+5. Why do physical indices such as NDVI still matter in AI pipelines?
 
-## References
+## Summary
 
-- NASA Earthdata overview for remote sensing context: https://www.earthdata.nasa.gov/learn/backgrounders/remote-sensing
+Remote sensing and AI sit at the intersection of vision, signal processing, Earth science, and geospatial modeling. Strong systems in this area combine machine learning with sensor knowledge, spatial reasoning, and careful evaluation across time and geography.
