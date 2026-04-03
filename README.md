@@ -152,13 +152,21 @@ What you learn here:
 
 This part moves from concepts into model families and transformer building blocks.
 
-### LLMs
+Part 2 index:
 
+- [Part 2 Overview](part-2/README.md)
+
+### Core Topics
+
+- [Text Classification](part-2/Text_Classification/README.md)
+- [NLP](part-2/NLP/README.md)
+- [Prompt Engineering](part-2/Prompt_Engineering/README.md)
+- [VLM](part-2/VLM/README.md)
 - [LLMs Overview](part-2/LLMs/README.md)
-- [Chatbot with LLM](part-2/LLMs/chatbot_with_LLM/README.md)
 
 ### Transformer Components
 
+- [Transformer Overview](part-2/Transformer/README.md)
 - [Attention Mechanisms](part-2/Transformer/Attention_Mechanisms/README.md)
 - [Encoder-Decoder Structure](part-2/Transformer/Encoder_Decoder_Structure/README.md)
 - [Feed Forward Networks](part-2/Transformer/Feed_Forward_Networks/README.md)
@@ -167,13 +175,9 @@ This part moves from concepts into model families and transformer building block
 
 ### Generative Model Families
 
-- [GAN](part-2/Generative_AI/GAN/README.md)
-- [VAE](part-2/Generative_AI/VAEs/README.md)
-- [Diffusion Models](part-2/Generative_AI/Diffusion_models/README.md)
-
-### Prompting
-
-- [Prompt Engineering](part-2/Prompt_Engineering/README.md)
+- [GAN](part-2/GAN/README.md)
+- [VAE](part-2/VAEs/README.md)
+- [Diffusion Models](part-2/Diffusion_models/README.md)
 
 ---
 
