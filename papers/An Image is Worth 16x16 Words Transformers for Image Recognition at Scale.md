@@ -53,58 +53,62 @@ Initial sequence:
 ### Transformer Encoder
 Consists of $L$ layers, each with:
 
-- **Multi-Head Self-Attention (MSA)**:
+**Multi-Head Self-Attention (MSA)**
 
-  Queries, keys, values:
+Queries, keys, values:
 
-  ```math
-  [\mathbf{q}, \mathbf{k}, \mathbf{v}] = \mathbf{z}_{\ell-1} \mathbf{U}_{qkv},
-  \quad
-  \mathbf{U}_{qkv} \in \mathbb{R}^{D \times 3D_h}
-  ```
+```math
+[\mathbf{q}, \mathbf{k}, \mathbf{v}] = \mathbf{z}_{\ell-1} \mathbf{U}_{qkv},
+\quad
+\mathbf{U}_{qkv} \in \mathbb{R}^{D \times 3D_h}
+```
 
-  where $D_h = \frac{D}{k}$ and $k$ is the number of heads.
+where $D_h = \frac{D}{k}$ and $k$ is the number of heads.
 
-  Attention weights:
+Attention weights:
 
-  ```math
-  A = \text{softmax}\left(\frac{\mathbf{q} \mathbf{k}^\top}{\sqrt{D_h}}\right),
-  \quad
-  A \in \mathbb{R}^{N \times N}
-  ```
+```math
+A = \text{softmax}\left(\frac{\mathbf{q} \mathbf{k}^\top}{\sqrt{D_h}}\right),
+\quad
+A \in \mathbb{R}^{N \times N}
+```
 
-  Single-head output:
+Single-head output:
 
-  ```math
-  \text{SA}(\mathbf{z}_{\ell-1}) = A \mathbf{v}
-  ```
+```math
+\text{SA}(\mathbf{z}_{\ell-1}) = A \mathbf{v}
+```
 
-  Multi-head output:
+Multi-head output:
 
-  ```math
-  \text{MSA}(\mathbf{z}_{\ell-1}) =
-  [\text{SA}_1; \text{SA}_2; \dots; \text{SA}_k] \mathbf{U}_{msa},
-  \quad
-  \mathbf{U}_{msa} \in \mathbb{R}^{k \cdot D_h \times D}
-  ```
+```math
+\text{MSA}(\mathbf{z}_{\ell-1}) =
+[\text{SA}_1; \text{SA}_2; \dots; \text{SA}_k] \mathbf{U}_{msa},
+\quad
+\mathbf{U}_{msa} \in \mathbb{R}^{k \cdot D_h \times D}
+```
 
-  With LayerNorm and residual:
+With LayerNorm and residual:
 
-  ```math
-  \mathbf{z}_{\ell}' = \text{MSA}(\text{LN}(\mathbf{z}_{\ell-1})) + \mathbf{z}_{\ell-1}
-  ```
+```math
+\mathbf{z}_{\ell}' = \text{MSA}(\text{LN}(\mathbf{z}_{\ell-1})) + \mathbf{z}_{\ell-1}
+```
 
-- **MLP Block**: Two layers with GELU:
+**MLP Block**
 
-  ```math
-  \mathbf{z}_{\ell} = \text{MLP}(\text{LN}(\mathbf{z}_{\ell}')) + \mathbf{z}_{\ell}'
-  ```
+Two layers with GELU:
 
-- **Output**: Classification token after $L$ layers:
+```math
+\mathbf{z}_{\ell} = \text{MLP}(\text{LN}(\mathbf{z}_{\ell}')) + \mathbf{z}_{\ell}'
+```
 
-  ```math
-  \mathbf{y} = \text{LN}(\mathbf{z}_L^0)
-  ```
+**Output**
+
+Classification token after $L$ layers:
+
+```math
+\mathbf{y} = \text{LN}(\mathbf{z}_L^0)
+```
 
 ### Model Variants
 | Model     | Layers | $D$ | MLP Size | Heads | Params |
