@@ -125,20 +125,20 @@ Patch size (e.g., /16) affects $N$ and compute cost.
 
 ### Pre-training
 - **Datasets**: ImageNet (1.3M), ImageNet-21k (14M), JFT-300M (303M).
-- **Optimizer**: Adam (\( \beta_1 = 0.9, \beta_2 = 0.999 \)), batch size 4096, weight decay 0.1.
-- **Learning Rate**: Linear warmup (10k steps) and decay (e.g., \( 8 \times 10^{-4} \) for ViT-B/16 on JFT).
+- **Optimizer**: Adam ($\beta_1 = 0.9, \beta_2 = 0.999$), batch size 4096, weight decay 0.1.
+- **Learning Rate**: Linear warmup (10k steps) and decay (e.g., $8 \times 10^{-4}$ for ViT-B/16 on JFT).
 - **Resolution**: 224x224.
 
 ### Fine-tuning
-- **Head**: Pre-trained head replaced with zero-initialized linear layer for \( K \) classes.
+- **Head**: Pre-trained head replaced with zero-initialized linear layer for $K$ classes.
 - **Optimizer**: SGD with momentum 0.9, batch size 512.
-- **Learning Rate**: Swept (e.g., \{0.003, 0.01, 0.03\}), cosine decay.
+- **Learning Rate**: Swept (e.g., {0.003, 0.01, 0.03}), cosine decay.
 - **Resolution**: Increased (e.g., 384x384 or 512x512), with 2D-interpolated position embeddings.
 
 ### Self-Supervision (Exploratory)
 - **Task**: Masked patch prediction (50% patches corrupted: 80% masked, 10% random, 10% unchanged).
 - **Target**: Predict 3-bit mean color (512 classes).
-- **Training**: 1M steps on JFT, Adam (\( 2 \times 10^{-4} \)).
+- **Training**: 1M steps on JFT, Adam ($2 \times 10^{-4}$).
 - **Result**: ViT-B/16 achieves 79.9% on ImageNet (2% gain over scratch, 4% below supervised).
 
 ### No Semi-Supervised Training
