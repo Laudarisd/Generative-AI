@@ -4,8 +4,10 @@ A book-style repository for learning:
 
 - AI and machine learning fundamentals
 - LLMs and transformer concepts
+- a standalone mathematics reference
 - generative model families
 - practical systems such as RAG, LangChain, and multimodal applications
+- scientific and advanced AI topics such as PINNs, Bayesian ML, energy, and remote sensing
 
 ---
 
@@ -14,9 +16,11 @@ A book-style repository for learning:
 This repository is organized in the order most readers actually need:
 
 1. learn the fundamentals
-2. understand how LLMs fit into generative AI
-3. study transformer and model architecture topics
-4. move into practical systems and applications
+2. build the required mathematics reference
+3. understand how LLMs fit into generative AI
+4. study transformer and model architecture topics
+5. move into practical systems and applications
+6. move into scientific and advanced AI topics
 
 ---
 
@@ -33,6 +37,7 @@ This section builds the base for the rest of the repository.
 | 3       | Machine Learning and AI                          | [Open](fundamental-concepts/3.ml-and-ai/README.md)                                  |
 | 4       | Generative AI                                    | [Open](fundamental-concepts/4.generative-ai/README.md)                              |
 | 5       | Loss Functions, Optimization, and Regularization | [Open](fundamental-concepts/5.loss-functions-optimization-regularization/README.md) |
+| 6       | Bayesian Thinking                                | [Open](fundamental-concepts/6.bayesian-thinking/README.md)                           |
 
 What you learn here:
 
@@ -41,6 +46,36 @@ What you learn here:
 - supervised, unsupervised, semi-supervised, and reinforcement learning
 - core algorithms and evaluation
 - how losses, optimization, and regularization work
+- Bayesian reasoning and uncertainty in machine learning
+
+---
+
+## Mathematics Reference
+
+This section rebuilds the old mathematical cheat sheets as a dedicated standalone reference.
+
+| Chapter | Topic | Link |
+| --- | --- | --- |
+| 1 | Calculus | [Open](math-cheatsheet/1.calculus/README.md) |
+| 2 | Linear Algebra | [Open](math-cheatsheet/2.linear-algebra/README.md) |
+| 3 | Matrix Theory | [Open](math-cheatsheet/3.matrix-theory/README.md) |
+| 4 | Real Analysis | [Open](math-cheatsheet/4.real-analysis/README.md) |
+| 5 | Discrete Mathematics | [Open](math-cheatsheet/5.discrete-mathematics/README.md) |
+| 6 | Optimization and Losses | [Open](math-cheatsheet/6.optimization-and-losses/README.md) |
+| 7 | Machine Learning Mathematics | [Open](math-cheatsheet/7.machine-learning-mathematics/README.md) |
+| 8 | Engineering Mathematics | [Open](math-cheatsheet/8.engineering-mathematics/README.md) |
+
+Math index:
+
+- [Math Cheat Sheet Overview](math-cheatsheet/README.md)
+
+What you learn here:
+
+- derivatives, gradients, Jacobians, and Hessians
+- matrix decompositions, projections, rank, and conditioning
+- optimization, losses, activations, and training math
+- attention, embeddings, sequence probability, and transformer formulas
+- engineering math for ODEs, PDEs, transforms, and numerical methods
 
 ---
 
@@ -119,6 +154,32 @@ This part is more practical and system-oriented.
 
 ---
 
+## Part 4: Scientific and Advanced AI
+
+This part extends the repo toward mathematically heavier and domain-grounded AI.
+
+| Chapter | Topic | Link |
+| --- | --- | --- |
+| 1 | Physics-Informed Neural Networks | [Open](part-4/01.physics-informed-neural-networks/README.md) |
+| 2 | Bayesian Machine Learning | [Open](part-4/02.bayesian-machine-learning/README.md) |
+| 3 | Energy and AI | [Open](part-4/03.energy-and-ai/README.md) |
+| 4 | Remote Sensing and AI | [Open](part-4/04.remote-sensing-and-ai/README.md) |
+| 5 | Scientific AI with Mathematics | [Open](part-4/05.scientific-ai-with-mathematics/README.md) |
+
+Part 4 index:
+
+- [Part 4 Overview](part-4/README.md)
+
+What you learn here:
+
+- how physical laws can be embedded into learning systems
+- how uncertainty-aware Bayesian methods support science and engineering
+- how AI interacts with energy systems and compute efficiency
+- how geospatial and remote sensing AI differs from ordinary vision tasks
+- how mathematics supports scientific modeling, simulation, and surrogate learning
+
+---
+
 ## Paper Notes
 
 Research summaries and reading notes:
@@ -137,14 +198,17 @@ If you want the cleanest path through the repo:
 3. [Machine Learning and AI](fundamental-concepts/3.ml-and-ai/README.md)
 4. [Generative AI](fundamental-concepts/4.generative-ai/README.md)
 5. [Loss Functions, Optimization, and Regularization](fundamental-concepts/5.loss-functions-optimization-regularization/README.md)
-6. [LLM History](part-1/01.llm-history/README.md)
-7. [LLM vs Generative AI](part-1/02.llm-vs-generative-ai/README.md)
-8. [Understanding LLMs](part-1/03.understanding-llms/README.md)
-9. [Tokenization vs Embeddings](part-1/04.tokenization-vs-embeddings/README.md)
-10. [Encoding vs Decoding](part-1/05.encoding-vs-decoding/README.md)
-11. [Positional Encoding](part-1/06.positional-encoding/README.md)
-12. Part 2 model and transformer chapters
-13. Part 3 system and application chapters
+6. [Bayesian Thinking](fundamental-concepts/6.bayesian-thinking/README.md)
+7. [Math Cheat Sheet Overview](math-cheatsheet/README.md)
+8. [LLM History](part-1/01.llm-history/README.md)
+9. [LLM vs Generative AI](part-1/02.llm-vs-generative-ai/README.md)
+10. [Understanding LLMs](part-1/03.understanding-llms/README.md)
+11. [Tokenization vs Embeddings](part-1/04.tokenization-vs-embeddings/README.md)
+12. [Encoding vs Decoding](part-1/05.encoding-vs-decoding/README.md)
+13. [Positional Encoding](part-1/06.positional-encoding/README.md)
+14. Part 2 model and transformer chapters
+15. Part 3 system and application chapters
+16. [Part 4 Overview](part-4/README.md)
 
 ---
 
@@ -155,9 +219,10 @@ Not just a note dump.
 The target shape is:
 
 - a guided book for learning generative AI
+- a reusable mathematics reference
 - a concept reference for LLMs and transformers
 - a practical repository for model systems and applications
-- a bridge between mathematics, architecture, and implementation
+- a bridge between mathematics, architecture, implementation, and scientific AI
 
 ---
 
@@ -165,5 +230,10 @@ The target shape is:
 
 - [Attention Is All You Need](https://arxiv.org/abs/1706.03762)
 - [Vision Transformer](https://arxiv.org/abs/2010.11929)
+- [Physics-Informed Neural Networks](https://maziarraissi.github.io/PINNs/)
+- [Probabilistic Machine Learning](https://probml.github.io/pml-book/)
+- [Gaussian Processes for Machine Learning](https://gaussianprocess.org/gpml/chapters/)
+- [Energy and AI (IEA)](https://www.iea.org/reports/energy-and-ai)
+- [NASA Earthdata Remote Sensing Backgrounder](https://www.earthdata.nasa.gov/learn/backgrounders/remote-sensing)
 - [LLMs from Scratch](https://github.com/rasbt/LLMs-from-scratch)
 - [LLM Engineers Handbook](https://github.com/PacktPublishing/LLM-Engineers-Handbook)
