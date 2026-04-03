@@ -25,6 +25,19 @@ Why this matters:
 - it gives a way to describe convergence without already knowing the limit
 - complete spaces guarantee Cauchy sequences converge
 
+## 2.5 Supremum and Infimum
+
+For a set $S \subset \mathbb{R}$:
+
+- $\sup S$ is the least upper bound
+- $\inf S$ is the greatest lower bound
+
+These ideas matter in:
+
+- existence proofs
+- optimization arguments
+- compactness reasoning
+
 ## 3. Continuity and Uniform Continuity
 
 Continuity at a point means small input change leads to small output change.
@@ -32,6 +45,16 @@ Continuity at a point means small input change leads to small output change.
 Uniform continuity is stronger: one $\delta$ works across the whole domain.
 
 This matters in approximation theory and stability analysis.
+
+### Epsilon-Delta Intuition
+
+Continuity at a point can be written as:
+
+```math
+\forall \varepsilon > 0,\ \exists \delta > 0 \text{ such that } |x-a|<\delta \Rightarrow |f(x)-f(a)|<\varepsilon
+```
+
+This formal language matters because many theoretical ML results depend on carefully stated assumptions.
 
 ## 4. Sequences of Functions
 
@@ -69,6 +92,36 @@ If a function is differentiable, it is locally well approximated by a linear map
 
 In higher dimensions, the derivative is the Jacobian.
 
+## 6.5 Open and Closed Sets
+
+These are basic topological ideas that appear repeatedly in analysis.
+
+- an open set contains a neighborhood around each of its points
+- a closed set contains its limit points
+
+Why this matters:
+
+- optimization domains
+- compactness
+- convergence arguments
+
+## 6.6 Metric Spaces
+
+A metric space is a set with a distance function:
+
+```math
+d(x,y)
+```
+
+that satisfies:
+
+- non-negativity
+- identity of indiscernibles
+- symmetry
+- triangle inequality
+
+This generalizes distance beyond ordinary Euclidean geometry.
+
 ## 7. Convexity
 
 A function $f$ is convex if:
@@ -100,6 +153,18 @@ This matters in:
 - optimization theory
 - numerical stability
 - robustness arguments
+
+## 8.5 Contraction Mapping Intuition
+
+A contraction pulls points closer together:
+
+```math
+d(Tx, Ty) \le c\,d(x,y), \quad 0<c<1
+```
+
+This matters because repeated application tends to converge to a fixed point.
+
+Fixed-point reasoning appears in numerical methods, dynamical systems, and some iterative learning procedures.
 
 ## 9. Measure and Integration Intuition
 

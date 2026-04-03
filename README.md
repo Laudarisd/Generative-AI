@@ -65,6 +65,7 @@ This section rebuilds the old mathematical cheat sheets as a dedicated standalon
 | 6 | Optimization and Losses | [Open](math-cheatsheet/6.optimization-and-losses/README.md) |
 | 7 | Machine Learning Mathematics | [Open](math-cheatsheet/7.machine-learning-mathematics/README.md) |
 | 8 | Engineering Mathematics | [Open](math-cheatsheet/8.engineering-mathematics/README.md) |
+| 9 | Probability and Statistics Mathematics | [Open](math-cheatsheet/9.probability-and-statistics/README.md) |
 
 Math index:
 
@@ -78,6 +79,7 @@ What you learn here:
 - optimization, losses, activations, and training math
 - attention, embeddings, sequence probability, and transformer formulas
 - engineering math for ODEs, PDEs, transforms, and numerical methods
+- probability, random variables, distributions, and inference math
 
 ---
 

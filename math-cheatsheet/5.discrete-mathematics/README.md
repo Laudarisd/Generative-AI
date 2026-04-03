@@ -32,6 +32,27 @@ Common operators:
 - implication
 - equivalence
 
+## 2.5 Proof Techniques
+
+Discrete mathematics is tightly connected to proof writing.
+
+Common proof methods:
+
+- direct proof
+- proof by contradiction
+- proof by contrapositive
+- mathematical induction
+
+### Induction Example
+
+Claim:
+
+```math
+1 + 2 + \dots + n = \frac{n(n+1)}{2}
+```
+
+Induction is one of the cleanest ways to prove this.
+
 ## 3. Counting and Combinatorics
 
 Factorial:
@@ -59,6 +80,14 @@ Why this matters:
 - token sequence counting
 - probability calculations
 
+## 3.5 Binomial Theorem
+
+```math
+(a+b)^n = \sum_{k=0}^{n} \binom{n}{k} a^{n-k}b^k
+```
+
+This appears in probability expansions and polynomial reasoning.
+
 ## 4. Graphs
 
 A graph is:
@@ -80,6 +109,19 @@ Applications in AI:
 - recommendation systems
 - graph neural networks
 
+## 4.5 Graph Traversal
+
+Two fundamental graph algorithms:
+
+- breadth-first search, or BFS
+- depth-first search, or DFS
+
+Why this matters:
+
+- shortest path intuition in unweighted graphs
+- knowledge graph exploration
+- graph-based reasoning systems
+
 ## 5. Trees
 
 Trees matter in:
@@ -93,6 +135,8 @@ Important property:
 
 - a tree with $n$ nodes has $n-1$ edges
 
+Binary trees matter especially in algorithms and parsing.
+
 ## 6. Recurrence Relations
 
 Many algorithms are described recursively.
@@ -104,6 +148,20 @@ T(n) = 2T(n/2) + n
 ```
 
 This helps analyze algorithm complexity.
+
+### Master-Theorem Intuition
+
+Recurrences like:
+
+```math
+T(n)=2T(n/2)+n
+```
+
+often lead to:
+
+```math
+T(n)=O(n \log n)
+```
 
 ## 7. Big-O Notation
 
@@ -133,12 +191,46 @@ with respect to sequence length.
 
 A Markov chain uses transition probabilities between states.
 
+Transition matrix:
+
+```math
+P_{ij} = P(X_{t+1}=j \mid X_t=i)
+```
+
 This matters for:
 
 - stochastic processes
 - PageRank
 - state models
 - generative processes
+
+## 8.5 Boolean Algebra
+
+Boolean variables take values in $\{0,1\}$.
+
+Operations:
+
+- AND
+- OR
+- NOT
+
+This matters in:
+
+- digital logic
+- masking
+- rule-based reasoning
+- conditional routing
+
+### Python Example
+
+```python
+a = True
+b = False
+
+print(a and b)
+print(a or b)
+print(not a)
+```
 
 ## 9. Probability Trees and Counting Logic
 

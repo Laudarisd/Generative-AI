@@ -23,6 +23,7 @@ It is not meant to replace the teaching chapters in `fundamental-concepts/`. Its
 | 6 | Optimization and Losses | [Open](6.optimization-and-losses/README.md) |
 | 7 | Machine Learning Mathematics | [Open](7.machine-learning-mathematics/README.md) |
 | 8 | Engineering Mathematics | [Open](8.engineering-mathematics/README.md) |
+| 9 | Probability and Statistics Mathematics | [Open](9.probability-and-statistics/README.md) |
 
 ## How To Use This Section
 
@@ -41,3 +42,4 @@ It is not meant to replace the teaching chapters in `fundamental-concepts/`. Its
 - losses, optimizers, and training dynamics
 - attention math, embeddings, and probabilistic ML notation
 - differential equations, transforms, and numerical ideas used in scientific AI
+- probability, random variables, distributions, estimation, and inference

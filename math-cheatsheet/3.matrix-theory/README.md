@@ -2,6 +2,8 @@
 
 This chapter goes one level deeper than basic linear algebra. Matrix theory matters whenever you want to reason carefully about rank, conditioning, decompositions, stability, and the behavior of large linear systems.
 
+It is especially important in modern AI because large models are built from matrix operations, and many practical problems are really questions about matrix structure, numerical stability, and approximation quality.
+
 ## 1. Rank and Nullity
 
 The rank of a matrix is the dimension of its column space.
@@ -50,6 +52,23 @@ Q^\top Q = I
 
 Orthogonal matrices preserve lengths and angles.
 
+### Positive Semidefinite
+
+Sometimes we only need:
+
+```math
+\mathbf{x}^\top A \mathbf{x} \ge 0
+```
+
+This is the positive semidefinite, or **PSD**, case.
+
+PSD matrices are extremely important in:
+
+- covariance matrices
+- kernels
+- Gaussian processes
+- quadratic forms
+
 ## 3. Condition Number
 
 The condition number measures sensitivity:
@@ -65,6 +84,12 @@ Practical impact:
 - unstable numerical solutions
 - unreliable inverse computation
 - training instability in some settings
+
+### Worked Example
+
+If a matrix is very close to singular, tiny perturbations in the input can create large changes in the output of a linear solve.
+
+That is why numerically stable methods matter more than symbolic formulas in practical ML systems.
 
 ## 4. Spectral Radius
 
@@ -100,6 +125,22 @@ These appear in:
 - covariance identities
 - reconstruction losses
 
+### Spectral Norm
+
+Another important norm is the spectral norm:
+
+```math
+\|A\|_2 = \sigma_{max}(A)
+```
+
+where $\sigma_{max}(A)$ is the largest singular value.
+
+This matters in:
+
+- Lipschitz bounds
+- stable training
+- operator control
+
 ## 6. SVD and Low-Rank Approximation
 
 If:
@@ -116,6 +157,12 @@ Why this matters:
 - compression
 - denoising
 - latent semantic structure
+
+### Eckart-Young Intuition
+
+Keeping the largest singular values gives the best low-rank approximation in Frobenius norm.
+
+That is one reason SVD is such a central tool in compression and representation learning.
 
 ### Python Example
 
@@ -144,6 +191,20 @@ This matters for:
 - residual analysis
 - geometry of linear regression
 
+### Key Properties
+
+For an orthogonal projection matrix $P$:
+
+```math
+P^2 = P
+```
+
+and:
+
+```math
+P^\top = P
+```
+
 ## 8. Least Squares
 
 When $A\mathbf{x}=\mathbf{b}$ has no exact solution, solve:
@@ -170,6 +231,127 @@ x, *_ = np.linalg.lstsq(A, b, rcond=None)
 print(x)
 ```
 
+## 9. Determinants Revisited
+
+Determinant properties:
+
+```math
+\det(AB)=\det(A)\det(B)
+```
+
+```math
+\det(A^\top)=\det(A)
+```
+
+```math
+\det(A)=0 \iff A \text{ is singular}
+```
+
+Geometric interpretation:
+
+- determinant measures signed volume scaling
+
+## 10. Diagonalization
+
+A matrix is diagonalizable if:
+
+```math
+A = PDP^{-1}
+```
+
+where $D$ is diagonal.
+
+Why diagonalization matters:
+
+- repeated powers become easier
+- linear dynamical systems become interpretable
+- spectral methods become tractable
+
+## 11. Pseudoinverse
+
+For non-square or rank-deficient matrices, the Moore-Penrose pseudoinverse is a generalized inverse.
+
+Notation:
+
+```math
+A^+
+```
+
+This is useful in:
+
+- least squares
+- minimum norm solutions
+- underdetermined systems
+
+## 12. Kronecker Products and Block Matrices
+
+Kronecker product:
+
+```math
+A \otimes B
+```
+
+This builds larger structured matrices from smaller ones.
+
+Why this matters:
+
+- tensor operations
+- structured covariance
+- systems modeling
+- advanced numerical methods
+
+Block matrices matter because large ML systems often have structured parameter matrices and covariance matrices.
+
+## 13. Matrix Calculus Basics
+
+Matrix theory and calculus meet in optimization.
+
+Useful identities:
+
+```math
+\frac{\partial}{\partial x}(a^\top x)=a
+```
+
+```math
+\frac{\partial}{\partial x}(x^\top A x)=(A+A^\top)x
+```
+
+If $A$ is symmetric:
+
+```math
+\frac{\partial}{\partial x}(x^\top A x)=2Ax
+```
+
+This identity appears constantly in quadratic optimization.
+
+## 14. Worked Example: Quadratic Form
+
+Let:
+
+```math
+A=
+\begin{bmatrix}
+2 & 1\\
+1 & 3
+\end{bmatrix},
+\quad
+x=
+\begin{bmatrix}
+x_1\\
+x_2
+\end{bmatrix}
+```
+
+Then:
+
+```math
+x^\top A x = 2x_1^2 + 2x_1x_2 + 3x_2^2
+```
+
+This is a quadratic surface, and the matrix controls its curvature.
+
+## 15. Matrix Theory in Transformers
+
 ## 9. Matrix Theory in Transformers
 
 Transformer math is full of matrix structure:
@@ -187,6 +369,24 @@ S = \frac{QK^\top}{\sqrt{d_k}}
 
 This is matrix theory in action, not just notation.
 
+Other examples:
+
+- weight matrices in MLP layers
+- covariance-like statistics in normalization analysis
+- low-rank adaptation methods
+- structured compression of transformer weights
+
+## 16. Python Example: Pseudoinverse and Rank
+
+```python
+import numpy as np
+
+A = np.array([[1.0, 2.0], [2.0, 4.0], [3.0, 6.0]])
+
+print("rank:", np.linalg.matrix_rank(A))
+print("pseudoinverse:\n", np.linalg.pinv(A))
+```
+
 ## Practice Problems
 
 1. Explain what rank means geometrically.
@@ -194,3 +394,6 @@ This is matrix theory in action, not just notation.
 3. Show why orthogonal matrices preserve norm.
 4. Solve a least-squares line fit with a tiny dataset.
 5. Explain why low-rank approximation can compress embeddings.
+6. Explain the difference between positive definite and positive semidefinite.
+7. Why does a large condition number make a problem unstable?
+8. Compute the derivative of $x^\top A x$ when $A$ is symmetric.

@@ -69,6 +69,7 @@ Important tools:
 - Runge-Kutta methods
 - finite difference methods
 - finite element methods
+- spectral methods
 
 ### Euler Method
 
@@ -88,6 +89,12 @@ for _ in range(5):
     t += h
 print(t, y)
 ```
+
+### Runge-Kutta Intuition
+
+Runge-Kutta methods improve over Euler by using several slope estimates within one step.
+
+That usually gives better accuracy for the same step size.
 
 ## 6. Finite Difference Intuition
 
@@ -130,6 +137,21 @@ This appears in:
 - filtering
 - system response analysis
 
+## 7.5 Sampling and Discretization
+
+Continuous physical signals are often measured digitally.
+
+Important idea:
+
+- if you sample too coarsely, you may lose important information
+
+This matters in:
+
+- sensor systems
+- audio models
+- remote sensing
+- control loops
+
 ## 8. Control and Stability
 
 State-space form:
@@ -149,6 +171,19 @@ These ideas matter for:
 - scientific simulators
 - energy systems
 
+## 8.5 Stability Intuition
+
+A stable system does not explode under small perturbations.
+
+This matters in:
+
+- simulation
+- control
+- recurrent computation
+- iterative numerical schemes
+
+Poor stability can make a mathematically correct model unusable in practice.
+
 ## 9. Probability in Engineering
 
 Real measurements are noisy. Engineering mathematics often combines:
@@ -158,6 +193,17 @@ Real measurements are noisy. Engineering mathematics often combines:
 - uncertainty propagation
 
 This links directly to Bayesian ML and state estimation.
+
+## 9.5 Kalman Filter Intuition
+
+The Kalman filter is a classic engineering tool for estimating hidden state from noisy observations.
+
+It combines:
+
+- a prediction step
+- an update step
+
+This is a beautiful example of probability, linear algebra, and systems theory working together.
 
 ## 10. Worked Example: First-Order Decay
 

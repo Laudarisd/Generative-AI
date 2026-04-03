@@ -115,6 +115,20 @@ v_t = \beta_2 v_{t-1} + (1-\beta_2) g_t^2
 \theta_{t+1} = \theta_t - \eta \frac{\hat{m}_t}{\sqrt{\hat{v}_t} + \epsilon}
 ```
 
+### Newton's Method
+
+For scalar optimization:
+
+```math
+x_{t+1} = x_t - \frac{f'(x_t)}{f''(x_t)}
+```
+
+This uses curvature information and can converge very quickly near a good solution.
+
+### Quasi-Newton Intuition
+
+Methods like BFGS and L-BFGS approximate curvature information without forming the full Hessian explicitly.
+
 ## 4. Regularization
 
 ### L2 / Weight Decay
@@ -135,6 +149,23 @@ v_t = \beta_2 v_{t-1} + (1-\beta_2) g_t^2
 - early stopping
 - data augmentation
 - label smoothing
+
+## 4.5 Constrained Optimization
+
+Sometimes optimization is not free to move anywhere.
+
+Generic constrained problem:
+
+```math
+\min_x f(x) \quad \text{subject to } g_i(x) \le 0,\ h_j(x)=0
+```
+
+This matters in:
+
+- engineering design
+- resource allocation
+- physical systems
+- energy optimization
 
 ## 5. Activation Functions
 
@@ -214,6 +245,17 @@ H_{ij} = \frac{\partial^2 \mathcal{L}}{\partial \theta_i \partial \theta_j}
 ```
 
 This matters for Newton methods, curvature-aware optimization, and understanding local geometry.
+
+## 9.5 Saddle Points
+
+In non-convex optimization, not every stationary point is a minimum.
+
+Some are saddle points:
+
+- gradient is near zero
+- curvature is mixed
+
+This matters in deep learning because high-dimensional losses often contain many saddle-like regions.
 
 ## 10. Learning Rate Schedules
 
