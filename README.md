@@ -24,6 +24,45 @@ This repository is organized in the order most readers actually need:
 
 ---
 
+## HPC and Compute Systems
+
+This section covers practical high-performance computing for AI workloads.
+
+| Chapter | Topic | Link |
+| --- | --- | --- |
+| 1 | HPC Basics | [Open](HPC/01.hpc-basics/README.md) |
+| 2 | Linux and Shell for AI | [Open](HPC/02.linux-and-shell-for-ai/README.md) |
+| 3 | GPU Fundamentals | [Open](HPC/03.gpu-fundamentals/README.md) |
+| 4 | Cluster Architecture | [Open](HPC/04.cluster-architecture/README.md) |
+| 5 | Job Scheduling | [Open](HPC/05.job-scheduling/README.md) |
+| 6 | Environment Management | [Open](HPC/06.environment-management/README.md) |
+| 7 | Distributed Training | [Open](HPC/07.distributed-training/README.md) |
+| 8 | Performance Optimization | [Open](HPC/08.performance-optimization/README.md) |
+| 9 | Memory Optimization | [Open](HPC/09.memory-optimization/README.md) |
+| 10 | Storage and Data Pipelines | [Open](HPC/10.storage-and-data-pipelines/README.md) |
+| 11 | Monitoring and Debugging | [Open](HPC/11.monitoring-and-debugging/README.md) |
+| 12 | PyTorch on HPC | [Open](HPC/12.pytorch-on-hpc/README.md) |
+| 13 | Inference at Scale | [Open](HPC/13.inference-at-scale/README.md) |
+| 14 | HPC for LLM Training | [Open](HPC/14.hpc-for-llm-training/README.md) |
+| 15 | HPC for Scientific AI | [Open](HPC/15.hpc-for-scientific-ai/README.md) |
+| 16 | Cost, Efficiency, and Green Compute | [Open](HPC/16.cost-efficiency-and-green-compute/README.md) |
+| 17 | Best Practices and Checklists | [Open](HPC/17.best-practices-and-checklists/README.md) |
+| 18 | Hands-On Examples | [Open](HPC/18.hands-on-examples/README.md) |
+
+HPC index:
+
+- [HPC Overview](HPC/README.md)
+
+What you learn here:
+
+- clusters, GPUs, storage, and scheduling
+- distributed training and inference
+- debugging, monitoring, and performance tuning
+- PyTorch workflows on shared compute systems
+- HPC patterns for LLMs and scientific AI
+
+---
+
 ## Book Map
 
 ### Pre-Chapter: Fundamental Concepts
