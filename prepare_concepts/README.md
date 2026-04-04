@@ -2,12 +2,18 @@
 
 This folder contains a company-neutral, personal-info-removed interview preparation bank for AI/ML, deep learning, LLMs, time-series, systems, production, research, and leadership.
 
+## Brief Explanation
+This README is a structured interview-preparation guide.
+It combines short conceptual answers, practical implementation thinking, and production-focused scenario questions.
+Use this file for full-depth preparation, and use [Brief Q&A + Code Examples](BRIEF_QA.md) for fast revision.
+
 ## Notes
 - No company-specific content is included.
 - No personal names, university names, or personal-profile questions are included.
 - Answers are written in a generalized interview-preparation style.
 
 ## Quick Navigation
+- Fastest revision sheet: [Brief Q&A + Code Examples](BRIEF_QA.md)
 - Start with Sections 1-3 for core interview prep.
 - Use Sections 4-7 for coding, deep learning, and LLM questions.
 - Use Sections 8, 14, and 16 for production and real-world scenarios.
@@ -229,6 +235,39 @@ Useful for structured linear time-series with moderate data. Less suitable for h
 
 ### Q26. ARIMA for anomaly detection
 Fit ARIMA, compute residuals, and flag anomalies where residuals exceed statistically justified bounds.
+
+### Q27. Autoencoder-based anomaly detection
+Train an autoencoder on normal data only. At inference, high reconstruction error indicates potential anomaly.
+
+### Q28. Why autoencoders work for anomaly detection
+They learn a compact manifold of normal patterns; out-of-distribution inputs reconstruct poorly.
+
+### Q29. GAN-based anomaly detection (for example AnoGAN-style)
+Train a GAN on normal data distribution and use generator/discriminator mismatch or reconstruction in latent space as anomaly score.
+
+### Q30. CNN-based anomaly detection for signals
+1D-CNNs are effective for vibration/sensor windows, capturing local temporal motifs and abrupt pattern changes.
+
+### Q31. Local Outlier Factor (LOF)
+LOF compares local density of a sample to that of neighbors. Lower relative density implies higher outlierness.
+
+### Q32. One-Class SVM (OC-SVM)
+OC-SVM learns a boundary around normal samples in feature space; points outside are marked anomalies.
+
+### Q33. Robust Covariance / Elliptic Envelope
+Assumes approximately Gaussian structure and flags low-probability points via robust Mahalanobis-distance style modeling.
+
+### Q34. Isolation Forest vs LOF vs OC-SVM (quick comparison)
+Isolation Forest scales well and isolates anomalies by random partitioning. LOF is local-density sensitive. OC-SVM can model nonlinear boundaries but is sensitive to kernel/scale choices.
+
+### Q35. Event-based vs point-based anomaly evaluation
+Point metrics score individual timestamps; event metrics score whether an anomalous event window was detected with acceptable delay.
+
+### Q36. Foundation models for industrial anomaly detection
+Pretrained multi-modal or time-series foundation models can provide stronger representations, then lightweight heads/adapters detect anomalies with less labeled data.
+
+### Q37. Modular adaptation methods (foundation-model context)
+A practical approach is frozen pretrained backbone + small task-specific adapter head for quick domain adaptation and robust deployment updates.
 
 ---
 

@@ -29,6 +29,7 @@ This repository is organized in the order most readers actually need:
 For fast revision and interview-focused practice:
 
 - [Prepare Concepts: AI/ML Interview Q&A](prepare_concepts/README.md)
+- [Brief Q&A + Code Examples](prepare_concepts/BRIEF_QA.md)
 
 What this section includes:
 
