@@ -203,11 +203,3 @@ oc = OneClassSVM(kernel="rbf", gamma="scale", nu=0.02)
 oc.fit(X_train_normal)
 pred = oc.predict(X_test)   # -1 anomaly, 1 normal
 ```
-
----
-
-## 8) 30-Second Interview Frames
-- "I start with problem framing and leakage-safe evaluation, then pick the simplest model that meets constraints."
-- "I optimize for reliability: monitoring, drift alerts, retraining triggers, and rollback readiness."
-- "For sequence problems, I choose Transformer or lightweight recurrent/ESN based on latency, compute, and accuracy needs."
-- "For LLMs, I ground outputs with retrieval and validate with task + safety + cost metrics."
