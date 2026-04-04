@@ -28,8 +28,9 @@ This repository is organized in the order most readers actually need:
 
 For fast revision and interview-focused practice:
 
-- [Prepare Concepts: AI/ML Interview Q&A](prepare_concepts/README.md)
-- [Brief Q&A + Code Examples](prepare_concepts/BRIEF_QA.md)
+- [All In One Q&A: AI/ML Interview Guide](all_in_one_qa/README.md)
+- [Brief Q&A + Code Examples](all_in_one_qa/BRIEF_QA.md)
+- [Real Application Problems (AI, AI+Physics, Stat)](all_in_one_qa/real_application/README.md)
 
 What this section includes:
 
@@ -280,7 +281,7 @@ If you want the cleanest path through the repo:
 16. Part 2 model and transformer chapters
 17. [Part 3 Overview](part-3/README.md)
 18. [Part 4 Overview](part-4/README.md)
-19. [Prepare Concepts: AI/ML Interview Q&A](prepare_concepts/README.md)
+19. [All In One Q&A: AI/ML Interview Guide](all_in_one_qa/README.md)
 
 ---
 

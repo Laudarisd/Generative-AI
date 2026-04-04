@@ -28,7 +28,7 @@ Use this as a quick interview sheet: 1-2 line answers.
 - Anomaly metrics: Precision, recall, F1, PR-AUC, false alarm rate, detection delay.
 - CUSUM: Cumulative sum change detector for small persistent mean shifts.
 - CUSUM vs EWMA: CUSUM catches sustained shifts quickly; EWMA smooths and tracks trend drift.
-- ARIMA (often mistyped RMIA): AR + I + MA model for univariate time-series.
+- ARIMA (often mistyped RMIA): `ARIMA(p,d,q)` where `p`=lag terms, `d`=differencing order, `q`=lagged error terms; a classic linear model for univariate forecasting.
 - ARIMA anomaly method: Fit ARIMA, monitor residuals, flag statistically large residuals.
 - Autoencoder anomaly detection: Train on normal samples; high reconstruction error => anomaly.
 - GAN anomaly detection: Learn normal data distribution; poorly generated/reconstructed samples are anomalous.

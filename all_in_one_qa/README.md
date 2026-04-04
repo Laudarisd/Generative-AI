@@ -1,4 +1,4 @@
-# Prepare Concepts - AI/ML Interview Q&A (General)
+# All In One Q&A - AI/ML Interview Guide (General)
 
 This folder contains a company-neutral, personal-info-removed interview preparation bank for AI/ML, deep learning, LLMs, time-series, systems, production, research, and leadership.
 
@@ -14,6 +14,7 @@ Use this file for full-depth preparation, and use [Brief Q&A + Code Examples](BR
 
 ## Quick Navigation
 - Fastest revision sheet: [Brief Q&A + Code Examples](BRIEF_QA.md)
+- Real-world coding problems: [Real Application Problems](real_application/README.md)
 - Start with Sections 1-3 for core interview prep.
 - Use Sections 4-7 for coding, deep learning, and LLM questions.
 - Use Sections 8, 14, and 16 for production and real-world scenarios.
@@ -228,7 +229,17 @@ It is sensitive to small persistent shifts that simple threshold alarms often mi
 CUSUM is strong for fast detection of small sustained shifts; EWMA smooths noise and tracks gradual drift trends effectively.
 
 ### Q24. ARIMA (sometimes mistyped as RMIA)
-ARIMA combines autoregression (AR), differencing (I), and moving average (MA) terms for univariate time-series forecasting.
+ARIMA (AutoRegressive Integrated Moving Average) is a classic statistical model for univariate time-series forecasting and residual-based anomaly detection.
+Unlike LSTM-style deep models, ARIMA models linear temporal relationships explicitly.
+
+It is written as `ARIMA(p, d, q)`:
+
+1. `p` (AutoRegressive part, AR): number of lagged observations used to predict current value.
+2. `d` (Integrated part, I): number of differencing operations used to make the series more stationary.
+3. `q` (Moving Average part, MA): number of lagged forecast errors used to correct predictions.
+
+Example intuition:
+- `ARIMA(2,1,1)` uses 2 past values, applies first-order differencing once, and uses 1 past error term.
 
 ### Q25. When ARIMA is useful vs not useful
 Useful for structured linear time-series with moderate data. Less suitable for highly nonlinear multivariate systems without feature engineering.
@@ -399,7 +410,11 @@ Correlation of a series with lagged versions of itself.
 Recurring periodic patterns.
 
 ### Q4. ARIMA
-Autoregressive integrated moving average model for univariate forecasting.
+A linear statistical time-series model written as `ARIMA(p,d,q)` where:
+- `p`: lag terms from past observations (AR)
+- `d`: differencing order to stabilize mean/trend (I)
+- `q`: lagged error terms (MA)
+It is strong for structured univariate forecasting and residual-based anomaly detection baselines.
 
 ### Q5. ESN vs RNN
 ESN trains only readout (faster), RNN trains full recurrence (more flexible but heavier).
