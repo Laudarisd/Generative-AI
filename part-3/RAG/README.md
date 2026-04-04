@@ -6,6 +6,15 @@ This legacy folder is kept because many readers look for "RAG" directly, but the
 
 - [RAG vs Agentic RAG](../03.rag-vs-agentic-rag/README.md)
 
+The maintained chapter now includes:
+
+- chunking strategies and practical defaults
+- retrieval terminology glossary
+- classic vs agentic design tradeoffs
+- hybrid retrieval and reranking examples
+- grounded prompt templates with citation style
+- retrieval evaluation metrics and failure-mode playbook
+
 Related supporting example:
 
 - [Coding Assistance RAG](coding_assistance_rag/README.md)
