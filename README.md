@@ -24,6 +24,22 @@ This repository is organized in the order most readers actually need:
 
 ---
 
+## Interview Preparation
+
+For fast revision and interview-focused practice:
+
+- [Prepare Concepts: AI/ML Interview Q&A](prepare_concepts/README.md)
+
+What this section includes:
+
+- core ML, statistics, optimization, and debugging questions
+- deep learning and LLM interview questions (including encoder/decoder, normalization, and optimization choices)
+- time-series, anomaly detection, CUSUM, and ARIMA-focused questions
+- system design, production reliability, and leadership scenarios
+- practical PyTorch code snippets for common implementation patterns
+
+---
+
 ## HPC and Compute Systems
 
 This section covers practical high-performance computing for AI workloads.
@@ -263,6 +279,7 @@ If you want the cleanest path through the repo:
 16. Part 2 model and transformer chapters
 17. [Part 3 Overview](part-3/README.md)
 18. [Part 4 Overview](part-4/README.md)
+19. [Prepare Concepts: AI/ML Interview Q&A](prepare_concepts/README.md)
 
 ---
 
@@ -291,4 +308,3 @@ The target shape is:
 - [NASA Earthdata Remote Sensing Backgrounder](https://www.earthdata.nasa.gov/learn/backgrounders/remote-sensing)
 - [LLMs from Scratch](https://github.com/rasbt/LLMs-from-scratch)
 - [LLM Engineers Handbook](https://github.com/PacktPublishing/LLM-Engineers-Handbook)
-
