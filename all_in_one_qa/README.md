@@ -8,7 +8,7 @@ Quick link: [Brief Q&A + Code Examples](BRIEF_QA.md)
 
 ## =============Foundamental=======
 
-### Q9. 10x more features than samples
+### Q1. 10x more features than samples
 
 Regularize strongly, feature selection, dimensionality reduction, sparse models, and robust cross-validation.
 
@@ -16,7 +16,7 @@ Explanation: Regularize strongly, feature selection, dimensionality reduction, s
 
 Example: A p-value below 0.05 suggests evidence against the null, but does not prove causality.
 
-### Q3. Ablation study
+### Q2. Ablation study
 
 Systematic removal/change of components to measure each component’s contribution.
 
@@ -24,7 +24,7 @@ Explanation: Systematic removal/change of components to measure each component�
 
 Example: An ablation shows 70% of the gain came from data cleaning, not architecture changes.
 
-### Q6. Adam vs AdamW
+### Q3. Adam vs AdamW
 
 AdamW decouples weight decay from gradient updates and usually gives better regularization behavior in modern deep learning.
 
@@ -42,7 +42,7 @@ Code:
 prompt = f"Question: {query}\nContext: {context}"\nresponse = llm.generate(prompt)
 ```
 
-### 22. Adam vs SGD
+### Q4. Adam vs SGD
 
 Adam converges fast and is robust early. SGD+momentum often gives stronger final generalization at scale. Choose based on convergence speed vs final quality.
 
@@ -50,7 +50,7 @@ Explanation: Adam converges fast and is robust early. SGD+momentum often gives s
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q6. Align outputs with domain constraints
+### Q5. Align outputs with domain constraints
 
 Use constrained prompts, tool use, retrieval, guardrails, and policy checks.
 
@@ -58,7 +58,7 @@ Explanation: Use constrained prompts, tool use, retrieval, guardrails, and polic
 
 Example: A support chatbot uses retrieval from approved docs to reduce hallucination in answers.
 
-### Q24. ARIMA (sometimes mistyped as RMIA)
+### Q6. ARIMA (sometimes mistyped as RMIA)
 
 ARIMA (AutoRegressive Integrated Moving Average) is a classic statistical model for univariate time-series forecasting and residual-based anomaly detection.
 Unlike LSTM-style deep models, ARIMA models linear temporal relationships explicitly.
@@ -89,7 +89,7 @@ fit = ARIMA(series, order=(2, 1, 1)).fit()
 forecast = fit.forecast(steps=7)
 ```
 
-### Q20. Batching importance
+### Q7. Batching importance
 
 Improves throughput and gradient stability; better hardware utilization.
 
@@ -97,7 +97,7 @@ Explanation: Improves throughput and gradient stability; better hardware utiliza
 
 Example: If training is slow, profile dataloader wait time before changing model architecture.
 
-### Q5. Catastrophic forgetting
+### Q8. Catastrophic forgetting
 
 New fine-tuning data overwrites old capabilities; mitigate with PEFT, rehearsal, balanced data.
 
@@ -105,7 +105,7 @@ Explanation: New fine-tuning data overwrites old capabilities; mitigate with PEF
 
 Example: A support chatbot uses retrieval from approved docs to reduce hallucination in answers.
 
-### Q8. Compare models fairly
+### Q9. Compare models fairly
 
 Same data splits, compute budget, tuning effort, and evaluation rules.
 
@@ -113,7 +113,7 @@ Explanation: Same data splits, compute budget, tuning effort, and evaluation rul
 
 Example: An ablation shows 70% of the gain came from data cleaning, not architecture changes.
 
-### Q3. Context length vs compute tradeoff
+### Q10. Context length vs compute tradeoff
 
 Attention cost grows roughly quadratically with sequence length in standard transformers.
 
@@ -121,7 +121,7 @@ Explanation: Attention cost grows roughly quadratically with sequence length in 
 
 Example: A support chatbot uses retrieval from approved docs to reduce hallucination in answers.
 
-### Q23. Context Window Saturation
+### Q11. Context Window Saturation
 
 As context grows, compute and memory rise; long irrelevant context can reduce answer quality. Retrieval and context pruning help.
 
@@ -129,7 +129,7 @@ Explanation: As context grows, compute and memory rise; long irrelevant context 
 
 Example: A support chatbot uses retrieval from approved docs to reduce hallucination in answers.
 
-### Q8. Converges but wrong predictions
+### Q12. Converges but wrong predictions
 
 Objective-metric mismatch, thresholding issues, label noise, or train-serving skew.
 
@@ -151,7 +151,7 @@ loss.backward()
 optimizer.step()
 ```
 
-### 1. Describe your most impactful AI project
+### Q13. Describe your most impactful AI project
 
 A strong example is leading a 2D-to-3D BIM generation system end-to-end. The work includes data pipeline design, annotation strategy, model architecture, loss design, deployment, and MLOps. A key challenge is geometric ambiguity (for example symmetric/square objects). Practical fixes include geometry-aware loss constraints and attention modules, which improve robustness on noisy real-world inputs.
 
@@ -159,7 +159,7 @@ Explanation: A strong example is leading a 2D-to-3D BIM generation system end-to
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q7. Design experiments
+### Q14. Design experiments
 
 Start from hypothesis, control confounders, choose meaningful metrics, predefine protocol.
 
@@ -167,7 +167,7 @@ Explanation: Start from hypothesis, control confounders, choose meaningful metri
 
 Example: An ablation shows 70% of the gain came from data cleaning, not architecture changes.
 
-### Q7. Design multi-GPU training
+### Q15. Design multi-GPU training
 
 Use DDP, distributed sampler, gradient all-reduce, and rank-aware checkpointing/logging.
 
@@ -175,7 +175,7 @@ Explanation: Use DDP, distributed sampler, gradient all-reduce, and rank-aware c
 
 Example: A model registry plus run metadata lets teams trace exactly which model served production traffic.
 
-### Q10. Detect/fix model bias
+### Q16. Detect/fix model bias
 
 Measure subgroup metrics, identify bias sources, rebalance data/objective, and monitor fairness continuously.
 
@@ -183,7 +183,7 @@ Explanation: Measure subgroup metrics, identify bias sources, rebalance data/obj
 
 Example: If model and engineer disagree in a safety-critical case, route through evidence review and safe fallback.
 
-### Q14. Early stopping
+### Q17. Early stopping
 
 Stop training when validation performance stops improving to prevent overfitting.
 
@@ -204,7 +204,7 @@ cov = np.cov(x, y)[0,1]; corr = np.corrcoef(x, y)[0,1]
 print(cov, corr)
 ```
 
-### Q4. Evaluate LLM quality
+### Q18. Evaluate LLM quality
 
 Task metrics + human eval + factuality/safety/latency/cost evaluations.
 
@@ -212,7 +212,7 @@ Explanation: Task metrics + human eval + factuality/safety/latency/cost evaluati
 
 Example: A support chatbot uses retrieval from approved docs to reduce hallucination in answers.
 
-### Q2. Evaluate new method
+### Q19. Evaluate new method
 
 Check assumptions, baseline fairness, ablations, statistical significance, and real-world constraints.
 
@@ -220,7 +220,7 @@ Explanation: Check assumptions, baseline fairness, ablations, statistical signif
 
 Example: An ablation shows 70% of the gain came from data cleaning, not architecture changes.
 
-### Q8. Evaluate time-series models
+### Q20. Evaluate time-series models
 
 Use walk-forward backtesting and horizon-aware metrics; avoid random splits.
 
@@ -240,7 +240,7 @@ model.fit(train)
 pred = model.predict(h)
 ```
 
-### Q9. Explainable AI for regulator
+### Q21. Explainable AI for regulator
 
 Use interpretable models where possible, local/global explanations, documentation, and audit trails.
 
@@ -248,7 +248,7 @@ Explanation: Use interpretable models where possible, local/global explanations,
 
 Example: If model and engineer disagree in a safety-critical case, route through evidence review and safe fallback.
 
-### Q7. Exploding gradient
+### Q22. Exploding gradient
 
 Gradients grow excessively, causing instability.
 
@@ -270,7 +270,7 @@ torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
 optimizer.step()
 ```
 
-### Q16. Exposure Bias
+### Q23. Exposure Bias
 
 Mismatch between training (teacher forcing) and inference (model-generated history), causing compounding generation errors.
 
@@ -288,7 +288,7 @@ Code:
 docs = retriever.get_relevant_documents(query)\ncontext = "\n".join(d.page_content for d in docs[:3])\nanswer = llm.generate(context)
 ```
 
-### Q6. Forecasting horizon
+### Q24. Forecasting horizon
 
 Future time span being predicted.
 
@@ -307,7 +307,7 @@ horizon = 24
 y_hat = model.predict(X_last, steps=horizon)
 ```
 
-### Q28. FSDP / ZeRO (why needed)
+### Q25. FSDP / ZeRO (why needed)
 
 Shard parameters/gradients/optimizer states to train models that do not fit on one GPU.
 
@@ -327,7 +327,7 @@ from torch.distributed.fsdp import FullyShardedDataParallel as FSDP
 model = FSDP(model)
 ```
 
-### Q10. Good offline, bad production
+### Q26. Good offline, bad production
 
 Data drift, schema mismatch, missing features, latency constraints, feedback loops, monitoring gaps.
 
@@ -335,7 +335,7 @@ Explanation: Data drift, schema mismatch, missing features, latency constraints,
 
 Example: A p-value below 0.05 suggests evidence against the null, but does not prove causality.
 
-### Q10. Gradient clipping
+### Q27. Gradient clipping
 
 Cap gradient norm/value to stabilize training and avoid exploding updates.
 
@@ -356,7 +356,7 @@ rmse = np.sqrt(np.mean((y_true - y_pred) ** 2))
 print(rmse)
 ```
 
-### Q12. Gradient Clipping: by value vs by norm
+### Q28. Gradient Clipping: by value vs by norm
 
 - By value clips each gradient element independently.
 - By norm rescales full gradient vector to max norm.
@@ -377,7 +377,7 @@ tokens = tokenizer(query, return_tensors="pt")
 out = model.generate(**tokens, max_new_tokens=64)
 ```
 
-### 23. Gradient explosion/vanishing
+### Q29. Gradient explosion/vanishing
 
 Exploding gradients cause unstable updates; vanishing gradients block learning in early layers. Use clipping, initialization, residuals, gating (LSTM/GRU), normalization.
 
@@ -385,7 +385,7 @@ Explanation: Exploding gradients cause unstable updates; vanishing gradients blo
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q5. Gradient norms spike
+### Q30. Gradient norms spike
 
 Inspect recent batches/outliers, reduce LR, clip gradients, stabilize architecture/loss.
 
@@ -406,7 +406,7 @@ for xb, yb in loader:
     loss.backward(); optimizer.step()
 ```
 
-### Q18. Handle large datasets
+### Q31. Handle large datasets
 
 Sharding, streaming, memory mapping, prefetching, distributed sampling, feature stores.
 
@@ -414,7 +414,7 @@ Explanation: Sharding, streaming, memory mapping, prefetching, distributed sampl
 
 Example: If training is slow, profile dataloader wait time before changing model architecture.
 
-### 5. How do you approach time-series forecasting?
+### Q32. How do you approach time-series forecasting?
 
 Analyze trend/seasonality/autocorrelation; build lag/rolling/calendar features; use time-aware splits; choose model class (statistical, tree-based, RNN/Transformer/ESN); evaluate with horizon-aware metrics (MAE/RMSE/MAPE/sMAPE) and rolling backtests.
 
@@ -422,7 +422,7 @@ Explanation: Analyze trend/seasonality/autocorrelation; build lag/rolling/calend
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### 9. How do you choose evaluation metrics?
+### Q33. How do you choose evaluation metrics?
 
 Choose metrics based on problem type and error cost. For imbalance, precision/recall/F1/PR-AUC are often better than accuracy. For regression/forecasting, MAE/RMSE/MAPE depending on sensitivity to outliers and scale.
 
@@ -430,12 +430,12 @@ Explanation: Choose metrics based on problem type and error cost. For imbalance,
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q25. How do you choose retraining cadence for seasonal systems?
+### Q34. How do you choose retraining cadence for seasonal systems?
 Answer: Align retraining with seasonal cycle length, drift speed, and operational risk tolerance.
 
 Example: Weekly retraining may be needed in fast-changing demand systems.
 
-### 2. How do you convert a real-world problem into an AI problem?
+### Q35. How do you convert a real-world problem into an AI problem?
 
 Start with domain understanding and objective definition. Translate into ML formulation (classification/regression/forecasting), define input-output contract, constraints (latency, cost, interpretability), and success metrics tied to business impact. Then design data, model, evaluation, and deployment plan.
 
@@ -443,37 +443,37 @@ Explanation: Start with domain understanding and objective definition. Translate
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q14. How do you design guardrails for tool-calling agents?
+### Q36. How do you design guardrails for tool-calling agents?
 Answer: Add allowlists, schema validation, policy checks, and confirmation gates for risky actions.
 
 Example: Never allow direct write/delete actions without explicit approval.
 
-### Q16. How do you detect silent model degradation with no labels?
+### Q37. How do you detect silent model degradation with no labels?
 Answer: Use proxy signals: drift, confidence shift, latency anomalies, and downstream business KPI changes.
 
 Example: Stable latency but dropping conversion can indicate silent quality decay.
 
-### Q15. How do you do cost-aware LLM routing across model sizes?
+### Q38. How do you do cost-aware LLM routing across model sizes?
 Answer: Route easy queries to smaller models and escalate uncertain/high-risk cases to larger models.
 
 Example: FAQ requests go to mini model; legal-risk questions go to flagship model.
 
-### Q22. How do you estimate prediction uncertainty for maintenance decisions?
+### Q39. How do you estimate prediction uncertainty for maintenance decisions?
 Answer: Use ensembles, quantile models, or Bayesian approximations and trigger actions from risk-aware intervals.
 
 Example: Schedule inspection when upper-risk bound crosses safety threshold.
 
-### Q12. How do you evaluate retrieval quality separately from generation quality?
+### Q40. How do you evaluate retrieval quality separately from generation quality?
 Answer: Measure retrieval metrics first (`Recall@k`, `MRR`), then evaluate answer quality conditioned on retrieved context.
 
 Example: Good generation cannot fix consistently poor retrieval.
 
-### Q1. How do you pick batch size under fixed GPU memory?
+### Q41. How do you pick batch size under fixed GPU memory?
 Answer: Start from the largest stable batch that avoids out-of-memory and keeps GPU utilization high, then validate accuracy/latency tradeoff.
 
 Example: If `batch_size=128` OOMs, try `64` and recover effective batch with accumulation.
 
-### 8. How ensure model reliability in production?
+### Q42. How ensure model reliability in production?
 
 Use strong pre-deployment validation (edge cases, stress tests) and post-deployment monitoring (drift, quality, latency, failures). Add alerts, rollback, retraining triggers, and runbooks.
 
@@ -481,7 +481,7 @@ Explanation: Use strong pre-deployment validation (edge cases, stress tests) and
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q5. How gradient clipping stabilizes exploding gradients
+### Q43. How gradient clipping stabilizes exploding gradients
 
 It bounds update magnitude so recurrent/deep chains cannot produce destructive parameter jumps.
 
@@ -503,7 +503,7 @@ torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
 optimizer.step()
 ```
 
-### Q5. Huge data but poor performance
+### Q44. Huge data but poor performance
 
 Likely data quality, objective mismatch, feature issues, or leakage/shift; scale alone does not fix bad signal.
 
@@ -511,7 +511,7 @@ Explanation: Likely data quality, objective mismatch, feature issues, or leakage
 
 Example: If model and engineer disagree in a safety-critical case, route through evidence review and safe fallback.
 
-### Q2. Integrate AI into engineering systems
+### Q45. Integrate AI into engineering systems
 
 Map use-case to workflow, ensure data interfaces, establish reliability and override/fallback mechanisms.
 
@@ -519,7 +519,7 @@ Explanation: Map use-case to workflow, ensure data interfaces, establish reliabi
 
 Example: For predictive maintenance, model output triggers a maintenance ticket only after safety checks.
 
-### 16. Integrating domain knowledge
+### Q46. Integrating domain knowledge
 
 Inject domain constraints into features, architecture, loss terms, priors, and post-processing rules. Hybrid AI + physics/simulation models often improve reliability and interpretability.
 
@@ -527,7 +527,7 @@ Explanation: Inject domain constraints into features, architecture, loss terms, 
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q34. Isolation Forest vs LOF vs OC-SVM (quick comparison)
+### Q47. Isolation Forest vs LOF vs OC-SVM (quick comparison)
 
 Isolation Forest scales well and isolates anomalies by random partitioning. LOF is local-density sensitive. OC-SVM can model nonlinear boundaries but is sensitive to kernel/scale choices.
 
@@ -548,7 +548,7 @@ clf = OneClassSVM(kernel="rbf", nu=0.05).fit(X_train_normal)
 y_pred = clf.predict(X_test)
 ```
 
-### Q14. Label Smoothing
+### Q48. Label Smoothing
 
 Replace hard one-hot targets with softened targets to improve calibration and reduce overconfidence.
 
@@ -567,7 +567,7 @@ messages = [{"role":"system","content":"Answer with grounded facts."},{"role":"u
 resp = llm.chat(messages)
 ```
 
-### Q13. Learning rate scheduling
+### Q49. Learning rate scheduling
 
 Vary LR over training (step, cosine, warmup, one-cycle) for speed and stability.
 
@@ -588,7 +588,7 @@ z = (x - np.mean(x)) / (np.std(x) + 1e-8)
 print(z[:5])
 ```
 
-### Q13. Learning Rate Warmup
+### Q50. Learning Rate Warmup
 
 Start with a small LR and gradually increase early in training to avoid unstable updates, especially in Transformers.
 
@@ -607,7 +607,7 @@ messages = [{"role":"system","content":"Answer with grounded facts."},{"role":"u
 resp = llm.chat(messages)
 ```
 
-### 17. Limitations of deep learning
+### Q51. Limitations of deep learning
 
 Large data demand, high compute cost, lower interpretability, and fragility under distribution shift. Mitigate via model compression, better data curation, uncertainty estimation, and explainability tools.
 
@@ -615,7 +615,7 @@ Explanation: Large data demand, high compute cost, lower interpretability, and f
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### 13. Limited labeled data: what do you do?
+### Q52. Limited labeled data: what do you do?
 
 Use transfer learning, semi-supervised learning (pseudo-labeling), self-supervised pretraining, augmentation, weak supervision, and active learning for highest-value labeling.
 
@@ -623,7 +623,7 @@ Explanation: Use transfer learning, semi-supervised learning (pseudo-labeling), 
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q31. Local Outlier Factor (LOF)
+### Q53. Local Outlier Factor (LOF)
 
 LOF compares local density of a sample to that of neighbors. Lower relative density implies higher outlierness.
 
@@ -644,7 +644,7 @@ lof = LocalOutlierFactor(n_neighbors=20, novelty=True).fit(X_train_normal)
 score = -lof.score_samples(X_test)
 ```
 
-### Q3. Loss oscillates heavily
+### Q54. Loss oscillates heavily
 
 Likely LR too high, bad normalization, noisy batches, or unstable objective. Use lower LR, scheduler, gradient clipping, larger batch.
 
@@ -652,7 +652,7 @@ Explanation: Likely LR too high, bad normalization, noisy batches, or unstable o
 
 Example: A p-value below 0.05 suggests evidence against the null, but does not prove causality.
 
-### 20. Low GPU utilization debugging
+### Q55. Low GPU utilization debugging
 
 Profile first. Usually data pipeline bottleneck: tune `num_workers`, `pin_memory`, prefetch, serialization format, CPU transforms, and batch size. Use mixed precision where possible.
 
@@ -660,7 +660,7 @@ Explanation: Profile first. Usually data pipeline bottleneck: tune `num_workers`
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q1. Model outputs NaNs: step-by-step
+### Q56. Model outputs NaNs: step-by-step
 
 Check data/labels, isolate first NaN layer, lower LR, inspect gradient norms, verify numerically unstable ops (`log`, division), enable anomaly detection, and test mixed-precision settings.
 
@@ -668,7 +668,7 @@ Explanation: Check data/labels, isolate first NaN layer, lower LR, inspect gradi
 
 Example: A p-value below 0.05 suggests evidence against the null, but does not prove causality.
 
-### Q27. Model Parallelism vs Data Parallelism
+### Q57. Model Parallelism vs Data Parallelism
 
 - Data parallelism splits data across replicas.
 - Model parallelism splits model across devices.
@@ -690,7 +690,7 @@ x = layer2(x.to("cuda:1"))
 # data parallel replicates full model across devices and splits batches
 ```
 
-### Q37. Modular adaptation methods (foundation-model context)
+### Q58. Modular adaptation methods (foundation-model context)
 
 A practical approach is frozen pretrained backbone + small task-specific adapter head for quick domain adaptation and robust deployment updates.
 
@@ -698,7 +698,7 @@ Explanation: A practical approach is frozen pretrained backbone + small task-spe
 
 Example: A p-value below 0.05 suggests evidence against the null, but does not prove causality.
 
-### Q4. No labeled data
+### Q59. No labeled data
 
 Use self-supervised/unsupervised methods, weak supervision, synthetic labels, and active learning.
 
@@ -706,7 +706,7 @@ Explanation: Use self-supervised/unsupervised methods, weak supervision, synthet
 
 Example: If model and engineer disagree in a safety-critical case, route through evidence review and safe fallback.
 
-### 28. Non-stationary time-series
+### Q60. Non-stationary time-series
 
 Use differencing/transformations, rolling retraining, adaptive windows, and online monitoring for concept drift.
 
@@ -714,7 +714,7 @@ Explanation: Use differencing/transformations, rolling retraining, adaptive wind
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q9. Novelty in research
+### Q61. Novelty in research
 
 New idea, new evidence, or new capability beyond existing state of the art.
 
@@ -722,7 +722,7 @@ Explanation: New idea, new evidence, or new capability beyond existing state of 
 
 Example: An ablation shows 70% of the gain came from data cleaning, not architecture changes.
 
-### Q32. One-Class SVM (OC-SVM)
+### Q62. One-Class SVM (OC-SVM)
 
 OC-SVM learns a boundary around normal samples in feature space; points outside are marked anomalies.
 
@@ -743,7 +743,7 @@ clf = OneClassSVM(kernel="rbf", nu=0.05).fit(X_train_normal)
 y_pred = clf.predict(X_test)
 ```
 
-### Q17. Optimize slow training pipeline
+### Q63. Optimize slow training pipeline
 
 Profile data + compute + communication; remove bottlenecks one by one.
 
@@ -751,7 +751,7 @@ Explanation: Profile data + compute + communication; remove bottlenecks one by o
 
 Example: If training is slow, profile dataloader wait time before changing model architecture.
 
-### Q5. Optimizer vs Activation Function
+### Q64. Optimizer vs Activation Function
 
 - Optimizer decides how parameters are updated (SGD, AdamW).
 - Activation decides nonlinear transformation inside the network (ReLU, GELU, SiLU).
@@ -774,7 +774,7 @@ Code:
 prompt = f"Question: {query}\nContext: {context}"\nresponse = llm.generate(prompt)
 ```
 
-### Q1. Read papers efficiently
+### Q65. Read papers efficiently
 
 Read abstract/figures/conclusion first, then method and experiments with focused notes.
 
@@ -782,7 +782,7 @@ Explanation: Read abstract/figures/conclusion first, then method and experiments
 
 Example: An ablation shows 70% of the gain came from data cleaning, not architecture changes.
 
-### Q4. Reproducibility
+### Q66. Reproducibility
 
 Ability to replicate results using provided code/data/settings/seeds.
 
@@ -790,7 +790,7 @@ Explanation: Ability to replicate results using provided code/data/settings/seed
 
 Example: An ablation shows 70% of the gain came from data cleaning, not architecture changes.
 
-### Q10. Research contribution
+### Q67. Research contribution
 
 Clear problem framing, measurable improvement, and transparent analysis of tradeoffs.
 
@@ -798,7 +798,7 @@ Explanation: Clear problem framing, measurable improvement, and transparent anal
 
 Example: An ablation shows 70% of the gain came from data cleaning, not architecture changes.
 
-### Q10. Residual connection
+### Q68. Residual connection
 
 Skip connection easing optimization of deep networks.
 
@@ -806,7 +806,7 @@ Explanation: Skip connection easing optimization of deep networks. In real proje
 
 Example: Adding residual connections can let a deeper model converge where a plain stack fails.
 
-### Q13. Robustness in harsh environments
+### Q69. Robustness in harsh environments
 
 Train on diverse conditions, stress test extensively, and include fallback/alert logic.
 
@@ -814,7 +814,7 @@ Explanation: Train on diverse conditions, stress test extensively, and include f
 
 Example: For predictive maintenance, model output triggers a maintenance ticket only after safety checks.
 
-### Q9. Safety concerns
+### Q70. Safety concerns
 
 False negatives in critical events, automation bias, cyber risks, bad feedback loops, and weak fail-safe design.
 
@@ -822,7 +822,7 @@ Explanation: False negatives in critical events, automation bias, cyber risks, b
 
 Example: For predictive maintenance, model output triggers a maintenance ticket only after safety checks.
 
-### Q3. Seasonality
+### Q71. Seasonality
 
 Recurring periodic patterns.
 
@@ -830,7 +830,7 @@ Explanation: Recurring periodic patterns. In real projects, explain assumptions,
 
 Example: For weekly demand forecasting, include lag-7 and lag-14 features and evaluate with walk-forward splits.
 
-### Q3. Simulation + real data
+### Q72. Simulation + real data
 
 Pretrain on simulation, fine-tune/calibrate on real data, and domain-adapt carefully.
 
@@ -838,7 +838,7 @@ Explanation: Pretrain on simulation, fine-tune/calibrate on real data, and domai
 
 Example: For predictive maintenance, model output triggers a maintenance ticket only after safety checks.
 
-### Q7. Sliding window
+### Q73. Sliding window
 
 Transform sequential data into supervised samples with rolling input windows.
 
@@ -859,7 +859,7 @@ for i in range(window, len(series)):
     y_out.append(series[i])
 ```
 
-### Q1. Stationarity
+### Q74. Stationarity
 
 Statistical properties remain stable over time.
 
@@ -877,7 +877,7 @@ Code:
 import pandas as pd\n\ndf["lag_1"] = df["y"].shift(1)\ndf["lag_7"] = df["y"].shift(7)
 ```
 
-### Q8. Sudden data distribution change
+### Q75. Sudden data distribution change
 
 Trigger drift alerts, switch to safe mode, retrain/recalibrate quickly, and monitor recovery.
 
@@ -885,7 +885,7 @@ Explanation: Trigger drift alerts, switch to safe mode, retrain/recalibrate quic
 
 Example: If model and engineer disagree in a safety-critical case, route through evidence review and safe fallback.
 
-### Q3. System causes financial loss
+### Q76. System causes financial loss
 
 Stabilize system first (rollback/disable), communicate impact, perform RCA, and add controls.
 
@@ -893,7 +893,7 @@ Explanation: Stabilize system first (rollback/disable), communicate impact, perf
 
 Example: If model and engineer disagree in a safety-critical case, route through evidence review and safe fallback.
 
-### Q15. Teacher Forcing
+### Q77. Teacher Forcing
 
 Train decoder by feeding ground-truth previous token; speeds convergence but can create train-test mismatch.
 
@@ -912,7 +912,7 @@ tokens = tokenizer(query, return_tensors="pt")
 out = model.generate(**tokens, max_new_tokens=64)
 ```
 
-### 26. Train loss down, validation loss up
+### Q78. Train loss down, validation loss up
 
 Classic overfitting. Add regularization, better validation, early stopping, simpler model, or more representative data.
 
@@ -920,7 +920,7 @@ Explanation: Classic overfitting. Add regularization, better validation, early s
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q4. Trained long but random performance
+### Q79. Trained long but random performance
 
 Possible label mismatch, bug in preprocessing, leakage in validation logic, incorrect target mapping, or frozen gradients.
 
@@ -928,7 +928,7 @@ Explanation: Possible label mismatch, bug in preprocessing, leakage in validatio
 
 Example: A p-value below 0.05 suggests evidence against the null, but does not prove causality.
 
-### Q2. Training stable but very slow
+### Q80. Training stable but very slow
 
 Profile data pipeline, GPU kernels, communication; optimize batching, mixed precision, dataloader, kernels, and distributed setup.
 
@@ -936,7 +936,7 @@ Explanation: Profile data pipeline, GPU kernels, communication; optimize batchin
 
 Example: A p-value below 0.05 suggests evidence against the null, but does not prove causality.
 
-### Q5. Turn research into product
+### Q81. Turn research into product
 
 Simplify method, improve robustness, define SLAs, and build monitoring/deployment path.
 
@@ -944,7 +944,7 @@ Explanation: Simplify method, improve robustness, define SLAs, and build monitor
 
 Example: An ablation shows 70% of the gain came from data cleaning, not architecture changes.
 
-### Q7. Validate model in production
+### Q82. Validate model in production
 
 Shadow mode, canary rollout, KPI monitoring, drift detection, and rollback plans.
 
@@ -952,7 +952,7 @@ Explanation: Shadow mode, canary rollout, KPI monitoring, drift detection, and r
 
 Example: For predictive maintenance, model output triggers a maintenance ticket only after safety checks.
 
-### Q6. Validation metric fluctuates heavily
+### Q83. Validation metric fluctuates heavily
 
 High variance data/small validation set/distribution shift. Increase validation size, smooth reporting, use repeated runs.
 
@@ -960,7 +960,7 @@ Explanation: High variance data/small validation set/distribution shift. Increas
 
 Example: A p-value below 0.05 suggests evidence against the null, but does not prove causality.
 
-### Q6. Vanishing gradient
+### Q84. Vanishing gradient
 
 Gradients shrink through depth/time, slowing learning.
 
@@ -982,12 +982,12 @@ torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
 optimizer.step()
 ```
 
-### Q4. What are signs that warmup is too short or too long?
+### Q85. What are signs that warmup is too short or too long?
 Answer: Too short causes early instability/spikes; too long slows convergence and wastes steps.
 
 Example: If loss explodes in first 200 steps, increase warmup ratio.
 
-### 6. What is an Echo State Network (ESN)?
+### Q86. What is an Echo State Network (ESN)?
 
 ESN is reservoir computing: recurrent reservoir weights are fixed, only readout is trained. It captures temporal dynamics with very cheap training and can be effective in low-latency time-series setups.
 
@@ -995,7 +995,7 @@ Explanation: ESN is reservoir computing: recurrent reservoir weights are fixed, 
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q36. What is cosine similarity and when should we use it?
+### Q87. What is cosine similarity and when should we use it?
 
 Cosine similarity measures the angle-based similarity between two vectors, independent of their absolute magnitude.
 
@@ -1020,7 +1020,7 @@ print("sklearn cosine(a,b):", cosine_similarity(a, b)[0, 0])
 print("sklearn cosine(a,c):", cosine_similarity(a, c)[0, 0])
 ```
 
-### 12. What is regularization?
+### Q88. What is regularization?
 
 Techniques that reduce overfitting by constraining model complexity: L1/L2 penalties, dropout, early stopping, augmentation, and parameter sharing. L1 (`|w|`) promotes sparsity and can push some weights exactly to zero (feature selection effect). L2 (`w^2`) usually keeps weights non-zero but reduces their magnitude smoothly.
 
@@ -1028,7 +1028,7 @@ Explanation: Techniques that reduce overfitting by constraining model complexity
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q6. What makes research impactful
+### Q89. What makes research impactful
 
 Novelty + strong evidence + reproducibility + practical relevance.
 
@@ -1036,12 +1036,12 @@ Explanation: Novelty + strong evidence + reproducibility + practical relevance. 
 
 Example: An ablation shows 70% of the gain came from data cleaning, not architecture changes.
 
-### Q18. What should be in a model card for regulated environments?
+### Q90. What should be in a model card for regulated environments?
 Answer: Data scope, assumptions, subgroup metrics, risks, limitations, and approved use boundaries.
 
 Example: Include explicit “not-for-use” conditions and escalation policy.
 
-### Q25. When ARIMA is useful vs not useful
+### Q91. When ARIMA is useful vs not useful
 
 Useful for structured linear time-series with moderate data. Less suitable for highly nonlinear multivariate systems without feature engineering.
 
@@ -1062,7 +1062,7 @@ fit = ARIMA(series, order=(2, 1, 1)).fit()
 forecast = fit.forecast(steps=7)
 ```
 
-### 7. When choose a simpler model over a complex one?
+### Q92. When choose a simpler model over a complex one?
 
 When constraints are strict (latency, memory, explainability, maintainability) and simple models already meet target KPIs. Prefer simplest model that meets requirements with stable generalization.
 
@@ -1070,22 +1070,22 @@ Explanation: When constraints are strict (latency, memory, explainability, maint
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q2. When should you use cosine scheduler vs one-cycle scheduler?
+### Q93. When should you use cosine scheduler vs one-cycle scheduler?
 Answer: Cosine is great for steady long training; one-cycle is useful when you want fast convergence in limited epochs.
 
 Example: For quick fine-tuning jobs, one-cycle often reaches target sooner.
 
-### Q7. When to use GELU vs ReLU?
+### Q94. When to use GELU vs ReLU?
 Answer: GELU is common in Transformers; ReLU is simpler and often sufficient in many MLP/CNN settings.
 
 Example: LLM blocks usually default to GELU/SwiGLU variants.
 
-### Q6. Why do residual connections help optimization depth?
+### Q95. Why do residual connections help optimization depth?
 Answer: They preserve gradient flow and make deep stacks easier to optimize.
 
 Example: A 48-layer network converges with residuals but stalls without them.
 
-### Q2. Why L2 shrinks weights but not zero
+### Q96. Why L2 shrinks weights but not zero
 
 L2 applies continuous proportional shrinkage; unlike L1, it does not create sharp sparsity-inducing corners at zero. L1 can drive coefficients exactly to zero due to its absolute-value penalty, while L2 mostly reduces coefficient magnitudes without exact sparsity.
 
@@ -1109,7 +1109,7 @@ w_l2 = w * (1 - 2 * lr * lam)
 print(w_l1, w_l2)
 ```
 
-### Q11. Why normalization helps optimization
+### Q97. Why normalization helps optimization
 
 Improves conditioning, aligns feature scales, gives more stable gradient magnitudes.
 
@@ -1117,7 +1117,7 @@ Explanation: Improves conditioning, aligns feature scales, gives more stable gra
 
 Example: A p-value below 0.05 suggests evidence against the null, but does not prove causality.
 
-### Q4. Why normalization improves convergence mathematically
+### Q98. Why normalization improves convergence mathematically
 
 It reduces anisotropy of curvature (better condition number), so gradient steps are more uniformly effective.
 
@@ -1138,7 +1138,7 @@ mae = np.mean(np.abs(y_true - y_pred))
 print(mae)
 ```
 
-### 18. Working with domain experts
+### Q99. Working with domain experts
 
 Co-define goals, maintain shared vocabulary, translate ML outputs into domain terms, iterate through feedback loops, and align on measurable operational outcomes.
 
@@ -1146,7 +1146,7 @@ Explanation: Co-define goals, maintain shared vocabulary, translate ML outputs i
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q6. Works in lab but fails in field
+### Q100. Works in lab but fails in field
 
 Domain gap, noisy sensors, unseen operating regimes, and fragile assumptions.
 
@@ -1177,7 +1177,7 @@ clf = LogisticRegression().fit(X_cls, y_cls)
 reg = LinearRegression().fit(X_reg, y_reg)
 ```
 
-### Q11. Curse of dimensionality
+### Q2. Curse of dimensionality
 
 High-dimensional spaces become sparse; distance metrics degrade; data needs grow rapidly.
 
@@ -1185,7 +1185,7 @@ Explanation: High-dimensional spaces become sparse; distance metrics degrade; da
 
 Example: In a fraud dataset with only 2% positives, you prefer PR-AUC and F1 over raw accuracy.
 
-### Q8. Data leakage
+### Q3. Data leakage
 
 Any information from validation/test/future leaking into training, causing overly optimistic metrics.
 
@@ -1193,7 +1193,7 @@ Explanation: Any information from validation/test/future leaking into training, 
 
 Example: In a fraud dataset with only 2% positives, you prefer PR-AUC and F1 over raw accuracy.
 
-### Q7. Diagnose underfitting vs overfitting from logs
+### Q4. Diagnose underfitting vs overfitting from logs
 
 Underfitting: both train/val poor. Overfitting: train good, val poor with widening gap.
 
@@ -1201,7 +1201,7 @@ Explanation: Underfitting: both train/val poor. Overfitting: train good, val poo
 
 Example: A p-value below 0.05 suggests evidence against the null, but does not prove causality.
 
-### Q9. Feature scaling importance
+### Q5. Feature scaling importance
 
 Improves optimization stability/speed and prevents large-scale features from dominating.
 
@@ -1209,7 +1209,7 @@ Explanation: Improves optimization stability/speed and prevents large-scale feat
 
 Example: In a fraud dataset with only 2% positives, you prefer PR-AUC and F1 over raw accuracy.
 
-### Q1. L2-regularized linear regression update rule
+### Q6. L2-regularized linear regression update rule
 
 For loss `J(w)= (1/N)||Xw-y||^2 + lambda||w||^2`, gradient is `(2/N)X^T(Xw-y)+2lambda w`; update: `w <- w - eta * grad`.
 
@@ -1230,7 +1230,7 @@ z = (x - np.mean(x)) / (np.std(x) + 1e-8)
 print(z[:5])
 ```
 
-### Q1. Mixed-precision training loop (PyTorch)
+### Q7. Mixed-precision training loop (PyTorch)
 
 Use `torch.cuda.amp.autocast()` and `GradScaler` around forward/loss/backward/step/update.
 
@@ -1250,7 +1250,7 @@ from sklearn.metrics import precision_score, recall_score, f1_score
 print(precision_score(y_true, y_pred), recall_score(y_true, y_pred), f1_score(y_true, y_pred))
 ```
 
-### Q10. Normalization vs standardization
+### Q8. Normalization vs standardization
 
 Normalization scales to fixed range (often [0,1]); standardization centers mean 0 and std 1.
 
@@ -1258,7 +1258,7 @@ Explanation: Normalization scales to fixed range (often [0,1]); standardization 
 
 Example: In a fraud dataset with only 2% positives, you prefer PR-AUC and F1 over raw accuracy.
 
-### Q6. Precision vs recall vs F1
+### Q9. Precision vs recall vs F1
 
 Precision: correctness of positive predictions. Recall: coverage of actual positives. F1: harmonic mean balancing both.
 
@@ -1278,7 +1278,7 @@ from sklearn.metrics import precision_score, recall_score, f1_score
 print(precision_score(y_true, y_pred), recall_score(y_true, y_pred), f1_score(y_true, y_pred))
 ```
 
-### Q7. ROC-AUC
+### Q10. ROC-AUC
 
 Area under ROC curve; ranking quality across thresholds.
 
@@ -1299,7 +1299,7 @@ auc = roc_auc_score(y_true, y_prob)
 print(auc)
 ```
 
-### Q5. What is a loss function and how choose it?
+### Q11. What is a loss function and how choose it?
 
 A scalar objective measuring prediction error. Choose based on task semantics and error cost (CE for classification, MAE/RMSE/Huber for regression).
 
@@ -1352,7 +1352,7 @@ ce_torch = F.cross_entropy(logits, targets)
 print("torch CE:", ce_torch.item())
 ```
 
-### Q2. What is cross-validation?
+### Q12. What is cross-validation?
 
 Repeated train/validation splits (for example k-fold) to estimate generalization more reliably.
 
@@ -1374,7 +1374,7 @@ scores = cross_val_score(RandomForestClassifier(), X, y, cv=5, scoring="f1")
 print(scores.mean(), scores.std())
 ```
 
-### Q3. What is gradient descent?
+### Q13. What is gradient descent?
 
 Iterative optimization updating parameters opposite gradient direction to minimize loss.
 
@@ -1395,7 +1395,7 @@ for _ in range(100):
     w -= lr * grad
 ```
 
-### Q4. What is stochastic gradient descent?
+### Q14. What is stochastic gradient descent?
 
 Gradient descent using mini-batches; faster and noisier updates that often improve generalization.
 
@@ -1416,7 +1416,7 @@ opt = torch.optim.SGD(model.parameters(), lr=1e-2, momentum=0.9)
 opt.zero_grad(set_to_none=True); loss = criterion(model(x), y); loss.backward(); opt.step()
 ```
 
-### 4. What would you do if your model overfits?
+### Q15. What would you do if your model overfits?
 
 Check leakage and split correctness first. Then apply regularization, simplify architecture, early stopping, augmentation, and better feature engineering. Use cross-validation and monitor train/validation gap.
 
@@ -1426,7 +1426,7 @@ Example: You deployed a defect detector where precision improved from 0.78 to 0.
 
 ## =============Statistics==========
 
-### Q2. Autocorrelation
+### Q1. Autocorrelation
 
 Correlation of a series with lagged versions of itself.
 
@@ -1447,7 +1447,7 @@ lag_7_corr = pd.Series(series).autocorr(lag=7)
 print(lag_7_corr)
 ```
 
-### Q3. Bayesian inference
+### Q2. Bayesian inference
 
 Update prior beliefs with observed data to obtain posterior distribution.
 
@@ -1455,7 +1455,7 @@ Explanation: Update prior beliefs with observed data to obtain posterior distrib
 
 Example: A p-value below 0.05 suggests evidence against the null, but does not prove causality.
 
-### Q8. Bias-variance decomposition
+### Q3. Bias-variance decomposition
 
 Expected test error = irreducible noise + bias^2 + variance (for squared loss setting).
 
@@ -1463,7 +1463,7 @@ Explanation: Expected test error = irreducible noise + bias^2 + variance (for sq
 
 Example: With an ill-conditioned Hessian, optimization zig-zags until normalization or preconditioning is applied.
 
-### Q15. Calibration in ML
+### Q4. Calibration in ML
 
 Alignment between predicted probabilities and actual event frequencies.
 
@@ -1484,7 +1484,7 @@ stat, p = ttest_ind(a, b, equal_var=False)
 print(p)
 ```
 
-### Q30. Calibration vs Accuracy
+### Q5. Calibration vs Accuracy
 
 A model can be accurate but poorly calibrated; decision systems often need both.
 
@@ -1504,7 +1504,7 @@ from sklearn.calibration import calibration_curve
 frac_pos, mean_pred = calibration_curve(y_true, y_prob, n_bins=10)
 ```
 
-### Q8. Convex vs non-convex optimization
+### Q6. Convex vs non-convex optimization
 
 Convex has one global minimum structure; non-convex can have many local minima/saddles.
 
@@ -1525,7 +1525,7 @@ z = (x - np.mean(x)) / (np.std(x) + 1e-8)
 print(z[:5])
 ```
 
-### Q5. Covariance vs correlation
+### Q7. Covariance vs correlation
 
 Covariance measures joint variation (scale-dependent). Correlation is normalized covariance in [-1,1].
 
@@ -1533,7 +1533,7 @@ Explanation: Covariance measures joint variation (scale-dependent). Correlation 
 
 Example: A p-value below 0.05 suggests evidence against the null, but does not prove causality.
 
-### Q6. Eigenvalues and ESN stability
+### Q8. Eigenvalues and ESN stability
 
 Reservoir dynamics remain stable when effective spectral radius is controlled (typically < 1 in many settings).
 
@@ -1554,7 +1554,7 @@ mu, var = np.mean(x), np.var(x)
 print(mu, var)
 ```
 
-### Q4. Expectation and variance
+### Q9. Expectation and variance
 
 Expectation is average value; variance measures spread around expectation.
 
@@ -1562,7 +1562,7 @@ Explanation: Expectation is average value; variance measures spread around expec
 
 Example: A p-value below 0.05 suggests evidence against the null, but does not prove causality.
 
-### Q9. Hessian matrix
+### Q10. Hessian matrix
 
 Second-derivative matrix describing local curvature; helps understand conditioning and step behavior.
 
@@ -1583,7 +1583,7 @@ cov = np.cov(x, y)[0,1]; corr = np.corrcoef(x, y)[0,1]
 print(cov, corr)
 ```
 
-### Q7. Hypothesis testing
+### Q11. Hypothesis testing
 
 Framework to assess evidence against null via test statistic, p-value, and significance threshold.
 
@@ -1591,7 +1591,7 @@ Explanation: Framework to assess evidence against null via test statistic, p-val
 
 Example: A p-value below 0.05 suggests evidence against the null, but does not prove causality.
 
-### Q3. Ill-conditioned Hessian impact
+### Q12. Ill-conditioned Hessian impact
 
 Optimization zig-zags and converges slowly; sensitive to LR. Fix with normalization, preconditioning, adaptive optimizers.
 
@@ -1612,7 +1612,7 @@ rmse = np.sqrt(np.mean((y_true - y_pred) ** 2))
 print(rmse)
 ```
 
-### Q10. KL divergence and usage
+### Q13. KL divergence and usage
 
 Measure of distribution mismatch; used in VAEs, distillation, calibration, and drift comparison.
 
@@ -1633,7 +1633,7 @@ z = (x - np.mean(x)) / (np.std(x) + 1e-8)
 print(z[:5])
 ```
 
-### Q2. Maximum likelihood estimation
+### Q14. Maximum likelihood estimation
 
 Choose parameters maximizing likelihood of observed data.
 
@@ -1641,7 +1641,7 @@ Explanation: Choose parameters maximizing likelihood of observed data. In real p
 
 Example: A p-value below 0.05 suggests evidence against the null, but does not prove causality.
 
-### Q6. p-value
+### Q15. p-value
 
 Probability of observing data as extreme as current under null hypothesis; not probability that null is true.
 
@@ -1649,7 +1649,7 @@ Explanation: Probability of observing data as extreme as current under null hypo
 
 Example: A p-value below 0.05 suggests evidence against the null, but does not prove causality.
 
-### Q1. Probability vs likelihood
+### Q16. Probability vs likelihood
 
 Probability: data given parameters. Likelihood: parameters given observed data (up to proportionality).
 
@@ -1657,7 +1657,7 @@ Explanation: Probability: data given parameters. Likelihood: parameters given ob
 
 Example: A p-value below 0.05 suggests evidence against the null, but does not prove causality.
 
-### Q33. Robust Covariance / Elliptic Envelope
+### Q17. Robust Covariance / Elliptic Envelope
 
 Assumes approximately Gaussian structure and flags low-probability points via robust Mahalanobis-distance style modeling.
 
@@ -1665,7 +1665,7 @@ Explanation: Assumes approximately Gaussian structure and flags low-probability 
 
 Example: A p-value below 0.05 suggests evidence against the null, but does not prove causality.
 
-### Q12. Saddle point
+### Q18. Saddle point
 
 Critical point with mixed curvature directions; gradient near zero but not a minimum.
 
@@ -1673,7 +1673,7 @@ Explanation: Critical point with mixed curvature directions; gradient near zero 
 
 Example: A p-value below 0.05 suggests evidence against the null, but does not prove causality.
 
-### 3. What is the bias-variance tradeoff?
+### Q19. What is the bias-variance tradeoff?
 
 Bias is error from overly simple assumptions (underfitting). Variance is sensitivity to training data (overfitting). Better generalization requires balancing both through model capacity, regularization, data quality, and validation strategy.
 
@@ -1681,7 +1681,7 @@ Explanation: Bias is error from overly simple assumptions (underfitting). Varian
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q32. What is the manifold hypothesis?
+### Q20. What is the manifold hypothesis?
 
 The manifold hypothesis states that high-dimensional real-world data concentrates near low-dimensional manifolds.
 
@@ -1700,7 +1700,7 @@ pca = PCA(n_components=10).fit(X)
 print("explained_variance_ratio_sum:", pca.explained_variance_ratio_.sum())
 ```
 
-### Q7. Why spectral radius matters in recurrent nets
+### Q21. Why spectral radius matters in recurrent nets
 
 It governs memory decay/amplification over time and thus stability vs expressiveness.
 
@@ -1729,7 +1729,7 @@ messages = [{"role":"system","content":"Answer with grounded facts."},{"role":"u
 resp = llm.chat(messages)
 ```
 
-### Q5. Attention mechanism
+### Q2. Attention mechanism
 
 Computes weighted context from key-query similarity.
 
@@ -1749,7 +1749,7 @@ import torch.nn as nn
 cnn = nn.Sequential(nn.Conv2d(3, 16, 3, padding=1), nn.ReLU(), nn.MaxPool2d(2))
 ```
 
-### Q9. Batch normalization
+### Q3. Batch normalization
 
 Normalizes intermediate activations to stabilize/accelerate training.
 
@@ -1771,7 +1771,7 @@ bn = torch.nn.BatchNorm2d(64)
 y = bn(x)
 ```
 
-### Q16. BatchNorm vs LayerNorm (when to use which)
+### Q4. BatchNorm vs LayerNorm (when to use which)
 
 BatchNorm is usually best in CNN workloads with stable batch size. LayerNorm is preferred for Transformers and variable-length sequence models.
 
@@ -1792,7 +1792,7 @@ bn = nn.BatchNorm2d(64)        # CNN
 ln = nn.LayerNorm(512)         # Transformer hidden dim
 ```
 
-### Q20. Beam Search vs Sampling
+### Q5. Beam Search vs Sampling
 
 Beam search optimizes likely sequences (less diverse). Sampling gives more variety and is common for open-ended generation.
 
@@ -1812,7 +1812,7 @@ for _ in range(max_len):
     beams = expand_and_keep_topk(beams, k=4)
 ```
 
-### Q13. Causal masking
+### Q6. Causal masking
 
 Decoder attention mask that blocks future tokens so generation stays autoregressive.
 
@@ -1833,7 +1833,7 @@ T = 8
 mask = torch.triu(torch.ones(T, T), diagonal=1).bool()
 ```
 
-### Q1. CNN
+### Q7. CNN
 
 Neural network using convolutions for spatial feature extraction.
 
@@ -1853,7 +1853,7 @@ import torch.nn as nn
 act = nn.GELU()
 ```
 
-### Q14. Cross-attention
+### Q8. Cross-attention
 
 Decoder attends to encoder outputs in encoder-decoder models, enabling conditioned generation.
 
@@ -1872,7 +1872,7 @@ attn = torch.softmax(q @ k.transpose(-2, -1) / (q.size(-1) ** 0.5), dim=-1)
 out = attn @ v
 ```
 
-### Q26. Distillation
+### Q9. Distillation
 
 Train smaller student model to mimic teacher outputs; improves deployment efficiency.
 
@@ -1892,7 +1892,7 @@ student_logits = student(x)
 loss = 0.5 * ce(student_logits, y) + 0.5 * kl(student_logits, teacher_logits)
 ```
 
-### Q8. Dropout
+### Q10. Dropout
 
 Randomly zero activations during training to reduce co-adaptation.
 
@@ -1912,7 +1912,7 @@ import torch.nn as nn
 act = nn.GELU()
 ```
 
-### 27. Efficient LLM fine-tuning
+### Q11. Efficient LLM fine-tuning
 
 Use PEFT (LoRA/QLoRA), quantization, gradient checkpointing, accumulation, and high-quality curated data subsets.
 
@@ -1920,7 +1920,7 @@ Explanation: Use PEFT (LoRA/QLoRA), quantization, gradient checkpointing, accumu
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q4. Embedding
+### Q12. Embedding
 
 Dense vector representation of text/items capturing semantic similarity.
 
@@ -1941,7 +1941,7 @@ model = SentenceTransformer("all-MiniLM-L6-v2")
 vec = model.encode(["motor vibration anomaly"])[0]
 ```
 
-### Q11. Encoder vs decoder (LLM perspective)
+### Q13. Encoder vs decoder (LLM perspective)
 
 Encoder-focused models are strong for understanding tasks; decoder-focused models are strong for generation tasks.
 
@@ -1949,7 +1949,7 @@ Explanation: Encoder-focused models are strong for understanding tasks; decoder-
 
 Example: A support chatbot uses retrieval from approved docs to reduce hallucination in answers.
 
-### Q1. Encoder vs Decoder in Transformers
+### Q14. Encoder vs Decoder in Transformers
 
 An encoder builds contextual representations from input tokens (bidirectional context in encoder-only models). A decoder generates output token-by-token, using causal masking and optional cross-attention to encoder outputs.
 
@@ -1973,7 +1973,7 @@ messages = [{"role":"system","content":"Answer with grounded facts."},{"role":"u
 resp = llm.chat(messages)
 ```
 
-### Q12. Encoder-only vs decoder-only vs encoder-decoder
+### Q15. Encoder-only vs decoder-only vs encoder-decoder
 
 Encoder-only for classification/retrieval, decoder-only for text generation, encoder-decoder for sequence-to-sequence tasks.
 
@@ -1981,7 +1981,7 @@ Explanation: Encoder-only for classification/retrieval, decoder-only for text ge
 
 Example: A support chatbot uses retrieval from approved docs to reduce hallucination in answers.
 
-### Q5. ESN vs RNN
+### Q16. ESN vs RNN
 
 ESN trains only readout (faster), RNN trains full recurrence (more flexible but heavier).
 
@@ -2004,7 +2004,7 @@ for u in inputs:
     state = np.tanh(W @ state + u)
 ```
 
-### Q34. Euclidean distance vs geodesic distance on a manifold
+### Q17. Euclidean distance vs geodesic distance on a manifold
 
 Euclidean distance is straight-line in ambient space; geodesic distance follows the manifold surface.
 
@@ -2025,7 +2025,7 @@ D_geo = shortest_path(G, directed=False)
 print(D_geo.shape)  # approximate geodesic distance matrix
 ```
 
-### Q13. Fine-tuning
+### Q18. Fine-tuning
 
 Continue training pretrained model on target data.
 
@@ -2033,7 +2033,7 @@ Explanation: Continue training pretrained model on target data. In real projects
 
 Example: Adding residual connections can let a deeper model converge where a plain stack fails.
 
-### Q3. Fine-tuning vs prompt tuning
+### Q19. Fine-tuning vs prompt tuning
 
 Fine-tuning updates parameters; prompt tuning optimizes prompts/soft tokens with fewer trainable params.
 
@@ -2041,7 +2041,7 @@ Explanation: Fine-tuning updates parameters; prompt tuning optimizes prompts/sof
 
 Example: A support chatbot uses retrieval from approved docs to reduce hallucination in answers.
 
-### Q6. Hallucination
+### Q20. Hallucination
 
 Confident but incorrect generated content.
 
@@ -2049,7 +2049,7 @@ Explanation: Confident but incorrect generated content. In real projects, explai
 
 Example: A support chatbot uses retrieval from approved docs to reduce hallucination in answers.
 
-### Q33. How do we reduce dimensionality on manifold-like data?
+### Q21. How do we reduce dimensionality on manifold-like data?
 
 Use linear methods (PCA) when relationships are near-linear, and nonlinear methods (Isomap, UMAP, t-SNE) when geometry is curved.
 
@@ -2069,7 +2069,7 @@ Z = iso.fit_transform(X)
 print(Z.shape)  # 2D embedding
 ```
 
-### Q3. How do you choose weight decay for Transformers?
+### Q22. How do you choose weight decay for Transformers?
 Answer: Sweep small values (for example `0.01`, `0.05`, `0.1`) and select by validation metric and calibration.
 
 How to do it (practical):
@@ -2090,7 +2090,7 @@ for wd in [0.01, 0.05, 0.1]:
     # run short validation and log metric for each wd
 ```
 
-### Q11. How do you chunk documents for RAG effectively?
+### Q23. How do you chunk documents for RAG effectively?
 Answer: Chunk by semantic boundaries with overlap, then validate retrieval hit-rate before tuning generation.
 
 How to do it (practical):
@@ -2109,7 +2109,7 @@ Context:
 {context}")
 ```
 
-### Q17. In CNN blocks, what do numbers like `256, 256, 4` mean, and how do we calculate them?
+### Q24. In CNN blocks, what do numbers like `256, 256, 4` mean, and how do we calculate them?
 
 These numbers usually represent tensor shape. In image tasks this often means `Height, Width, Channels` (`H, W, C`).  
 In PyTorch, tensor order is typically `N, C, H, W` (batch, channels, height, width), so the same sample is read as `C=4, H=256, W=256`.
@@ -2136,7 +2136,7 @@ def conv_out(n, k=3, s=1, p=1, d=1):
 print(conv_out(256, 3, 1, 1), conv_out(256, 3, 2, 1))
 ```
 
-### Q22. KV Cache in LLM Inference
+### Q25. KV Cache in LLM Inference
 
 Caches previous keys/values to avoid recomputing attention over old tokens, reducing autoregressive latency.
 
@@ -2156,7 +2156,7 @@ past = out.past_key_values
 next_out = model(next_ids, past_key_values=past, use_cache=True)
 ```
 
-### Q15. Layer normalization
+### Q26. Layer normalization
 
 Normalizes activations across feature dimensions per sample, making training stable without relying on batch statistics.
 
@@ -2178,7 +2178,7 @@ ln = torch.nn.LayerNorm(512)
 y = ln(x)
 ```
 
-### Q1. LoRA
+### Q27. LoRA
 
 Low-rank adapters train small matrices instead of full model weights.
 
@@ -2199,7 +2199,7 @@ cfg = LoraConfig(r=8, lora_alpha=16, target_modules=["q_proj", "v_proj"])
 model = get_peft_model(base_model, cfg)
 ```
 
-### Q3. LSTM vs GRU
+### Q28. LSTM vs GRU
 
 Both gated RNNs; GRU is simpler/faster, LSTM has separate cell state and can be more expressive.
 
@@ -2219,7 +2219,7 @@ import torch.nn as nn
 cnn = nn.Sequential(nn.Conv2d(3, 16, 3, padding=1), nn.ReLU(), nn.MaxPool2d(2))
 ```
 
-### Q15. Perplexity
+### Q29. Perplexity
 
 `exp(cross_entropy)`; lower values indicate better average next-token prediction.
 
@@ -2240,7 +2240,7 @@ ppl = math.exp(cross_entropy_loss)
 print(ppl)
 ```
 
-### Q21. Positional Encoding vs Learned Positional Embeddings
+### Q30. Positional Encoding vs Learned Positional Embeddings
 
 Sinusoidal encoding is deterministic and extrapolation-friendly; learned positional embeddings can fit better in-domain but may extrapolate less.
 
@@ -2261,7 +2261,7 @@ model = SentenceTransformer("all-MiniLM-L6-v2")
 vec = model.encode(["motor vibration anomaly"])[0]
 ```
 
-### Q10. Pre-LN vs Post-LN Transformer blocks
+### Q31. Pre-LN vs Post-LN Transformer blocks
 
 - Pre-LN: normalize before sublayer, often easier optimization for deep transformers.
 - Post-LN: original formulation, can be less stable at scale.
@@ -2281,7 +2281,7 @@ messages = [{"role":"system","content":"Answer with grounded facts."},{"role":"u
 resp = llm.chat(messages)
 ```
 
-### Q24. Prompt Injection (RAG security)
+### Q32. Prompt Injection (RAG security)
 
 Adversarial instructions in retrieved content can override behavior. Defend with source filtering, policy checks, and tool-guardrails.
 
@@ -2304,7 +2304,7 @@ Context:
 {context}")
 ```
 
-### Q2. QLoRA
+### Q33. QLoRA
 
 LoRA over quantized base model for lower memory training.
 
@@ -2325,7 +2325,7 @@ bnb = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_compute_dtype="bfloat16")
 model = AutoModelForCausalLM.from_pretrained(model_id, quantization_config=bnb)
 ```
 
-### Q25. Quantization: PTQ vs QAT
+### Q34. Quantization: PTQ vs QAT
 
 - PTQ (post-training quantization): fast, minimal retraining.
 - QAT (quantization-aware training): better accuracy retention, more effort.
@@ -2345,7 +2345,7 @@ ptq_model = torch.quantization.quantize_dynamic(model, {torch.nn.Linear}, dtype=
 # QAT: prepare_qat -> train -> convert
 ```
 
-### Q8. RAG
+### Q35. RAG
 
 Retrieve relevant documents and condition generation on retrieved context.
 
@@ -2368,7 +2368,7 @@ Context:
 {context}")
 ```
 
-### Q7. Reduce hallucination
+### Q36. Reduce hallucination
 
 RAG, better prompts, constrained decoding, tool use, verification, and fine-tuning on reliable data.
 
@@ -2376,7 +2376,7 @@ Explanation: RAG, better prompts, constrained decoding, tool use, verification, 
 
 Example: A support chatbot uses retrieval from approved docs to reduce hallucination in answers.
 
-### Q2. RNN
+### Q37. RNN
 
 Sequence model with recurrent state passing through time.
 
@@ -2396,7 +2396,7 @@ import torch.nn as nn
 cnn = nn.Sequential(nn.Conv2d(3, 16, 3, padding=1), nn.ReLU(), nn.MaxPool2d(2))
 ```
 
-### Q14. Self-supervised learning
+### Q38. Self-supervised learning
 
 Learn representations from unlabeled data via pretext/objective construction.
 
@@ -2404,7 +2404,7 @@ Explanation: Learn representations from unlabeled data via pretext/objective con
 
 Example: Adding residual connections can let a deeper model converge where a plain stack fails.
 
-### Q19. Temperature in generation
+### Q39. Temperature in generation
 
 Scales logits before softmax. Low temperature makes output conservative; high temperature increases diversity.
 
@@ -2423,7 +2423,7 @@ scaled_logits = logits / 0.7
 probs = torch.softmax(scaled_logits, dim=-1)
 ```
 
-### Q5. Tokenization
+### Q40. Tokenization
 
 Convert text into model-consumable token IDs.
 
@@ -2444,7 +2444,7 @@ tok = AutoTokenizer.from_pretrained("bert-base-uncased")
 ids = tok("Hello world", return_tensors="pt")["input_ids"]
 ```
 
-### Q18. Top-k vs Top-p sampling
+### Q41. Top-k vs Top-p sampling
 
 - Top-k: sample from k highest-probability tokens.
 - Top-p: sample from smallest token set whose cumulative probability >= p.
@@ -2466,7 +2466,7 @@ logits = top_k_filter(logits, k=50)   # or top_p_filter(logits, p=0.9)
 next_token = sample(logits)
 ```
 
-### Q12. Transfer learning
+### Q42. Transfer learning
 
 Reuse pretrained representations for new tasks.
 
@@ -2474,7 +2474,7 @@ Explanation: Reuse pretrained representations for new tasks. In real projects, e
 
 Example: Adding residual connections can let a deeper model converge where a plain stack fails.
 
-### Q4. Transformer
+### Q43. Transformer
 
 Attention-based architecture enabling parallel sequence modeling.
 
@@ -2494,7 +2494,7 @@ import torch.nn as nn
 block = nn.Sequential(nn.Linear(256, 512), nn.ReLU(), nn.Linear(512, 256))
 ```
 
-### 24. Transformers vs RNN/ESN
+### Q44. Transformers vs RNN/ESN
 
 Transformers handle long-range dependencies and parallelize well. RNN/ESN can still win in low-latency, low-resource streaming settings.
 
@@ -2502,7 +2502,7 @@ Explanation: Transformers handle long-range dependencies and parallelize well. R
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q9. Vector database
+### Q45. Vector database
 
 Index/store embeddings for similarity search at scale.
 
@@ -2520,7 +2520,7 @@ Code:
 docs = retriever.get_relevant_documents(query)\ncontext = "\n".join(d.page_content for d in docs[:3])\nanswer = llm.generate(context)
 ```
 
-### Q11. Weight Decay vs Dropout
+### Q46. Weight Decay vs Dropout
 
 - Weight decay constrains parameter magnitude.
 - Dropout stochastically removes activations during training.
@@ -2540,12 +2540,12 @@ Code:
 prompt = f"Question: {query}\nContext: {context}"\nresponse = llm.generate(prompt)
 ```
 
-### Q13. What are common causes of hallucination in long-context prompts?
+### Q47. What are common causes of hallucination in long-context prompts?
 Answer: Noisy context, contradictory sources, weak instructions, and over-trust in low-quality retrieved text.
 
 Example: Mixing outdated and current manuals leads to fabricated synthesis.
 
-### Q31. What is a manifold in machine learning?
+### Q48. What is a manifold in machine learning?
 
 A manifold is a lower-dimensional structure embedded in a higher-dimensional space. Many real datasets lie near such structures instead of filling the full ambient space.
 
@@ -2563,7 +2563,7 @@ X, _ = make_swiss_roll(n_samples=2000, noise=0.05, random_state=42)  # classic m
 print(X.shape)  # (2000, 3) points lying on a 2D manifold in 3D
 ```
 
-### Q3. What is causal masking?
+### Q49. What is causal masking?
 
 A decoder mask that prevents each token from attending to future tokens, preserving autoregressive generation.
 
@@ -2584,7 +2584,7 @@ T = 8
 mask = torch.triu(torch.ones(T, T), diagonal=1).bool()
 ```
 
-### Q4. What is cross-attention?
+### Q50. What is cross-attention?
 
 In encoder-decoder models, decoder queries attend to encoder keys/values so output is conditioned on source input.
 
@@ -2603,7 +2603,7 @@ attn = torch.softmax(q @ k.transpose(-2, -1) / (q.size(-1) ** 0.5), dim=-1)
 out = attn @ v
 ```
 
-### Q35. What is manifold regularization?
+### Q51. What is manifold regularization?
 
 Manifold regularization enforces similar predictions for nearby points on the data manifold.
 
@@ -2625,7 +2625,7 @@ L = D - W  # graph Laplacian
 # manifold penalty example for prediction vector f: penalty = f.T @ L @ f
 ```
 
-### Q9. What is RMSNorm and how is it different from LayerNorm?
+### Q52. What is RMSNorm and how is it different from LayerNorm?
 Answer: RMSNorm scales by root-mean-square only (no mean subtraction), often cheaper and stable in LLMs.
 
 How to do it (practical):
@@ -2643,12 +2643,12 @@ ln = torch.nn.LayerNorm(512)
 y = ln(x)
 ```
 
-### Q8. What is SwiGLU and why used in modern LLMs?
+### Q53. What is SwiGLU and why used in modern LLMs?
 Answer: SwiGLU is a gated feed-forward activation that often improves quality/efficiency tradeoffs.
 
 Example: Many modern decoder architectures replace plain FFN with gated variants.
 
-### Q8. When BatchNorm can fail
+### Q54. When BatchNorm can fail
 
 Very small batches, non-iid batch composition, or highly variable sequence workloads can make batch statistics noisy.
 
@@ -2670,12 +2670,12 @@ bn = torch.nn.BatchNorm2d(64)
 y = bn(x)
 ```
 
-### Q10. When should you use Mixture-of-Experts (MoE)?
+### Q55. When should you use Mixture-of-Experts (MoE)?
 Answer: Use MoE when you need larger model capacity without proportional per-token compute cost.
 
 Example: Serving constraints allow sparse expert routing but not dense full-model execution.
 
-### Q9. Why cross-entropy over MSE in classification
+### Q56. Why cross-entropy over MSE in classification
 
 Cross-entropy aligns with probabilistic likelihood and gives stronger gradients for confident wrong predictions.
 
@@ -2696,7 +2696,7 @@ stat, p = ttest_ind(a, b, equal_var=False)
 print(p)
 ```
 
-### Q9. Why LayerNorm in Transformers
+### Q57. Why LayerNorm in Transformers
 
 It is independent of batch statistics and stable for sequence modeling and distributed setups with varying micro-batches.
 
@@ -2718,7 +2718,7 @@ ln = torch.nn.LayerNorm(512)
 y = ln(x)
 ```
 
-### Q11. Why transformers are powerful
+### Q58. Why transformers are powerful
 
 Long-range dependency modeling + parallelization + scaling behavior.
 
@@ -2740,7 +2740,7 @@ block = nn.Sequential(nn.Linear(256, 512), nn.ReLU(), nn.Linear(512, 256))
 
 ## ============ Digital Twin===========
 
-### 29. AI in industrial systems
+### Q1. AI in industrial systems
 
 Typical use-cases: anomaly detection, predictive maintenance, optimization, quality control, digital twins, and decision support.
 
@@ -2748,7 +2748,7 @@ Explanation: Typical use-cases: anomaly detection, predictive maintenance, optim
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q5. Anomaly detection in sensor data
+### Q2. Anomaly detection in sensor data
 
 Combine statistical baselines + ML detectors + rule checks, with human-in-the-loop triage.
 
@@ -2767,7 +2767,7 @@ if drift_score > 0.2:
     mode = "safe_mode"
 ```
 
-### Q1. Digital twin
+### Q3. Digital twin
 
 Virtual representation of physical assets/processes continuously updated from data.
 
@@ -2775,7 +2775,7 @@ Explanation: Virtual representation of physical assets/processes continuously up
 
 Example: For predictive maintenance, model output triggers a maintenance ticket only after safety checks.
 
-### Q6. Ensure physical consistency
+### Q4. Ensure physical consistency
 
 Constraint-aware training, physics-informed losses, and post-hoc rule validation.
 
@@ -2783,7 +2783,7 @@ Explanation: Constraint-aware training, physics-informed losses, and post-hoc ru
 
 Example: For predictive maintenance, model output triggers a maintenance ticket only after safety checks.
 
-### Q36. Foundation models for industrial anomaly detection
+### Q5. Foundation models for industrial anomaly detection
 
 Pretrained multi-modal or time-series foundation models can provide stronger representations, then lightweight heads/adapters detect anomalies with less labeled data.
 
@@ -2804,7 +2804,7 @@ z = (x - np.mean(x)) / (np.std(x) + 1e-8)
 print(z[:5])
 ```
 
-### Q21. How do you detect concept drift vs sensor fault?
+### Q6. How do you detect concept drift vs sensor fault?
 Answer: Compare multi-sensor consistency and reference checks; drift affects patterns broadly, sensor faults are localized.
 
 How to do it (practical):
@@ -2824,7 +2824,7 @@ sensor_fault = (abs(z_a) > 3.0) and (abs(z_b) < 1.0)
 print("sensor_fault:", sensor_fault)
 ```
 
-### Q12. Optimize industrial processes
+### Q7. Optimize industrial processes
 
 Use forecasting + optimization + control under operational constraints.
 
@@ -2832,7 +2832,7 @@ Explanation: Use forecasting + optimization + control under operational constrai
 
 Example: For predictive maintenance, model output triggers a maintenance ticket only after safety checks.
 
-### 30. Physical consistency in AI models
+### Q8. Physical consistency in AI models
 
 Enforce constraints in loss/architecture, validate against known laws, and combine model outputs with simulation/domain checks.
 
@@ -2840,7 +2840,7 @@ Explanation: Enforce constraints in loss/architecture, validate against known la
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q2. Physically impossible model result
+### Q9. Physically impossible model result
 
 Add constraint checks, retrain with physics-informed loss/features, and block unsafe predictions in serving layer.
 
@@ -2848,7 +2848,7 @@ Explanation: Add constraint checks, retrain with physics-informed loss/features,
 
 Example: If model and engineer disagree in a safety-critical case, route through evidence review and safe fallback.
 
-### Q4. Predictive maintenance
+### Q10. Predictive maintenance
 
 Forecast failure risk/RUL from sensor history to schedule interventions proactively.
 
@@ -2864,7 +2864,7 @@ Explanation: Train fast approximator for expensive simulation. In real projects,
 
 Example: For predictive maintenance, model output triggers a maintenance ticket only after safety checks.
 
-### Q10. Unreliable sensors
+### Q12. Unreliable sensors
 
 Imputation, sensor health scoring, redundancy, robust filtering, and uncertainty-aware outputs.
 
@@ -2882,7 +2882,7 @@ Explanation: Review evidence together, compare with sensor history/physics check
 
 Example: If model and engineer disagree in a safety-critical case, route through evidence review and safe fallback.
 
-### 31. AI vs physics-model conflict
+### Q2. AI vs physics-model conflict
 
 Investigate both sides: data quality, model assumptions, sensor errors, boundary conditions. Use real-world evidence and hybrid modeling when useful.
 
@@ -2890,7 +2890,7 @@ Explanation: Investigate both sides: data quality, model assumptions, sensor err
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q6. Communicating to non-technical teams
+### Q3. Communicating to non-technical teams
 
 Use simple language, visuals, and business-impact framing.
 
@@ -2898,7 +2898,7 @@ Explanation: Use simple language, visuals, and business-impact framing. In real 
 
 Example: Two teams disagree on roadmap priority; you align on impact, risk, and effort criteria.
 
-### Q10. Debug production failure
+### Q4. Debug production failure
 
 Triage impact, isolate component, rollback if needed, run RCA, and patch with tests.
 
@@ -2906,7 +2906,7 @@ Explanation: Triage impact, isolate component, rollback if needed, run RCA, and 
 
 Example: In streaming anomaly detection, hysteresis reduces noisy alert flapping.
 
-### 15. Describe a model failure and recovery
+### Q5. Describe a model failure and recovery
 
 Common pattern: model strong offline, weak online due to distribution shift. Diagnose with data and feature drift analysis, fix preprocessing parity, retrain with representative production slices, and add monitoring/alerts.
 
@@ -2914,7 +2914,7 @@ Explanation: Common pattern: model strong offline, weak online due to distributi
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q7. Difficult decision making
+### Q6. Difficult decision making
 
 Define constraints, evaluate options quantitatively, document rationale, and monitor outcomes.
 
@@ -2922,7 +2922,7 @@ Explanation: Define constraints, evaluate options quantitatively, document ratio
 
 Example: Two teams disagree on roadmap priority; you align on impact, risk, and effort criteria.
 
-### Q8. Ensuring team productivity
+### Q7. Ensuring team productivity
 
 Clear goals, unblock dependencies early, and enforce lightweight execution rituals.
 
@@ -2930,7 +2930,7 @@ Explanation: Clear goals, unblock dependencies early, and enforce lightweight ex
 
 Example: Two teams disagree on roadmap priority; you align on impact, risk, and effort criteria.
 
-### Q9. Giving feedback
+### Q8. Giving feedback
 
 Specific, timely, respectful, behavior-focused, with clear next actions.
 
@@ -2938,7 +2938,7 @@ Explanation: Specific, timely, respectful, behavior-focused, with clear next act
 
 Example: Two teams disagree on roadmap priority; you align on impact, risk, and effort criteria.
 
-### Q1. Handling conflict
+### Q9. Handling conflict
 
 Clarify goals, align on facts, discuss tradeoffs, and converge on decision criteria.
 
@@ -2946,7 +2946,7 @@ Explanation: Clarify goals, align on facts, discuss tradeoffs, and converge on d
 
 Example: Two teams disagree on roadmap priority; you align on impact, risk, and effort criteria.
 
-### Q3. Handling failure
+### Q10. Handling failure
 
 Acknowledge quickly, analyze root cause, communicate transparently, and prevent recurrence.
 
@@ -2954,7 +2954,7 @@ Explanation: Acknowledge quickly, analyze root cause, communicate transparently,
 
 Example: Two teams disagree on roadmap priority; you align on impact, risk, and effort criteria.
 
-### Q10. Leadership style
+### Q11. Leadership style
 
 Context-driven, collaborative, quality-focused, and outcome-oriented.
 
@@ -2962,7 +2962,7 @@ Explanation: Context-driven, collaborative, quality-focused, and outcome-oriente
 
 Example: Two teams disagree on roadmap priority; you align on impact, risk, and effort criteria.
 
-### Q2. Mentoring juniors
+### Q12. Mentoring juniors
 
 Set clear expectations, pair regularly, provide actionable feedback, and grow ownership gradually.
 
@@ -2970,7 +2970,7 @@ Explanation: Set clear expectations, pair regularly, provide actionable feedback
 
 Example: Two teams disagree on roadmap priority; you align on impact, risk, and effort criteria.
 
-### Q4. Prioritizing multiple deadlines
+### Q13. Prioritizing multiple deadlines
 
 Use impact-risk-effort framework and align with stakeholders on sequence.
 
@@ -2978,7 +2978,7 @@ Explanation: Use impact-risk-effort framework and align with stakeholders on seq
 
 Example: Two teams disagree on roadmap priority; you align on impact, risk, and effort criteria.
 
-### Q5. Unclear requirements
+### Q14. Unclear requirements
 
 Run discovery, define assumptions, propose milestones, and iterate with feedback.
 
@@ -2988,7 +2988,7 @@ Example: Two teams disagree on roadmap priority; you align on impact, risk, and 
 
 ## ===========Deployment===============
 
-### 10. Challenges in deploying AI systems
+### Q1. Challenges in deploying AI systems
 
 Data quality/drift, train-serving skew, latency/scalability limits, integration complexity, observability gaps, and ongoing maintenance/retraining burden.
 
@@ -2996,7 +2996,7 @@ Explanation: Data quality/drift, train-serving skew, latency/scalability limits,
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q7. Deploy in 2 days
+### Q2. Deploy in 2 days
 
 Use simplest reliable baseline, strict guardrails, shadow/canary rollout, and clear rollback.
 
@@ -3004,7 +3004,7 @@ Explanation: Use simplest reliable baseline, strict guardrails, shadow/canary ro
 
 Example: If model and engineer disagree in a safety-critical case, route through evidence review and safe fallback.
 
-### Q1. Design real-time anomaly detection
+### Q3. Design real-time anomaly detection
 
 Streaming ingestion -> feature extraction -> low-latency model -> thresholding -> alerting -> feedback loop.
 
@@ -3023,7 +3023,7 @@ if drift_score > 0.2:
     mode = "safe_mode"
 ```
 
-### 14. Designing real-time AI systems
+### Q4. Designing real-time AI systems
 
 Define latency SLOs first, then optimize model (quantization/pruning/distillation), serving path (batching, caching, async pipelines), and infrastructure (edge/cloud split). Balance accuracy-latency-cost.
 
@@ -3031,7 +3031,7 @@ Explanation: Define latency SLOs first, then optimize model (quantization/prunin
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q10. Efficient LLM deployment
+### Q5. Efficient LLM deployment
 
 Quantization, distillation, KV-cache, batching, speculative decoding, optimized serving stack.
 
@@ -3039,7 +3039,7 @@ Explanation: Quantization, distillation, KV-cache, batching, speculative decodin
 
 Example: A support chatbot uses retrieval from approved docs to reduce hallucination in answers.
 
-### Q4. Ensure 24/7 reliability
+### Q6. Ensure 24/7 reliability
 
 Redundancy, health checks, autoscaling, SLO monitoring, and on-call runbooks.
 
@@ -3047,7 +3047,7 @@ Explanation: Redundancy, health checks, autoscaling, SLO monitoring, and on-call
 
 Example: In streaming anomaly detection, hysteresis reduces noisy alert flapping.
 
-### Q3. Fallback if AI fails
+### Q7. Fallback if AI fails
 
 Rule-based backup, safe defaults, circuit breaker, and human escalation.
 
@@ -3055,7 +3055,7 @@ Explanation: Rule-based backup, safe defaults, circuit breaker, and human escala
 
 Example: In streaming anomaly detection, hysteresis reduces noisy alert flapping.
 
-### Q5. Handle streaming data
+### Q8. Handle streaming data
 
 Windowed processing, out-of-order handling, watermarking, and state management.
 
@@ -3063,7 +3063,7 @@ Explanation: Windowed processing, out-of-order handling, watermarking, and state
 
 Example: In streaming anomaly detection, hysteresis reduces noisy alert flapping.
 
-### Q19. How do you define rollback criteria before deployment?
+### Q9. How do you define rollback criteria before deployment?
 Answer: Predefine hard thresholds for latency, error rate, and business KPI regression.
 
 How to do it (practical):
@@ -3082,7 +3082,7 @@ rollback = (
 print("rollback:", rollback)
 ```
 
-### Q17. How do you run safe canary deployment for ML models?
+### Q10. How do you run safe canary deployment for ML models?
 Answer: Start with small traffic percentage, compare against baseline, and auto-rollback on threshold violations.
 
 How to do it (practical):
@@ -3103,7 +3103,7 @@ if not candidate_ok:
     traffic = {"baseline": 1.0, "candidate": 0.0}  # rollback
 ```
 
-### Q2. Meet strict latency constraints
+### Q11. Meet strict latency constraints
 
 Optimize model size, runtime, batching, hardware placement, and avoid slow synchronous dependencies.
 
@@ -3122,7 +3122,7 @@ if drift_score > 0.2:
     mode = "safe_mode"
 ```
 
-### Q8. Real-time deployment
+### Q12. Real-time deployment
 
 Low-latency model, streaming pipeline, bounded inference path, and resilient serving.
 
@@ -3130,7 +3130,7 @@ Explanation: Low-latency model, streaming pipeline, bounded inference path, and 
 
 Example: For predictive maintenance, model output triggers a maintenance ticket only after safety checks.
 
-### Q14. Scale AI in large systems
+### Q13. Scale AI in large systems
 
 Standardized MLOps, shared feature/model services, automated monitoring/retraining.
 
@@ -3138,7 +3138,7 @@ Explanation: Standardized MLOps, shared feature/model services, automated monito
 
 Example: For predictive maintenance, model output triggers a maintenance ticket only after safety checks.
 
-### Q6. Scale to millions of points
+### Q14. Scale to millions of points
 
 Partitioned pipelines, distributed stream processors, and efficient online feature stores.
 
@@ -3146,7 +3146,7 @@ Explanation: Partitioned pipelines, distributed stream processors, and efficient
 
 Example: In streaming anomaly detection, hysteresis reduces noisy alert flapping.
 
-### Q29. Throughput vs Latency
+### Q15. Throughput vs Latency
 
 Throughput is requests per second; latency is time per request. Optimizing one may hurt the other.
 
@@ -3166,7 +3166,7 @@ latency_ms = (elapsed_seconds / total_requests) * 1000
 print(throughput_rps, latency_ms)
 ```
 
-### Q2. Why LLMs scale with data
+### Q16. Why LLMs scale with data
 
 Large models with large diverse data learn transferable representations and in-context capabilities.
 
@@ -3176,7 +3176,7 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 
 ## ===========Monitoring===============
 
-### Q18. Anomaly detection metrics
+### Q1. Anomaly detection metrics
 
 Use Precision, Recall, F1, PR-AUC, ROC-AUC, false alarm rate, detection delay, and event-level recall (not only point-level accuracy).
 
@@ -3197,7 +3197,7 @@ stat, p = ttest_ind(a, b, equal_var=False)
 print(p)
 ```
 
-### Q26. ARIMA for anomaly detection
+### Q2. ARIMA for anomaly detection
 
 Fit ARIMA, compute residuals, and flag anomalies where residuals exceed statistically justified bounds.
 
@@ -3218,7 +3218,7 @@ fit = ARIMA(series, order=(2, 1, 1)).fit()
 forecast = fit.forecast(steps=7)
 ```
 
-### Q27. Autoencoder-based anomaly detection
+### Q3. Autoencoder-based anomaly detection
 
 Train an autoencoder on normal data only. At inference, high reconstruction error indicates potential anomaly.
 
@@ -3237,7 +3237,7 @@ recon = autoencoder(x)
 score = ((x - recon) ** 2).mean(dim=1)
 ```
 
-### Q30. CNN-based anomaly detection for signals
+### Q4. CNN-based anomaly detection for signals
 
 1D-CNNs are effective for vibration/sensor windows, capturing local temporal motifs and abrupt pattern changes.
 
@@ -3258,7 +3258,7 @@ z = (x - np.mean(x)) / (np.std(x) + 1e-8)
 print(z[:5])
 ```
 
-### Q17. Common anomaly detection methods
+### Q5. Common anomaly detection methods
 
 Z-score/IQR rules, Gaussian models, Isolation Forest, One-Class SVM, Autoencoders, and time-series residual-based detectors.
 
@@ -3279,7 +3279,7 @@ mu, var = np.mean(x), np.var(x)
 print(mu, var)
 ```
 
-### Q23. CUSUM vs EWMA
+### Q6. CUSUM vs EWMA
 
 CUSUM is strong for fast detection of small sustained shifts; EWMA smooths noise and tracks gradual drift trends effectively.
 
@@ -3307,7 +3307,7 @@ Explanation: Risk-based thresholds, precision/recall tradeoffs, dynamic baseline
 
 Example: In streaming anomaly detection, hysteresis reduces noisy alert flapping.
 
-### Q35. Event-based vs point-based anomaly evaluation
+### Q8. Event-based vs point-based anomaly evaluation
 
 Point metrics score individual timestamps; event metrics score whether an anomalous event window was detected with acceptable delay.
 
@@ -3328,7 +3328,7 @@ mae = np.mean(np.abs(y_true - y_pred))
 print(mae)
 ```
 
-### Q29. GAN-based anomaly detection (for example AnoGAN-style)
+### Q9. GAN-based anomaly detection (for example AnoGAN-style)
 
 Train a GAN on normal data distribution and use generator/discriminator mismatch or reconstruction in latent space as anomaly score.
 
@@ -3348,7 +3348,7 @@ x_hat = generator(z)
 score = ((x - x_hat) ** 2).mean()
 ```
 
-### Q8. Handle delayed data
+### Q10. Handle delayed data
 
 Buffering, event-time processing, late-arrival correction, and re-computation policies.
 
@@ -3356,7 +3356,7 @@ Explanation: Buffering, event-time processing, late-arrival correction, and re-c
 
 Example: In streaming anomaly detection, hysteresis reduces noisy alert flapping.
 
-### Q24. How do you evaluate anomaly detector lead time?
+### Q11. How do you evaluate anomaly detector lead time?
 Answer: Measure how early an alert appears before confirmed event onset, plus false alarm burden.
 
 How to do it (practical):
@@ -3372,7 +3372,7 @@ is_useful = lead_time_minutes >= 30 and false_alarm_rate <= 0.05
 print("lead_time_minutes:", lead_time_minutes, "useful:", is_useful)
 ```
 
-### 11. How do you handle data drift?
+### Q12. How do you handle data drift?
 
 Monitor feature distributions and performance drift (PSI/KS/population shifts). Identify root cause, retrain with fresh representative data, recalibrate thresholds, and automate drift-response workflows.
 
@@ -3380,12 +3380,12 @@ Explanation: Monitor feature distributions and performance drift (PSI/KS/populat
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q23. How do you set alert hysteresis to avoid alarm flapping?
+### Q13. How do you set alert hysteresis to avoid alarm flapping?
 Answer: Use separate on/off thresholds so alerts do not toggle rapidly around one boundary.
 
 Example: Trigger at `0.8`, clear only when score falls below `0.6`.
 
-### Q5. How do you tune gradient clipping threshold?
+### Q14. How do you tune gradient clipping threshold?
 Answer: Start near `1.0`, inspect gradient norms, and adjust so clipping happens occasionally, not every step.
 
 How to do it (practical):
@@ -3404,7 +3404,7 @@ optimizer.step()
 print(float(grad_norm))
 ```
 
-### Q9. Monitoring pipeline
+### Q15. Monitoring pipeline
 
 Monitor input quality, drift, model outputs, latency, errors, and business KPIs.
 
@@ -3412,7 +3412,7 @@ Explanation: Monitor input quality, drift, model outputs, latency, errors, and b
 
 Example: In streaming anomaly detection, hysteresis reduces noisy alert flapping.
 
-### Q19. Point anomaly vs contextual anomaly vs collective anomaly
+### Q16. Point anomaly vs contextual anomaly vs collective anomaly
 
 Point anomaly: single unusual sample. Contextual anomaly: unusual under context (time/season). Collective anomaly: abnormal pattern over a sequence/window.
 
@@ -3433,7 +3433,7 @@ rmse = np.sqrt(np.mean((y_true - y_pred) ** 2))
 print(rmse)
 ```
 
-### Q16. Statistical anomaly detection (what is it?)
+### Q17. Statistical anomaly detection (what is it?)
 
 Detects data points or sequences that deviate significantly from expected statistical behavior (distribution, trend, or temporal pattern).
 
@@ -3454,7 +3454,7 @@ z = (x - np.mean(x)) / (np.std(x) + 1e-8)
 print(z[:5])
 ```
 
-### Q20. Threshold selection for anomaly scores
+### Q18. Threshold selection for anomaly scores
 
 Set thresholds using validation data, percentile rules, extreme value theory, or cost-based optimization for false positive vs false negative tradeoff.
 
@@ -3475,7 +3475,7 @@ mae = np.mean(np.abs(y_true - y_pred))
 print(mae)
 ```
 
-### Q21. What is CUSUM?
+### Q19. What is CUSUM?
 
 CUSUM (Cumulative Sum Control Chart) is a change detection method that accumulates small deviations from a target mean to detect distribution shifts quickly.
 
@@ -3500,7 +3500,7 @@ Answer: Input quality, drift, output distribution, latency percentiles, error ra
 
 Example: A concise dashboard can still catch most production regressions early.
 
-### Q28. Why autoencoders work for anomaly detection
+### Q21. Why autoencoders work for anomaly detection
 
 They learn a compact manifold of normal patterns; out-of-distribution inputs reconstruct poorly.
 
@@ -3541,7 +3541,7 @@ if s_pos > h:
 
 ## ===========Pytorch===============
 
-### 25. `model.eval()` vs `torch.no_grad()`
+### Q1. `model.eval()` vs `torch.no_grad()`
 
 `model.eval()` changes layer behavior (dropout/batchnorm). `torch.no_grad()` disables gradient tracking. Use both in inference.
 
@@ -3549,7 +3549,7 @@ Explanation: `model.eval()` changes layer behavior (dropout/batchnorm). `torch.n
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q3. `model.train()` vs `model.eval()`
+### Q2. `model.train()` vs `model.eval()`
 
 `train()` enables training-time behavior (dropout/bn updates). `eval()` freezes inference behavior.
 
@@ -3557,7 +3557,7 @@ Explanation: `train()` enables training-time behavior (dropout/bn updates). `eva
 
 Example: If training is slow, profile dataloader wait time before changing model architecture.
 
-### Q4. `torch.no_grad()`
+### Q3. `torch.no_grad()`
 
 Context manager disabling gradient tracking to save memory/compute.
 
@@ -3565,7 +3565,7 @@ Explanation: Context manager disabling gradient tracking to save memory/compute.
 
 Example: If training is slow, profile dataloader wait time before changing model architecture.
 
-### Q1. Autograd in PyTorch
+### Q4. Autograd in PyTorch
 
 Automatic differentiation engine building computational graph and computing gradients via backprop.
 
@@ -3636,7 +3636,7 @@ opt = torch.optim.SGD([w], lr=0.1)
 opt.step()
 ```
 
-### Q11. Checkpointing
+### Q7. Checkpointing
 
 Save model/optimizer/scheduler/scaler states for recovery and reproducibility.
 
@@ -3656,7 +3656,7 @@ import torch
 torch.save({"model": model.state_dict(), "optimizer": optimizer.state_dict(), "epoch": epoch}, "ckpt.pt")
 ```
 
-### Q2. Computational graph
+### Q8. Computational graph
 
 Directed graph of tensor operations used to compute outputs and gradients.
 
@@ -3664,7 +3664,7 @@ Explanation: Directed graph of tensor operations used to compute outputs and gra
 
 Example: If training is slow, profile dataloader wait time before changing model architecture.
 
-### Q5. DataLoader
+### Q9. DataLoader
 
 Batches, shuffles, parallel-loads dataset samples for efficient training loops.
 
@@ -3684,7 +3684,7 @@ from torch.utils.data import DataLoader
 loader = DataLoader(dataset, batch_size=64, shuffle=True, num_workers=4, pin_memory=True)
 ```
 
-### Q13. DataParallel
+### Q10. DataParallel
 
 Single-process multi-GPU split with central gather; simpler but less scalable.
 
@@ -3704,7 +3704,7 @@ import torch.nn as nn
 model = nn.DataParallel(model)
 ```
 
-### 21. DataParallel vs DistributedDataParallel
+### Q11. DataParallel vs DistributedDataParallel
 
 `DataParallel` is easier but slower due to central bottleneck. `DistributedDataParallel` is preferred for real workloads: better scaling, less overhead, multi-node ready.
 
@@ -3732,7 +3732,7 @@ import torch.nn.parallel as p
 model = p.DistributedDataParallel(model, device_ids=[local_rank])
 ```
 
-### Q9. Debug NaNs in training
+### Q13. Debug NaNs in training
 
 Check inputs/labels, LR, loss scale, division/log operations, exploding grads; enable anomaly detection.
 
@@ -3740,7 +3740,7 @@ Explanation: Check inputs/labels, LR, loss scale, division/log operations, explo
 
 Example: If training is slow, profile dataloader wait time before changing model architecture.
 
-### Q6. Debug slow DataLoader
+### Q14. Debug slow DataLoader
 
 Profile worker time, serialization overhead, transforms, storage format, and host-device transfer.
 
@@ -3760,7 +3760,7 @@ from torch.utils.data import DataLoader
 loader = DataLoader(dataset, batch_size=64, shuffle=True, num_workers=4, pin_memory=True)
 ```
 
-### Q10. Deploy PyTorch model
+### Q15. Deploy PyTorch model
 
 Export/serve with TorchScript/ONNX/Triton/FastAPI pipeline with observability and rollback.
 
@@ -3768,7 +3768,7 @@ Explanation: Export/serve with TorchScript/ONNX/Triton/FastAPI pipeline with obs
 
 Example: A model registry plus run metadata lets teams trace exactly which model served production traffic.
 
-### Q7. Gradient accumulation
+### Q16. Gradient accumulation
 
 Accumulate gradients over multiple mini-batches before optimizer step to emulate larger batch size.
 
@@ -3791,7 +3791,7 @@ for i, (x, y) in enumerate(loader):
         optimizer.step(); optimizer.zero_grad(set_to_none=True)
 ```
 
-### Q3. Implement custom loss
+### Q17. Implement custom loss
 
 Subclass `nn.Module` or write function using tensor ops, ensuring stable numerics.
 
@@ -3799,7 +3799,7 @@ Explanation: Subclass `nn.Module` or write function using tensor ops, ensuring s
 
 Example: A model registry plus run metadata lets teams trace exactly which model served production traffic.
 
-### Q2. Implement gradient accumulation
+### Q18. Implement gradient accumulation
 
 Scale loss by accumulation steps, call backward each mini-batch, optimizer step every k steps.
 
@@ -3822,7 +3822,7 @@ for i, (x, y) in enumerate(loader):
         optimizer.step(); optimizer.zero_grad(set_to_none=True)
 ```
 
-### Q10. Mixed precision
+### Q19. Mixed precision
 
 Use FP16/BF16 for faster compute and lower memory with loss scaling when needed.
 
@@ -3845,7 +3845,7 @@ with torch.cuda.amp.autocast():
 scaler.scale(loss).backward(); scaler.step(optimizer); scaler.update()
 ```
 
-### Q8. Reduce GPU memory usage
+### Q20. Reduce GPU memory usage
 
 Mixed precision, smaller batches, gradient checkpointing, sequence truncation, activation recomputation, optimizer/state choices.
 
@@ -3853,7 +3853,7 @@ Explanation: Mixed precision, smaller batches, gradient checkpointing, sequence 
 
 Example: If training is slow, profile dataloader wait time before changing model architecture.
 
-### Q4. Variable-length sequences efficiently
+### Q21. Variable-length sequences efficiently
 
 Pad + mask, packed sequences, bucketing by length, or attention masks.
 
@@ -3863,7 +3863,7 @@ Example: A model registry plus run metadata lets teams trace exactly which model
 
 ## ==========jax===================
 
-### Q16. JIT compilation
+### Q1. JIT compilation
 
 Compile computation graphs for optimized execution.
 
@@ -3871,7 +3871,7 @@ Explanation: Compile computation graphs for optimized execution. In real project
 
 Example: If training is slow, profile dataloader wait time before changing model architecture.
 
-### 19. Large-scale training pipeline (PyTorch/JAX)
+### Q2. Large-scale training pipeline (PyTorch/JAX)
 
 Optimize data IO (sharding/prefetch), compute (mixed precision), and scale (DDP/pmap/sharding). Keep sequence/window generation efficient and monitor throughput, memory, and utilization.
 
@@ -3879,7 +3879,7 @@ Explanation: Optimize data IO (sharding/prefetch), compute (mixed precision), an
 
 Example: You deployed a defect detector where precision improved from 0.78 to 0.91 while maintaining sub-50 ms inference.
 
-### Q14. PyTorch vs TensorFlow vs JAX
+### Q3. PyTorch vs TensorFlow vs JAX
 
 PyTorch: flexible/eager ecosystem. TensorFlow: strong production tooling. JAX: functional style + strong compiler transformations.
 
@@ -3887,7 +3887,7 @@ Explanation: PyTorch: flexible/eager ecosystem. TensorFlow: strong production to
 
 Example: If training is slow, profile dataloader wait time before changing model architecture.
 
-### Q15. When to use JAX
+### Q4. When to use JAX
 
 When vectorization/JIT/XLA and functional transformations (`jit`, `vmap`, `pmap`) are major advantages.
 
@@ -3897,7 +3897,7 @@ Example: If training is slow, profile dataloader wait time before changing model
 
 ## ==========python===============
 
-### Q9. Design experiment tracking
+### Q1. Design experiment tracking
 
 Log configs, data/version hash, metrics, artifacts, model registry, and reproducible seeds.
 
@@ -3905,7 +3905,7 @@ Explanation: Log configs, data/version hash, metrics, artifacts, model registry,
 
 Example: A model registry plus run metadata lets teams trace exactly which model served production traffic.
 
-### Q8. Implement early stopping
+### Q2. Implement early stopping
 
 Track best validation metric with patience and checkpoint best model.
 
@@ -3925,7 +3925,7 @@ with torch.no_grad():
 val_loss = criterion(val_pred, y_val)
 ```
 
-### Q19. Profile model performance
+### Q3. Profile model performance
 
 Use profiler tools (PyTorch profiler, Nsight), trace step time, kernel time, IO wait, memory.
 
