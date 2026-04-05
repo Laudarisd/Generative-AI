@@ -4129,13 +4129,3 @@ Answer: Align retraining with seasonal cycle length, drift speed, and operationa
 
 Example: Weekly retraining may be needed in fast-changing demand systems.
 ---
-
-## 22) Fast Revision Checklist
-
-- Can explain encoder/decoder/cross-attention clearly.
-- Can explain BatchNorm vs LayerNorm with usage context.
-- Can justify optimizer and activation choices.
-- Can debug NaNs, slow training, and unstable loss step-by-step.
-- Can design production monitoring, drift handling, and rollback.
-- Can discuss LLM inference efficiency (KV cache, quantization, batching).
-- Can discuss reliability and safety for real-world systems.
