@@ -3722,6 +3722,31 @@ L = D - W  # graph Laplacian
 # manifold penalty example for prediction vector f: penalty = f.T @ L @ f
 ```
 
+### Q36. What is cosine similarity and when should we use it?
+
+Cosine similarity measures the angle-based similarity between two vectors, independent of their absolute magnitude.
+
+Elaborated answer: It is widely used for embeddings (text/image/audio) because direction in embedding space often captures semantics better than raw vector length.
+
+How to do it (practical):
+1. Normalize vectors (or use APIs that normalize internally).
+2. Compute cosine similarity `sim(a,b) = (a.b) / (||a|| ||b||)`.
+3. Use it for retrieval/ranking by selecting top-k most similar vectors.
+
+Code:
+```python
+import numpy as np
+from sklearn.metrics.pairwise import cosine_similarity
+
+a = np.array([[0.1, 0.3, 0.9]])
+b = np.array([[0.2, 0.25, 0.88]])
+c = np.array([[0.9, 0.1, 0.0]])
+
+print("numpy cosine(a,b):", float((a @ b.T) / (np.linalg.norm(a) * np.linalg.norm(b))))
+print("sklearn cosine(a,b):", cosine_similarity(a, b)[0, 0])
+print("sklearn cosine(a,c):", cosine_similarity(a, c)[0, 0])
+```
+
 ---
 
 ## 20) Practical Mini Examples
