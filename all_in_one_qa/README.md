@@ -383,6 +383,38 @@ ce = nn.CrossEntropyLoss()
 huber = nn.HuberLoss()
 ```
 
+### Q5A. What is cross-entropy loss and how do we calculate it?
+
+Cross-entropy measures how well predicted class probabilities match true labels. For one sample with true class `y`, loss is `-log(p_y)`.
+
+Elaborated answer: In classification, cross-entropy strongly penalizes confident wrong predictions, which usually gives better gradients than MSE for probability outputs.
+
+How to do it (practical):
+1. Convert logits to probabilities with softmax.
+2. Pick probability of the true class.
+3. Compute `-log(true_class_probability)`.
+4. Average across batch.
+
+Code:
+```python
+import numpy as np
+import torch
+import torch.nn.functional as F
+
+# manual single-sample cross-entropy
+logits_np = np.array([2.0, 0.5, -1.0])
+probs_np = np.exp(logits_np) / np.exp(logits_np).sum()
+true_class = 0
+ce_manual = -np.log(probs_np[true_class] + 1e-12)
+print("manual CE:", ce_manual)
+
+# PyTorch batch cross-entropy (expects raw logits, not softmaxed probs)
+logits = torch.tensor([[2.0, 0.5, -1.0], [0.1, 1.2, 0.3]])
+targets = torch.tensor([0, 1])
+ce_torch = F.cross_entropy(logits, targets)
+print("torch CE:", ce_torch.item())
+```
+
 ### Q6. Precision vs recall vs F1
 
 Precision: correctness of positive predictions. Recall: coverage of actual positives. F1: harmonic mean balancing both.
