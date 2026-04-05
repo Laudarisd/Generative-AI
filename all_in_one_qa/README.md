@@ -292,8 +292,10 @@ Example: In a fraud dataset with only 2% positives, you prefer PR-AUC and F1 ove
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+from sklearn.linear_model import LogisticRegression, LinearRegression
+
+clf = LogisticRegression().fit(X_cls, y_cls)
+reg = LinearRegression().fit(X_reg, y_reg)
 ```
 
 ### Q2. What is cross-validation?
@@ -311,8 +313,11 @@ Example: In a fraud dataset with only 2% positives, you prefer PR-AUC and F1 ove
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+from sklearn.model_selection import cross_val_score
+from sklearn.ensemble import RandomForestClassifier
+
+scores = cross_val_score(RandomForestClassifier(), X, y, cv=5, scoring="f1")
+print(scores.mean(), scores.std())
 ```
 
 ### Q3. What is gradient descent?
@@ -330,8 +335,10 @@ Example: In a fraud dataset with only 2% positives, you prefer PR-AUC and F1 ove
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+w, lr = 0.0, 1e-2
+for _ in range(100):
+    grad = dloss_dw(w)
+    w -= lr * grad
 ```
 
 ### Q4. What is stochastic gradient descent?
@@ -349,8 +356,10 @@ Example: In a fraud dataset with only 2% positives, you prefer PR-AUC and F1 ove
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+import torch
+
+opt = torch.optim.SGD(model.parameters(), lr=1e-2, momentum=0.9)
+opt.zero_grad(set_to_none=True); loss = criterion(model(x), y); loss.backward(); opt.step()
 ```
 
 ### Q5. What is a loss function and how choose it?
@@ -368,8 +377,10 @@ Example: In a fraud dataset with only 2% positives, you prefer PR-AUC and F1 ove
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+import torch.nn as nn
+
+ce = nn.CrossEntropyLoss()
+huber = nn.HuberLoss()
 ```
 
 ### Q6. Precision vs recall vs F1
@@ -387,8 +398,9 @@ Example: In a fraud dataset with only 2% positives, you prefer PR-AUC and F1 ove
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+from sklearn.metrics import precision_score, recall_score, f1_score
+
+print(precision_score(y_true, y_pred), recall_score(y_true, y_pred), f1_score(y_true, y_pred))
 ```
 
 ### Q7. ROC-AUC
@@ -406,8 +418,10 @@ Example: In a fraud dataset with only 2% positives, you prefer PR-AUC and F1 ove
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+from sklearn.metrics import roc_auc_score
+
+auc = roc_auc_score(y_true, y_prob)
+print(auc)
 ```
 
 ### Q8. Data leakage
@@ -517,8 +531,7 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+import numpy as np\n\nz = (x - np.mean(x)) / (np.std(x) + 1e-8)\nprint(z[:5])
 ```
 
 ### Q9. Hessian matrix
@@ -536,8 +549,7 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+import numpy as np\n\ncov = np.cov(x, y)[0,1]; corr = np.corrcoef(x, y)[0,1]\nprint(cov, corr)
 ```
 
 ### Q10. Gradient clipping
@@ -555,8 +567,7 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+import numpy as np\n\nrmse = np.sqrt(np.mean((y_true - y_pred) ** 2))\nprint(rmse)
 ```
 
 ### Q11. Why normalization helps optimization
@@ -590,8 +601,7 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+import numpy as np\n\nz = (x - np.mean(x)) / (np.std(x) + 1e-8)\nprint(z[:5])
 ```
 
 ### Q14. Early stopping
@@ -609,8 +619,7 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+import numpy as np\n\ncov = np.cov(x, y)[0,1]; corr = np.corrcoef(x, y)[0,1]\nprint(cov, corr)
 ```
 
 ### Q15. Calibration in ML
@@ -628,8 +637,7 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+from scipy.stats import ttest_ind\n\nstat, p = ttest_ind(a, b, equal_var=False)\nprint(p)
 ```
 
 ### Q16. Statistical anomaly detection (what is it?)
@@ -647,8 +655,7 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+import numpy as np\n\nz = (x - np.mean(x)) / (np.std(x) + 1e-8)\nprint(z[:5])
 ```
 
 ### Q17. Common anomaly detection methods
@@ -666,8 +673,7 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+import numpy as np\n\nmu, var = np.mean(x), np.var(x)\nprint(mu, var)
 ```
 
 ### Q18. Anomaly detection metrics
@@ -685,8 +691,7 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+from scipy.stats import ttest_ind\n\nstat, p = ttest_ind(a, b, equal_var=False)\nprint(p)
 ```
 
 ### Q19. Point anomaly vs contextual anomaly vs collective anomaly
@@ -704,8 +709,7 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+import numpy as np\n\nrmse = np.sqrt(np.mean((y_true - y_pred) ** 2))\nprint(rmse)
 ```
 
 ### Q20. Threshold selection for anomaly scores
@@ -723,8 +727,7 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+import numpy as np\n\nmae = np.mean(np.abs(y_true - y_pred))\nprint(mae)
 ```
 
 ### Q21. What is CUSUM?
@@ -742,8 +745,9 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+s_pos = max(0.0, s_pos + (x_t - mu0 - k))
+if s_pos > h:
+    alarm = True
 ```
 
 ### Q22. Why use CUSUM in monitoring?
@@ -761,8 +765,9 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+s_pos = max(0.0, s_pos + (x_t - mu0 - k))
+if s_pos > h:
+    alarm = True
 ```
 
 ### Q23. CUSUM vs EWMA
@@ -780,8 +785,9 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+s_pos = max(0.0, s_pos + (x_t - mu0 - k))
+if s_pos > h:
+    alarm = True
 ```
 
 ### Q24. ARIMA (sometimes mistyped as RMIA)
@@ -810,6 +816,7 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 Code:
 ```python
 from statsmodels.tsa.arima.model import ARIMA
+
 fit = ARIMA(series, order=(2, 1, 1)).fit()
 forecast = fit.forecast(steps=7)
 ```
@@ -830,6 +837,7 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 Code:
 ```python
 from statsmodels.tsa.arima.model import ARIMA
+
 fit = ARIMA(series, order=(2, 1, 1)).fit()
 forecast = fit.forecast(steps=7)
 ```
@@ -850,6 +858,7 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 Code:
 ```python
 from statsmodels.tsa.arima.model import ARIMA
+
 fit = ARIMA(series, order=(2, 1, 1)).fit()
 forecast = fit.forecast(steps=7)
 ```
@@ -907,8 +916,8 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 
 Code:
 ```python
-z = optimize_latent_for_sample(x, G)
-x_hat = G(z)
+z = optimize_latent_for_sample(x, generator)
+x_hat = generator(z)
 score = ((x - x_hat) ** 2).mean()
 ```
 
@@ -927,8 +936,7 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+import numpy as np\n\nz = (x - np.mean(x)) / (np.std(x) + 1e-8)\nprint(z[:5])
 ```
 
 ### Q31. Local Outlier Factor (LOF)
@@ -947,6 +955,7 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 Code:
 ```python
 from sklearn.neighbors import LocalOutlierFactor
+
 lof = LocalOutlierFactor(n_neighbors=20, novelty=True).fit(X_train_normal)
 score = -lof.score_samples(X_test)
 ```
@@ -967,6 +976,7 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 Code:
 ```python
 from sklearn.svm import OneClassSVM
+
 clf = OneClassSVM(kernel="rbf", nu=0.05).fit(X_train_normal)
 y_pred = clf.predict(X_test)
 ```
@@ -995,6 +1005,7 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 Code:
 ```python
 from sklearn.svm import OneClassSVM
+
 clf = OneClassSVM(kernel="rbf", nu=0.05).fit(X_train_normal)
 y_pred = clf.predict(X_test)
 ```
@@ -1014,8 +1025,7 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+import numpy as np\n\nmae = np.mean(np.abs(y_true - y_pred))\nprint(mae)
 ```
 
 ### Q36. Foundation models for industrial anomaly detection
@@ -1033,8 +1043,7 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+import numpy as np\n\nz = (x - np.mean(x)) / (np.std(x) + 1e-8)\nprint(z[:5])
 ```
 
 ### Q37. Modular adaptation methods (foundation-model context)
@@ -1064,9 +1073,12 @@ Example: If training is slow, profile dataloader wait time before changing model
 
 Code:
 ```python
-optimizer.zero_grad(set_to_none=True)
-loss = criterion(model(x), y)
-loss.backward(); optimizer.step()
+import torch
+
+x = torch.tensor(2.0, requires_grad=True)
+y = x**3
+y.backward()
+print(x.grad)
 ```
 
 ### Q2. Computational graph
@@ -1108,9 +1120,9 @@ Example: If training is slow, profile dataloader wait time before changing model
 
 Code:
 ```python
-optimizer.zero_grad(set_to_none=True)
-loss = criterion(model(x), y)
-loss.backward(); optimizer.step()
+from torch.utils.data import DataLoader
+
+loader = DataLoader(dataset, batch_size=64, shuffle=True, num_workers=4, pin_memory=True)
 ```
 
 ### Q6. Backpropagation
@@ -1130,7 +1142,8 @@ Code:
 ```python
 optimizer.zero_grad(set_to_none=True)
 loss = criterion(model(x), y)
-loss.backward(); optimizer.step()
+loss.backward()
+optimizer.step()
 ```
 
 ### Q7. Gradient accumulation
@@ -1148,9 +1161,12 @@ Example: If training is slow, profile dataloader wait time before changing model
 
 Code:
 ```python
+accum = 4
 optimizer.zero_grad(set_to_none=True)
-loss = criterion(model(x), y)
-loss.backward(); optimizer.step()
+for i, (x, y) in enumerate(loader):
+    (criterion(model(x), y) / accum).backward()
+    if (i + 1) % accum == 0:
+        optimizer.step(); optimizer.zero_grad(set_to_none=True)
 ```
 
 ### Q8. Reduce GPU memory usage
@@ -1184,9 +1200,12 @@ Example: If training is slow, profile dataloader wait time before changing model
 
 Code:
 ```python
-optimizer.zero_grad(set_to_none=True)
-loss = criterion(model(x), y)
-loss.backward(); optimizer.step()
+import torch
+
+scaler = torch.cuda.amp.GradScaler()
+with torch.cuda.amp.autocast():
+    loss = criterion(model(x), y)
+scaler.scale(loss).backward(); scaler.step(optimizer); scaler.update()
 ```
 
 ### Q11. Checkpointing
@@ -1204,9 +1223,9 @@ Example: If training is slow, profile dataloader wait time before changing model
 
 Code:
 ```python
-optimizer.zero_grad(set_to_none=True)
-loss = criterion(model(x), y)
-loss.backward(); optimizer.step()
+import torch
+
+torch.save({"model": model.state_dict(), "optimizer": optimizer.state_dict(), "epoch": epoch}, "ckpt.pt")
 ```
 
 ### Q12. DDP
@@ -1224,9 +1243,9 @@ Example: If training is slow, profile dataloader wait time before changing model
 
 Code:
 ```python
-optimizer.zero_grad(set_to_none=True)
-loss = criterion(model(x), y)
-loss.backward(); optimizer.step()
+import torch.nn.parallel as p
+
+model = p.DistributedDataParallel(model, device_ids=[local_rank])
 ```
 
 ### Q13. DataParallel
@@ -1244,9 +1263,9 @@ Example: If training is slow, profile dataloader wait time before changing model
 
 Code:
 ```python
-optimizer.zero_grad(set_to_none=True)
-loss = criterion(model(x), y)
-loss.backward(); optimizer.step()
+import torch.nn as nn
+
+model = nn.DataParallel(model)
 ```
 
 ### Q14. PyTorch vs TensorFlow vs JAX
@@ -1324,8 +1343,7 @@ Example: Adding residual connections can let a deeper model converge where a pla
 
 Code:
 ```python
-import torch.nn as nn
-net = nn.Sequential(nn.Linear(256,512), nn.ReLU(), nn.Linear(512,10))
+import torch.nn as nn\n\nact = nn.GELU()
 ```
 
 ### Q2. RNN
@@ -1343,8 +1361,7 @@ Example: Adding residual connections can let a deeper model converge where a pla
 
 Code:
 ```python
-import torch.nn as nn
-net = nn.Sequential(nn.Linear(256,512), nn.ReLU(), nn.Linear(512,10))
+import torch.nn as nn\n\ncnn = nn.Sequential(nn.Conv2d(3, 16, 3, padding=1), nn.ReLU(), nn.MaxPool2d(2))
 ```
 
 ### Q3. LSTM vs GRU
@@ -1362,8 +1379,7 @@ Example: Adding residual connections can let a deeper model converge where a pla
 
 Code:
 ```python
-import torch.nn as nn
-net = nn.Sequential(nn.Linear(256,512), nn.ReLU(), nn.Linear(512,10))
+import torch.nn as nn\n\ncnn = nn.Sequential(nn.Conv2d(3, 16, 3, padding=1), nn.ReLU(), nn.MaxPool2d(2))
 ```
 
 ### Q4. Transformer
@@ -1381,8 +1397,7 @@ Example: Adding residual connections can let a deeper model converge where a pla
 
 Code:
 ```python
-import torch.nn as nn
-net = nn.Sequential(nn.Linear(256,512), nn.ReLU(), nn.Linear(512,10))
+import torch.nn as nn\n\nblock = nn.Sequential(nn.Linear(256, 512), nn.ReLU(), nn.Linear(512, 256))
 ```
 
 ### Q5. Attention mechanism
@@ -1400,8 +1415,7 @@ Example: Adding residual connections can let a deeper model converge where a pla
 
 Code:
 ```python
-import torch.nn as nn
-net = nn.Sequential(nn.Linear(256,512), nn.ReLU(), nn.Linear(512,10))
+import torch.nn as nn\n\ncnn = nn.Sequential(nn.Conv2d(3, 16, 3, padding=1), nn.ReLU(), nn.MaxPool2d(2))
 ```
 
 ### Q6. Vanishing gradient
@@ -1419,8 +1433,11 @@ Example: Adding residual connections can let a deeper model converge where a pla
 
 Code:
 ```python
-import torch.nn as nn
-net = nn.Sequential(nn.Linear(256,512), nn.ReLU(), nn.Linear(512,10))
+import torch
+
+loss.backward()
+torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+optimizer.step()
 ```
 
 ### Q7. Exploding gradient
@@ -1438,8 +1455,11 @@ Example: Adding residual connections can let a deeper model converge where a pla
 
 Code:
 ```python
-import torch.nn as nn
-net = nn.Sequential(nn.Linear(256,512), nn.ReLU(), nn.Linear(512,10))
+import torch
+
+loss.backward()
+torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+optimizer.step()
 ```
 
 ### Q8. Dropout
@@ -1457,8 +1477,7 @@ Example: Adding residual connections can let a deeper model converge where a pla
 
 Code:
 ```python
-import torch.nn as nn
-net = nn.Sequential(nn.Linear(256,512), nn.ReLU(), nn.Linear(512,10))
+import torch.nn as nn\n\nact = nn.GELU()
 ```
 
 ### Q9. Batch normalization
@@ -1477,8 +1496,10 @@ Example: Adding residual connections can let a deeper model converge where a pla
 Code:
 ```python
 import torch
-x = torch.randn(16,64,32,32)
-y = torch.nn.BatchNorm2d(64)(x)
+
+x = torch.randn(16, 64, 32, 32)
+bn = torch.nn.BatchNorm2d(64)
+y = bn(x)
 ```
 
 ### Q10. Residual connection
@@ -1504,8 +1525,7 @@ Example: Adding residual connections can let a deeper model converge where a pla
 
 Code:
 ```python
-import torch.nn as nn
-net = nn.Sequential(nn.Linear(256,512), nn.ReLU(), nn.Linear(512,10))
+import torch.nn as nn\n\nblock = nn.Sequential(nn.Linear(256, 512), nn.ReLU(), nn.Linear(512, 256))
 ```
 
 ### Q12. Transfer learning
@@ -1548,8 +1568,10 @@ Example: Adding residual connections can let a deeper model converge where a pla
 Code:
 ```python
 import torch
-x = torch.randn(8,128,512)
-y = torch.nn.LayerNorm(512)(x)
+
+x = torch.randn(8, 128, 512)
+ln = torch.nn.LayerNorm(512)
+y = ln(x)
 ```
 
 ### Q16. BatchNorm vs LayerNorm (when to use which)
@@ -1567,9 +1589,10 @@ Example: Adding residual connections can let a deeper model converge where a pla
 
 Code:
 ```python
-import torch
-x = torch.randn(16,64,32,32)
-y = torch.nn.BatchNorm2d(64)(x)
+import torch.nn as nn
+
+bn = nn.BatchNorm2d(64)        # CNN
+ln = nn.LayerNorm(512)         # Transformer hidden dim
 ```
 
 ### Q17. In CNN blocks, what do numbers like `256, 256, 4` mean, and how do we calculate them?
@@ -1592,33 +1615,11 @@ Then `Conv(16->32, k=3, s=2, p=1)` downsamples to `128x128`, output `8,32,128,12
 Code:
 ```python
 import math
-import torch
-import torch.nn as nn
 
-def conv2d_out_size(in_size, kernel, stride=1, padding=0, dilation=1):
-    return math.floor((in_size + 2 * padding - dilation * (kernel - 1) - 1) / stride + 1)
+def conv_out(n, k=3, s=1, p=1, d=1):
+    return math.floor((n + 2*p - d*(k-1) - 1)/s + 1)
 
-def conv2d_param_count(in_ch, out_ch, k_h, k_w, bias=True):
-    return out_ch * (in_ch * k_h * k_w + (1 if bias else 0))
-
-# Example block: Conv -> Dropout -> Conv
-block = nn.Sequential(
-    nn.Conv2d(4, 16, kernel_size=3, stride=1, padding=1),
-    nn.Dropout2d(p=0.2),  # shape unchanged
-    nn.Conv2d(16, 32, kernel_size=3, stride=2, padding=1),
-)
-
-x = torch.randn(8, 4, 256, 256)  # N, C, H, W
-y = block(x)
-print("output shape:", tuple(y.shape))  # (8, 32, 128, 128)
-
-h1 = conv2d_out_size(256, kernel=3, stride=1, padding=1)  # 256
-h2 = conv2d_out_size(h1, kernel=3, stride=2, padding=1)   # 128
-print("manual H after conv1/conv2:", h1, h2)
-
-p1 = conv2d_param_count(4, 16, 3, 3, bias=True)   # conv1 params
-p2 = conv2d_param_count(16, 32, 3, 3, bias=True)  # conv2 params
-print("conv params:", p1, p2, "total:", p1 + p2)
+print(conv_out(256, 3, 1, 1), conv_out(256, 3, 2, 1))
 ```
 
 ---
@@ -1640,9 +1641,7 @@ Example: For weekly demand forecasting, include lag-7 and lag-14 features and ev
 
 Code:
 ```python
-import pandas as pd
-df["lag_1"] = df["y"].shift(1)
-df["lag_7"] = df["y"].shift(7)
+import pandas as pd\n\ndf["lag_1"] = df["y"].shift(1)\ndf["lag_7"] = df["y"].shift(7)
 ```
 
 ### Q2. Autocorrelation
@@ -1661,8 +1660,9 @@ Example: For weekly demand forecasting, include lag-7 and lag-14 features and ev
 Code:
 ```python
 import pandas as pd
-df["lag_1"] = df["y"].shift(1)
-df["lag_7"] = df["y"].shift(7)
+
+lag_7_corr = pd.Series(series).autocorr(lag=7)
+print(lag_7_corr)
 ```
 
 ### Q3. Seasonality
@@ -1693,6 +1693,7 @@ Example: For weekly demand forecasting, include lag-7 and lag-14 features and ev
 Code:
 ```python
 from statsmodels.tsa.arima.model import ARIMA
+
 fit = ARIMA(series, order=(2, 1, 1)).fit()
 forecast = fit.forecast(steps=7)
 ```
@@ -1713,7 +1714,8 @@ Example: For weekly demand forecasting, include lag-7 and lag-14 features and ev
 Code:
 ```python
 import numpy as np
-W = np.random.randn(200, 200) * 0.05  # fixed reservoir
+
+W = np.random.randn(200, 200) * 0.05
 state = np.zeros(200)
 for u in inputs:
     state = np.tanh(W @ state + u)
@@ -1734,7 +1736,7 @@ Example: For weekly demand forecasting, include lag-7 and lag-14 features and ev
 
 Code:
 ```python
-horizon = 24  # predict next 24 steps
+horizon = 24
 y_hat = model.predict(X_last, steps=horizon)
 ```
 
@@ -1755,7 +1757,8 @@ Code:
 ```python
 X, y_out = [], []
 for i in range(window, len(series)):
-    X.append(series[i-window:i]); y_out.append(series[i])
+    X.append(series[i-window:i])
+    y_out.append(series[i])
 ```
 
 ### Q8. Evaluate time-series models
@@ -1773,9 +1776,7 @@ Example: For weekly demand forecasting, include lag-7 and lag-14 features and ev
 
 Code:
 ```python
-import pandas as pd
-df["lag_1"] = df["y"].shift(1)
-df["lag_7"] = df["y"].shift(7)
+train, test = series[:-h], series[-h:]\nmodel.fit(train)\npred = model.predict(h)
 ```
 
 ---
@@ -1797,8 +1798,10 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 
 Code:
 ```python
-prompt = f"Question: {query}\nContext: {context}"
-response = llm.generate(prompt)
+from peft import LoraConfig, get_peft_model
+
+cfg = LoraConfig(r=8, lora_alpha=16, target_modules=["q_proj", "v_proj"])
+model = get_peft_model(base_model, cfg)
 ```
 
 ### Q2. QLoRA
@@ -1816,8 +1819,10 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 
 Code:
 ```python
-prompt = f"Question: {query}\nContext: {context}"
-response = llm.generate(prompt)
+from transformers import BitsAndBytesConfig
+
+bnb = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_compute_dtype="bfloat16")
+model = AutoModelForCausalLM.from_pretrained(model_id, quantization_config=bnb)
 ```
 
 ### Q3. Fine-tuning vs prompt tuning
@@ -1844,7 +1849,9 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 Code:
 ```python
 from sentence_transformers import SentenceTransformer
-vec = SentenceTransformer("all-MiniLM-L6-v2").encode(["example sentence"])
+
+model = SentenceTransformer("all-MiniLM-L6-v2")
+vec = model.encode(["motor vibration anomaly"])[0]
 ```
 
 ### Q5. Tokenization
@@ -1863,8 +1870,9 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 Code:
 ```python
 from transformers import AutoTokenizer
+
 tok = AutoTokenizer.from_pretrained("bert-base-uncased")
-ids = tok("hello", return_tensors="pt")["input_ids"]
+ids = tok("Hello world", return_tensors="pt")["input_ids"]
 ```
 
 ### Q6. Hallucination
@@ -1918,8 +1926,7 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 
 Code:
 ```python
-prompt = f"Question: {query}\nContext: {context}"
-response = llm.generate(prompt)
+docs = retriever.get_relevant_documents(query)\ncontext = "\n".join(d.page_content for d in docs[:3])\nanswer = llm.generate(context)
 ```
 
 ### Q10. Efficient LLM deployment
@@ -1962,6 +1969,7 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 Code:
 ```python
 import torch
+
 T = 8
 mask = torch.triu(torch.ones(T, T), diagonal=1).bool()
 ```
@@ -1981,7 +1989,7 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 
 Code:
 ```python
-attn = torch.softmax(q @ k.transpose(-2, -1) / (q.size(-1)**0.5), dim=-1)
+attn = torch.softmax(q @ k.transpose(-2, -1) / (q.size(-1) ** 0.5), dim=-1)
 out = attn @ v
 ```
 
@@ -2001,7 +2009,9 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 Code:
 ```python
 import math
+
 ppl = math.exp(cross_entropy_loss)
+print(ppl)
 ```
 
 ---
@@ -2055,8 +2065,7 @@ Example: For predictive maintenance, model output triggers a maintenance ticket 
 
 Code:
 ```python
-risk = model(x)
-alert = bool(risk > 0.8)
+if drift_score > 0.2:\n    mode = "safe_mode"
 ```
 
 ### Q6. Ensure physical consistency
@@ -2234,8 +2243,7 @@ Example: With an ill-conditioned Hessian, optimization zig-zags until normalizat
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+import numpy as np\n\nz = (x - np.mean(x)) / (np.std(x) + 1e-8)\nprint(z[:5])
 ```
 
 ### Q2. Why L2 shrinks weights but not zero
@@ -2254,7 +2262,12 @@ Example: With an ill-conditioned Hessian, optimization zig-zags until normalizat
 Code:
 ```python
 import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+
+w = np.array([0.03, -0.8, 1.5])
+lam, lr = 0.1, 0.1
+w_l1 = np.sign(w) * np.maximum(np.abs(w) - lam, 0.0)
+w_l2 = w * (1 - 2 * lr * lam)
+print(w_l1, w_l2)
 ```
 
 ### Q3. Ill-conditioned Hessian impact
@@ -2272,8 +2285,7 @@ Example: With an ill-conditioned Hessian, optimization zig-zags until normalizat
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+import numpy as np\n\nrmse = np.sqrt(np.mean((y_true - y_pred) ** 2))\nprint(rmse)
 ```
 
 ### Q4. Why normalization improves convergence mathematically
@@ -2291,8 +2303,7 @@ Example: With an ill-conditioned Hessian, optimization zig-zags until normalizat
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+import numpy as np\n\nmae = np.mean(np.abs(y_true - y_pred))\nprint(mae)
 ```
 
 ### Q5. How gradient clipping stabilizes exploding gradients
@@ -2310,8 +2321,11 @@ Example: With an ill-conditioned Hessian, optimization zig-zags until normalizat
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+import torch
+
+loss.backward()
+torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+optimizer.step()
 ```
 
 ### Q6. Eigenvalues and ESN stability
@@ -2329,11 +2343,7 @@ Example: With an ill-conditioned Hessian, optimization zig-zags until normalizat
 
 Code:
 ```python
-import numpy as np
-W = np.random.randn(200, 200) * 0.05  # fixed reservoir
-state = np.zeros(200)
-for u in inputs:
-    state = np.tanh(W @ state + u)
+import numpy as np\n\nmu, var = np.mean(x), np.var(x)\nprint(mu, var)
 ```
 
 ### Q7. Why spectral radius matters in recurrent nets
@@ -2367,8 +2377,7 @@ Example: With an ill-conditioned Hessian, optimization zig-zags until normalizat
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+from scipy.stats import ttest_ind\n\nstat, p = ttest_ind(a, b, equal_var=False)\nprint(p)
 ```
 
 ### Q10. KL divergence and usage
@@ -2386,8 +2395,7 @@ Example: With an ill-conditioned Hessian, optimization zig-zags until normalizat
 
 Code:
 ```python
-import numpy as np
-print(np.mean(np.abs(y_true - y_pred)))
+import numpy as np\n\nz = (x - np.mean(x)) / (np.std(x) + 1e-8)\nprint(z[:5])
 ```
 
 ---
@@ -2441,9 +2449,7 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 
 Code:
 ```python
-optimizer.zero_grad(set_to_none=True)
-loss = criterion(model(x), y)
-loss.backward(); optimizer.step()
+for xb, yb in loader:\n    optimizer.zero_grad(set_to_none=True)\n    loss = criterion(model(xb), yb)\n    loss.backward(); optimizer.step()
 ```
 
 ### Q6. Validation metric fluctuates heavily
@@ -2477,9 +2483,7 @@ Example: A p-value below 0.05 suggests evidence against the null, but does not p
 
 Code:
 ```python
-optimizer.zero_grad(set_to_none=True)
-loss = criterion(model(x), y)
-loss.backward(); optimizer.step()
+model.train()\nout = model(x)\nloss = criterion(out, y)\nloss.backward()\noptimizer.step()
 ```
 
 ### Q9. 10x more features than samples
@@ -2517,9 +2521,9 @@ Example: A model registry plus run metadata lets teams trace exactly which model
 
 Code:
 ```python
-optimizer.zero_grad(set_to_none=True)
-loss = criterion(model(x), y)
-loss.backward(); optimizer.step()
+from sklearn.metrics import precision_score, recall_score, f1_score
+
+print(precision_score(y_true, y_pred), recall_score(y_true, y_pred), f1_score(y_true, y_pred))
 ```
 
 ### Q2. Implement gradient accumulation
@@ -2537,9 +2541,12 @@ Example: A model registry plus run metadata lets teams trace exactly which model
 
 Code:
 ```python
+accum = 4
 optimizer.zero_grad(set_to_none=True)
-loss = criterion(model(x), y)
-loss.backward(); optimizer.step()
+for i, (x, y) in enumerate(loader):
+    (criterion(model(x), y) / accum).backward()
+    if (i + 1) % accum == 0:
+        optimizer.step(); optimizer.zero_grad(set_to_none=True)
 ```
 
 ### Q3. Implement custom loss
@@ -2581,9 +2588,9 @@ Example: A model registry plus run metadata lets teams trace exactly which model
 
 Code:
 ```python
-optimizer.zero_grad(set_to_none=True)
-loss = criterion(model(x), y)
-loss.backward(); optimizer.step()
+from torch.utils.data import DataLoader
+
+loader = DataLoader(dataset, batch_size=64, shuffle=True, num_workers=4, pin_memory=True)
 ```
 
 ### Q7. Design multi-GPU training
@@ -2609,9 +2616,7 @@ Example: A model registry plus run metadata lets teams trace exactly which model
 
 Code:
 ```python
-optimizer.zero_grad(set_to_none=True)
-loss = criterion(model(x), y)
-loss.backward(); optimizer.step()
+with torch.no_grad():\n    val_pred = model(x_val)\nval_loss = criterion(val_pred, y_val)
 ```
 
 ### Q9. Design experiment tracking
@@ -2649,8 +2654,7 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 
 Code:
 ```python
-prompt = f"Question: {query}\nContext: {context}"
-response = llm.generate(prompt)
+messages = [{"role":"system","content":"Answer with grounded facts."},{"role":"user","content":query}]\nresp = llm.chat(messages)
 ```
 
 ### Q2. Why LLMs scale with data
@@ -2712,8 +2716,7 @@ Example: In streaming anomaly detection, hysteresis reduces noisy alert flapping
 
 Code:
 ```python
-risk = model(x)
-alert = bool(risk > 0.8)
+if drift_score > 0.2:\n    mode = "safe_mode"
 ```
 
 ### Q2. Meet strict latency constraints
@@ -2731,8 +2734,7 @@ Example: In streaming anomaly detection, hysteresis reduces noisy alert flapping
 
 Code:
 ```python
-risk = model(x)
-alert = bool(risk > 0.8)
+if drift_score > 0.2:\n    mode = "safe_mode"
 ```
 
 ### Q3. Fallback if AI fails
@@ -3056,7 +3058,7 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 
 Code:
 ```python
-metric = evaluate(model, val_loader)
+messages = [{"role":"system","content":"Answer with grounded facts."},{"role":"user","content":query}]\nresp = llm.chat(messages)
 ```
 
 ### Q2. Encoder-only vs Decoder-only vs Encoder-Decoder
@@ -3085,6 +3087,7 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 Code:
 ```python
 import torch
+
 T = 8
 mask = torch.triu(torch.ones(T, T), diagonal=1).bool()
 ```
@@ -3104,7 +3107,7 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 
 Code:
 ```python
-attn = torch.softmax(q @ k.transpose(-2, -1) / (q.size(-1)**0.5), dim=-1)
+attn = torch.softmax(q @ k.transpose(-2, -1) / (q.size(-1) ** 0.5), dim=-1)
 out = attn @ v
 ```
 
@@ -3128,7 +3131,7 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 
 Code:
 ```python
-metric = evaluate(model, val_loader)
+prompt = f"Question: {query}\nContext: {context}"\nresponse = llm.generate(prompt)
 ```
 
 ### Q6. Adam vs AdamW
@@ -3146,7 +3149,7 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 
 Code:
 ```python
-metric = evaluate(model, val_loader)
+prompt = f"Question: {query}\nContext: {context}"\nresponse = llm.generate(prompt)
 ```
 
 ### Q7. BatchNorm vs LayerNorm
@@ -3165,9 +3168,10 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 
 Code:
 ```python
-import torch
-x = torch.randn(16,64,32,32)
-y = torch.nn.BatchNorm2d(64)(x)
+import torch.nn as nn
+
+bn = nn.BatchNorm2d(64)        # CNN
+ln = nn.LayerNorm(512)         # Transformer hidden dim
 ```
 
 ### Q8. When BatchNorm can fail
@@ -3186,8 +3190,10 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 Code:
 ```python
 import torch
-x = torch.randn(16,64,32,32)
-y = torch.nn.BatchNorm2d(64)(x)
+
+x = torch.randn(16, 64, 32, 32)
+bn = torch.nn.BatchNorm2d(64)
+y = bn(x)
 ```
 
 ### Q9. Why LayerNorm in Transformers
@@ -3206,8 +3212,10 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 Code:
 ```python
 import torch
-x = torch.randn(8,128,512)
-y = torch.nn.LayerNorm(512)(x)
+
+x = torch.randn(8, 128, 512)
+ln = torch.nn.LayerNorm(512)
+y = ln(x)
 ```
 
 ### Q10. Pre-LN vs Post-LN Transformer blocks
@@ -3226,7 +3234,7 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 
 Code:
 ```python
-metric = evaluate(model, val_loader)
+messages = [{"role":"system","content":"Answer with grounded facts."},{"role":"user","content":query}]\nresp = llm.chat(messages)
 ```
 
 ### Q11. Weight Decay vs Dropout
@@ -3246,9 +3254,7 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 
 Code:
 ```python
-import torch.nn as nn, torch.optim as optim
-net = nn.Sequential(nn.Linear(256,256), nn.ReLU(), nn.Dropout(0.1), nn.Linear(256,2))
-opt = optim.AdamW(net.parameters(), lr=3e-4, weight_decay=0.01)
+prompt = f"Question: {query}\nContext: {context}"\nresponse = llm.generate(prompt)
 ```
 
 ### Q12. Gradient Clipping: by value vs by norm
@@ -3268,7 +3274,7 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 
 Code:
 ```python
-metric = evaluate(model, val_loader)
+tokens = tokenizer(query, return_tensors="pt")\nout = model.generate(**tokens, max_new_tokens=64)
 ```
 
 ### Q13. Learning Rate Warmup
@@ -3286,8 +3292,7 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 
 Code:
 ```python
-def lr(step, warmup, base):
-    return base * min(1.0, (step + 1) / warmup)
+messages = [{"role":"system","content":"Answer with grounded facts."},{"role":"user","content":query}]\nresp = llm.chat(messages)
 ```
 
 ### Q14. Label Smoothing
@@ -3305,8 +3310,7 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 
 Code:
 ```python
-import torch.nn as nn
-criterion = nn.CrossEntropyLoss(label_smoothing=0.1)
+messages = [{"role":"system","content":"Answer with grounded facts."},{"role":"user","content":query}]\nresp = llm.chat(messages)
 ```
 
 ### Q15. Teacher Forcing
@@ -3324,8 +3328,7 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 
 Code:
 ```python
-dec_in = target[:, :-1]
-loss = criterion(model(src, dec_in), target[:, 1:])
+tokens = tokenizer(query, return_tensors="pt")\nout = model.generate(**tokens, max_new_tokens=64)
 ```
 
 ### Q16. Exposure Bias
@@ -3343,8 +3346,7 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 
 Code:
 ```python
-use_pred = (torch.rand(()) < p_schedule)
-next_token = pred_token if use_pred else gold_token
+docs = retriever.get_relevant_documents(query)\ncontext = "\n".join(d.page_content for d in docs[:3])\nanswer = llm.generate(context)
 ```
 
 ### Q17. Perplexity
@@ -3363,7 +3365,9 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 Code:
 ```python
 import math
+
 ppl = math.exp(cross_entropy_loss)
+print(ppl)
 ```
 
 ### Q18. Top-k vs Top-p sampling
@@ -3383,7 +3387,9 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 
 Code:
 ```python
-metric = evaluate(model, val_loader)
+# pseudo decoding
+logits = top_k_filter(logits, k=50)   # or top_p_filter(logits, p=0.9)
+next_token = sample(logits)
 ```
 
 ### Q19. Temperature in generation
@@ -3401,7 +3407,8 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 
 Code:
 ```python
-metric = evaluate(model, val_loader)
+scaled_logits = logits / 0.7
+probs = torch.softmax(scaled_logits, dim=-1)
 ```
 
 ### Q20. Beam Search vs Sampling
@@ -3419,7 +3426,9 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 
 Code:
 ```python
-metric = evaluate(model, val_loader)
+beams = [([], 0.0)]
+for _ in range(max_len):
+    beams = expand_and_keep_topk(beams, k=4)
 ```
 
 ### Q21. Positional Encoding vs Learned Positional Embeddings
@@ -3438,7 +3447,9 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 Code:
 ```python
 from sentence_transformers import SentenceTransformer
-vec = SentenceTransformer("all-MiniLM-L6-v2").encode(["example sentence"])
+
+model = SentenceTransformer("all-MiniLM-L6-v2")
+vec = model.encode(["motor vibration anomaly"])[0]
 ```
 
 ### Q22. KV Cache in LLM Inference
@@ -3456,7 +3467,9 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 
 Code:
 ```python
-metric = evaluate(model, val_loader)
+out = model(input_ids, use_cache=True)
+past = out.past_key_values
+next_out = model(next_ids, past_key_values=past, use_cache=True)
 ```
 
 ### Q23. Context Window Saturation
@@ -3504,7 +3517,7 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 Code:
 ```python
 ptq_model = torch.quantization.quantize_dynamic(model, {torch.nn.Linear}, dtype=torch.qint8)
-# QAT: prepare_qat(model) -> train -> convert(model)
+# QAT: prepare_qat -> train -> convert
 ```
 
 ### Q26. Distillation
@@ -3544,10 +3557,9 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 
 Code:
 ```python
-# model parallel example
 x = layer1(x.to("cuda:0"))
 x = layer2(x.to("cuda:1"))
-# data parallel replicates full model and splits batches
+# data parallel replicates full model across devices and splits batches
 ```
 
 ### Q28. FSDP / ZeRO (why needed)
@@ -3566,6 +3578,7 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 Code:
 ```python
 from torch.distributed.fsdp import FullyShardedDataParallel as FSDP
+
 model = FSDP(model)
 ```
 
@@ -3585,7 +3598,7 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 Code:
 ```python
 throughput_rps = total_requests / elapsed_seconds
-latency_ms = 1000.0 * elapsed_seconds / total_requests
+latency_ms = (elapsed_seconds / total_requests) * 1000
 print(throughput_rps, latency_ms)
 ```
 
@@ -3605,6 +3618,7 @@ Example: A support chatbot uses retrieval from approved docs to reduce hallucina
 Code:
 ```python
 from sklearn.calibration import calibration_curve
+
 frac_pos, mean_pred = calibration_curve(y_true, y_prob, n_bins=10)
 ```
 
@@ -3739,7 +3753,14 @@ How to do it (practical):
 Example: Increasing weight decay can reduce overfitting on small instruction datasets.
 Code:
 ```python
-metric = evaluate(model, val_loader)
+import torch
+
+optimizer = torch.optim.AdamW(model.parameters(), lr=3e-4, weight_decay=0.01)
+# typical sweep values for transformer weight decay
+for wd in [0.01, 0.05, 0.1]:
+    for g in optimizer.param_groups:
+        g["weight_decay"] = wd
+    # run short validation and log metric for each wd
 ```
 
 ### Q4. What are signs that warmup is too short or too long?
@@ -3757,7 +3778,12 @@ How to do it (practical):
 Example: Sequence models may need lower thresholds than vision models.
 Code:
 ```python
-metric = evaluate(model, val_loader)
+import torch
+
+loss.backward()
+grad_norm = torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=1.0)
+optimizer.step()
+print(float(grad_norm))
 ```
 
 ### Q6. Why do residual connections help optimization depth?
@@ -3784,8 +3810,10 @@ Example: Some large decoder-only models prefer RMSNorm for speed and stability.
 Code:
 ```python
 import torch
-x = torch.randn(8,128,512)
-y = torch.nn.LayerNorm(512)(x)
+
+x = torch.randn(8, 128, 512)
+ln = torch.nn.LayerNorm(512)
+y = ln(x)
 ```
 
 ### Q10. When should you use Mixture-of-Experts (MoE)?
@@ -3839,7 +3867,14 @@ How to do it (practical):
 Example: Send 5% traffic to candidate and monitor error/latency/failure rates.
 Code:
 ```python
-metric = evaluate(model, val_loader)
+traffic = {"baseline": 0.95, "candidate": 0.05}
+
+candidate_ok = (
+    candidate_metrics["error_rate"] <= 1.05 * baseline_metrics["error_rate"]
+    and candidate_metrics["p95_latency_ms"] <= 1.10 * baseline_metrics["p95_latency_ms"]
+)
+if not candidate_ok:
+    traffic = {"baseline": 1.0, "candidate": 0.0}  # rollback
 ```
 
 ### Q18. What should be in a model card for regulated environments?
@@ -3857,7 +3892,12 @@ How to do it (practical):
 Example: Roll back if p95 latency rises >20% or critical-alert miss rate rises.
 Code:
 ```python
-metric = evaluate(model, val_loader)
+rollback = (
+    current["p95_latency_ms"] > 1.2 * baseline["p95_latency_ms"]
+    or current["critical_miss_rate"] > limits["critical_miss_rate"]
+    or current["business_kpi_drop"] > limits["business_kpi_drop"]
+)
+print("rollback:", rollback)
 ```
 
 ### Q20. What is the minimum monitoring dashboard for online inference?
@@ -3875,7 +3915,13 @@ How to do it (practical):
 Example: One sensor jumps while correlated sensors remain stable, indicating sensor fault.
 Code:
 ```python
-metric = evaluate(model, val_loader)
+import numpy as np
+
+# if only one sensor drifts while peers remain stable, suspect sensor fault
+z_a = (sensor_a - np.mean(sensor_a_ref)) / (np.std(sensor_a_ref) + 1e-8)
+z_b = (sensor_b - np.mean(sensor_b_ref)) / (np.std(sensor_b_ref) + 1e-8)
+sensor_fault = (abs(z_a) > 3.0) and (abs(z_b) < 1.0)
+print("sensor_fault:", sensor_fault)
 ```
 
 ### Q22. How do you estimate prediction uncertainty for maintenance decisions?
@@ -3897,7 +3943,9 @@ How to do it (practical):
 Example: A detector that alerts 2 hours early with acceptable precision is operationally useful.
 Code:
 ```python
-metric = evaluate(model, val_loader)
+lead_time_minutes = (event_start_ts - first_alert_ts) / 60.0
+is_useful = lead_time_minutes >= 30 and false_alarm_rate <= 0.05
+print("lead_time_minutes:", lead_time_minutes, "useful:", is_useful)
 ```
 
 ### Q25. How do you choose retraining cadence for seasonal systems?
