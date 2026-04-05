@@ -1129,21 +1129,40 @@ loader = DataLoader(dataset, batch_size=64, shuffle=True, num_workers=4, pin_mem
 
 Applies chain rule from loss to parameters to compute gradients.
 
-Elaborated answer: Applies chain rule from loss to parameters to compute gradients. In real projects, explain assumptions, tradeoffs, and how you validate this with measurable metrics.
+Elaborated answer: Backpropagation computes gradients efficiently by propagating local derivatives backward through the computation graph using chain rule. For a simple scalar path `L(w)= (wx - y)^2`, the gradient is `dL/dw = 2(wx - y)*x`.
 
 How to do it (practical):
-1. Run forward pass and compute loss.
-2. Call `loss.backward()` to populate gradients.
-3. Step optimizer and clear gradients each iteration.
+1. Write forward equations and local derivatives for each node.
+2. Multiply local derivatives backward (chain rule) to get parameter gradients.
+3. Optionally verify with finite-difference check: `dL/dw ~= (L(w+eps)-L(w-eps))/(2*eps)`.
+4. In training loop: `zero_grad -> forward -> backward -> step`.
 
 Example: If training is slow, profile dataloader wait time before changing model architecture.
 
 Code:
 ```python
-optimizer.zero_grad(set_to_none=True)
-loss = criterion(model(x), y)
+import torch
+
+# Manual gradient for L(w) = (w*x - y)^2
+x = torch.tensor(3.0)
+y = torch.tensor(7.0)
+w = torch.tensor(0.5, requires_grad=True)
+
+loss = (w * x - y) ** 2
 loss.backward()
-optimizer.step()
+print("autograd dL/dw:", w.grad.item())
+
+# finite-difference gradient check
+eps = 1e-4
+with torch.no_grad():
+    lp = ((w + eps) * x - y) ** 2
+    lm = ((w - eps) * x - y) ** 2
+num_grad = (lp - lm) / (2 * eps)
+print("numeric dL/dw:", num_grad.item())
+
+# one optimization step
+opt = torch.optim.SGD([w], lr=0.1)
+opt.step()
 ```
 
 ### Q7. Gradient accumulation
